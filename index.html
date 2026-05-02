@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <title>Za Jeziorem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content" data-content="site.skipLink"></a>
+
+  <div class="top-bar" role="status" aria-live="polite">
+    <div class="shell">
+      <p>Strona w wersji demonstracyjnej. Trwają prace deweloperskie.</p>
+    </div>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="shell site-header__inner">
+      <a class="brand" href="#top" data-aria-label-content="site.brand.ariaLabel">
+        <span class="brand__name" data-content="site.brand.name"></span>
+        <span class="brand__place" data-content="site.brand.place"></span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        data-aria-label-open="site.menu.openLabel"
+        data-aria-label-close="site.menu.closeLabel"
+      >
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" data-aria-label-content="site.navigationAriaLabel">
+        <a data-content="site.navigation.0.label" data-link="site.navigation.0.href"></a>
+        <a data-content="site.navigation.1.label" data-link="site.navigation.1.href"></a>
+        <a data-content="site.navigation.2.label" data-link="site.navigation.2.href"></a>
+        <a data-content="site.navigation.3.label" data-link="site.navigation.3.href"></a>
+        <a data-content="site.navigation.4.label" data-link="site.navigation.4.href"></a>
+        <a data-content="site.navigation.5.label" data-link="site.navigation.5.href"></a>
+        <a data-content="site.navigation.6.label" data-link="site.navigation.6.href"></a>
+        <a class="button button--small nav-cta" data-content="site.headerCta.label" data-link="site.headerCta.href"></a>
+      </nav>
+
+      <a class="button button--small site-header__cta" data-content="site.headerCta.label" data-link="site.headerCta.href"></a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ELEMENTOR NOTE: Jedna Section / Container z tłem, overlayem, Inner Container dla treści i subtelnym paskiem wyróżników pod hero. -->
+    <section class="hero" id="top" data-aria-label-content="hero.ariaLabel">
+      <div class="hero__media" aria-hidden="true" data-hero-media></div>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="hero__mist" aria-hidden="true"></div>
+      <div class="shell hero__layout">
+        <div class="hero__content reveal">
+          <p class="eyebrow" data-content="hero.eyebrow"></p>
+          <h1 data-content="hero.title"></h1>
+          <p class="hero__lead" data-content="hero.lead"></p>
+          <p class="hero__text" data-content="hero.text"></p>
+          <div class="hero__actions">
+            <a class="button button--primary" data-content="hero.actions.primary.label" data-link="hero.actions.primary.href"></a>
+            <a class="button button--ghost" data-content="hero.actions.event.label" data-link="hero.actions.event.href"></a>
+            <!-- ELEMENTOR NOTE: Zamień href na docelowy link do Bookingu lub systemu rezerwacji w content.json. -->
+            <a class="button button--ghost-light" data-content="hero.actions.booking.label" data-link="booking.url"></a>
+          </div>
+          <div class="hero__highlights reveal" data-aria-label-content="hero.highlightsAriaLabel">
+            <span class="highlight-pill" data-content="hero.highlights.0"></span>
+            <span class="highlight-pill" data-content="hero.highlights.1"></span>
+            <span class="highlight-pill" data-content="hero.highlights.2"></span>
+          </div>
+        </div>
+
+        <aside class="hero-showcase reveal" data-aria-label-content="hero.showcaseAriaLabel">
+          <div class="hero-showcase__frame">
+            <img
+              class="hero-showcase__image"
+              data-hero-showcase-image
+              data-image-src="hero.showcase.slides.0.src"
+              data-image-alt="hero.showcase.slides.0.alt"
+              loading="eager"
+            >
+          </div>
+          <div class="hero-showcase__controls">
+            <button class="hero-showcase__button" type="button" data-hero-prev aria-label="Poprzednie zdjęcie">‹</button>
+            <div class="hero-showcase__dots" data-hero-dots aria-label="Wybór zdjęcia hero"></div>
+            <button class="hero-showcase__button" type="button" data-hero-next aria-label="Następne zdjęcie">›</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ELEMENTOR NOTE: Jedna Section / Container z dwoma Inner Containerami: tekst po lewej, obraz po prawej. -->
+    <section class="section section--intro" id="o-obiekcie">
+      <div class="shell section-grid section-grid--intro">
+        <div class="section-copy reveal">
+          <p class="eyebrow eyebrow--dark" data-content="intro.eyebrow"></p>
+          <h2 data-content="intro.title"></h2>
+          <p class="section-copy__lead" data-content="intro.lead"></p>
+          <div class="pill-row" data-aria-label-content="intro.pillsAriaLabel">
+            <span class="pill" data-content="intro.pills.0"></span>
+            <span class="pill" data-content="intro.pills.1"></span>
+            <span class="pill" data-content="intro.pills.2"></span>
+          </div>
+        </div>
+
+        <figure class="featured-photo reveal">
+          <img data-image-src="intro.image.src" data-image-alt="intro.image.alt" loading="lazy">
+          <figcaption data-content="intro.image.caption"></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ELEMENTOR NOTE: Jedna Section / Container i siatka czterech Inner Containerów lub Icon Boxów bez dodatkowej logiki. -->
+    <section class="section section--offer" id="oferta">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow eyebrow--dark" data-content="offer.eyebrow"></p>
+          <h2 data-content="offer.title"></h2>
+        </div>
+
+        <div class="offer-grid">
+          <article class="offer-card reveal">
+            <span class="offer-card__number" data-content="offer.cards.0.number"></span>
+            <h3 data-content="offer.cards.0.title"></h3>
+            <p data-content="offer.cards.0.text"></p>
+          </article>
+          <article class="offer-card reveal">
+            <span class="offer-card__number" data-content="offer.cards.1.number"></span>
+            <h3 data-content="offer.cards.1.title"></h3>
+            <p data-content="offer.cards.1.text"></p>
+          </article>
+          <article class="offer-card reveal">
+            <span class="offer-card__number" data-content="offer.cards.2.number"></span>
+            <h3 data-content="offer.cards.2.title"></h3>
+            <p data-content="offer.cards.2.text"></p>
+          </article>
+          <article class="offer-card reveal">
+            <span class="offer-card__number" data-content="offer.cards.3.number"></span>
+            <h3 data-content="offer.cards.3.title"></h3>
+            <p data-content="offer.cards.3.text"></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ELEMENTOR NOTE: Jedna Section / Container z dwoma kolumnami: tekst i lista po lewej, dwa lub trzy widgety Image po prawej. -->
+    <section class="section section--rooms" id="noclegi">
+      <div class="shell section-grid section-grid--rooms">
+        <div class="section-copy reveal">
+          <p class="eyebrow eyebrow--dark" data-content="rooms.eyebrow"></p>
+          <h2 data-content="rooms.title"></h2>
+          <p class="section-copy__lead" data-content="rooms.lead"></p>
+          <ul class="feature-list" data-aria-label-content="rooms.featuresAriaLabel">
+            <li data-content="rooms.features.0"></li>
+            <li data-content="rooms.features.1"></li>
+            <li data-content="rooms.features.2"></li>
+            <li data-content="rooms.features.3"></li>
+            <li data-content="rooms.features.4"></li>
+            <li data-content="rooms.features.5"></li>
+          </ul>
+          <!-- ELEMENTOR NOTE: Link do Bookingu ustawiany w content.json. -->
+          <a class="button button--primary" data-content="rooms.cta.label" data-link="booking.url"></a>
+        </div>
+
+        <div class="room-gallery reveal" data-aria-label-content="rooms.galleryAriaLabel">
+          <figure class="room-gallery__primary">
+            <img data-image-src="rooms.gallery.0.src" data-image-alt="rooms.gallery.0.alt" loading="lazy">
+          </figure>
+          <figure class="room-gallery__secondary">
+            <img data-image-src="rooms.gallery.1.src" data-image-alt="rooms.gallery.1.alt" loading="lazy">
+          </figure>
+          <figure class="room-gallery__secondary">
+            <img data-image-src="rooms.gallery.2.src" data-image-alt="rooms.gallery.2.alt" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ELEMENTOR NOTE: Section / Container z dwoma Inner Containerami: jedno duże zdjęcie i blok tekstowy z listą oraz przyciskiem. -->
+    <section class="section section--events" id="przyjecia">
+      <div class="shell section-grid section-grid--events">
+        <figure class="immersive-photo reveal">
+          <img data-image-src="events.image.src" data-image-alt="events.image.alt" loading="lazy">
+        </figure>
+
+        <div class="section-copy reveal">
+          <p class="eyebrow eyebrow--dark" data-content="events.eyebrow"></p>
+          <h2 data-content="events.title"></h2>
+          <p class="section-copy__lead" data-content="events.lead"></p>
+          <ul class="tag-list" data-aria-label-content="events.tagsAriaLabel">
+            <li data-content="events.tags.0"></li>
+            <li data-content="events.tags.1"></li>
+            <li data-content="events.tags.2"></li>
+            <li data-content="events.tags.3"></li>
+            <li data-content="events.tags.4"></li>
+            <li data-content="events.tags.5"></li>
+          </ul>
+          <a class="button button--primary" data-content="events.cta.label" data-link="events.cta.href"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ELEMENTOR NOTE: Section / Container z dwoma Inner Containerami: tekst i prosty panel z obrazem oraz tekstem pomocniczym. -->
+    <section class="section section--conference" id="konferencje">
+      <div class="shell section-grid section-grid--conference">
+        <div class="section-copy reveal">
+          <p class="eyebrow eyebrow--dark" data-content="conference.eyebrow"></p>
+          <h2 data-content="conference.title"></h2>
+          <p class="section-copy__lead" data-content="conference.lead"></p>
+          <ul class="feature-list feature-list--compact" data-aria-label-content="conference.featuresAriaLabel">
+            <li data-content="conference.features.0"></li>
+            <li data-content="conference.features.1"></li>
+            <li data-content="conference.features.2"></li>
+            <li data-content="conference.features.3"></li>
+            <li data-content="conference.features.4"></li>
+          </ul>
+          <a class="button button--secondary" data-content="conference.cta.label" data-link="conference.cta.href"></a>
+        </div>
+
+        <div class="conference-panel reveal">
+          <figure class="conference-panel__photo">
+            <img data-image-src="conference.image.src" data-image-alt="conference.image.alt" loading="lazy">
+          </figure>
+          <div class="conference-panel__card">
+            <span class="conference-panel__label" data-content="conference.sideCard.label"></span>
+            <p data-content="conference.sideCard.text"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ELEMENTOR NOTE: Sekcja z jednym Containerem na wstęp, drugim na mozaikę zdjęć i osobnym gridem kart, łatwa do odtworzenia widgetami Image i Heading. -->
+    <section class="section section--nature" id="okolica">
+      <div class="shell">
+        <div class="section-grid section-grid--nature">
+          <div class="section-copy reveal">
+            <p class="eyebrow eyebrow--dark" data-content="nature.eyebrow"></p>
+            <h2 data-content="nature.title"></h2>
+            <p class="section-copy__lead" data-content="nature.lead"></p>
+          </div>
+
+          <div class="nature-mosaic reveal" data-aria-label-content="nature.mosaicAriaLabel">
+            <figure class="nature-mosaic__large">
+              <img data-image-src="nature.mosaic.0.src" data-image-alt="nature.mosaic.0.alt" loading="lazy">
+            </figure>
+            <figure class="nature-mosaic__small">
+              <img data-image-src="nature.mosaic.1.src" data-image-alt="nature.mosaic.1.alt" loading="lazy">
+            </figure>
+            <figure class="nature-mosaic__small">
+              <img data-image-src="nature.mosaic.2.src" data-image-alt="nature.mosaic.2.alt" loading="lazy">
+            </figure>
+          </div>
+        </div>
+
+        <div class="nature-cards">
+          <article class="nature-card reveal"><h3 data-content="nature.cards.0"></h3></article>
+          <article class="nature-card reveal"><h3 data-content="nature.cards.1"></h3></article>
+          <article class="nature-card reveal"><h3 data-content="nature.cards.2"></h3></article>
+          <article class="nature-card reveal"><h3 data-content="nature.cards.3"></h3></article>
+          <article class="nature-card reveal"><h3 data-content="nature.cards.4"></h3></article>
+          <article class="nature-card reveal"><h3 data-content="nature.cards.5"></h3></article>
+        </div>
+
+        <aside class="destination-note reveal">
+          <h3 data-content="nature.destination.title"></h3>
+          <p data-content="nature.destination.text"></p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ELEMENTOR NOTE: Galerię można odtworzyć jako Gallery lub jako grid Containerów z widgetami Image i podpisami. -->
+    <section class="section section--gallery" id="galeria">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow eyebrow--dark" data-content="gallery.eyebrow"></p>
+          <h2 data-content="gallery.title"></h2>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item gallery-item--wide reveal">
+            <img data-image-src="gallery.items.0.src" data-image-alt="gallery.items.0.alt" loading="lazy">
+            <figcaption data-content="gallery.items.0.caption"></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img data-image-src="gallery.items.1.src" data-image-alt="gallery.items.1.alt" loading="lazy">
+            <figcaption data-content="gallery.items.1.caption"></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img data-image-src="gallery.items.2.src" data-image-alt="gallery.items.2.alt" loading="lazy">
+            <figcaption data-content="gallery.items.2.caption"></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img data-image-src="gallery.items.3.src" data-image-alt="gallery.items.3.alt" loading="lazy">
+            <figcaption data-content="gallery.items.3.caption"></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img data-image-src="gallery.items.4.src" data-image-alt="gallery.items.4.alt" loading="lazy">
+            <figcaption data-content="gallery.items.4.caption"></figcaption>
+          </figure>
+          <figure class="gallery-item gallery-item--tall reveal">
+            <img data-image-src="gallery.items.5.src" data-image-alt="gallery.items.5.alt" loading="lazy">
+            <figcaption data-content="gallery.items.5.caption"></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img data-image-src="gallery.items.6.src" data-image-alt="gallery.items.6.alt" loading="lazy">
+            <figcaption data-content="gallery.items.6.caption"></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img data-image-src="gallery.items.7.src" data-image-alt="gallery.items.7.alt" loading="lazy">
+            <figcaption data-content="gallery.items.7.caption"></figcaption>
+          </figure>
+          <figure class="gallery-item reveal">
+            <img data-image-src="gallery.items.8.src" data-image-alt="gallery.items.8.alt" loading="lazy">
+            <figcaption data-content="gallery.items.8.caption"></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ELEMENTOR NOTE: Cztery proste kontenery tekstowe; docelowo można je podmienić na prawdziwe cytaty lub widget opinii. -->
+    <section class="section section--reviews">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow eyebrow--dark" data-content="reviews.eyebrow"></p>
+          <h2 data-content="reviews.title"></h2>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card reveal">
+            <p data-content="reviews.items.0"></p>
+          </article>
+          <article class="review-card reveal">
+            <p data-content="reviews.items.1"></p>
+          </article>
+          <article class="review-card reveal">
+            <p data-content="reviews.items.2"></p>
+          </article>
+          <article class="review-card reveal">
+            <p data-content="reviews.items.3"></p>
+          </article>
+        </div>
+
+        <p class="reviews-note reveal" data-content="reviews.note"></p>
+      </div>
+    </section>
+
+    <!-- ELEMENTOR NOTE: Osobna Section / Container z tłem, Heading, Text Editor i dwoma Button widgetami. -->
+    <section class="section cta-band">
+      <div class="shell cta-band__inner reveal">
+        <div>
+          <p class="eyebrow" data-content="cta.eyebrow"></p>
+          <h2 data-content="cta.title"></h2>
+          <p data-content="cta.text"></p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="button button--ghost-light" data-content="cta.primaryAction.label" data-link="cta.primaryAction.href"></a>
+          <!-- ELEMENTOR NOTE: Link do Bookingu ustawiany w content.json. -->
+          <a class="button button--primary-light" data-content="cta.bookingAction.label" data-link="booking.url"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--location" id="lokalizacja">
+      <div class="shell section-grid section-grid--location">
+        <div class="location-access reveal">
+          <p class="eyebrow eyebrow--dark" data-content="location.eyebrow"></p>
+          <h2 data-content="location.accessTitle"></h2>
+          <div class="location-map-wrap">
+            <iframe
+              class="location-map"
+              data-embed-src="location.map.embedUrl"
+              title="Mapa dojazdu do obiektu Za Jeziorem"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="location-directions">
+            <p data-content="location.directions.0"></p>
+            <p data-content="location.directions.1"></p>
+            <p data-content="location.directions.2"></p>
+          </div>
+        </div>
+
+        <div class="location-attractions reveal">
+          <h2 data-content="location.attractionsTitle"></h2>
+          <div class="location-cards" data-aria-label-content="location.attractionsAriaLabel">
+            <article class="location-card">
+              <h3 data-content="location.attractions.0.name"></h3>
+              <p class="location-card__distance" data-content="location.attractions.0.distance"></p>
+              <p data-content="location.attractions.0.description"></p>
+            </article>
+            <article class="location-card">
+              <h3 data-content="location.attractions.1.name"></h3>
+              <p class="location-card__distance" data-content="location.attractions.1.distance"></p>
+              <p data-content="location.attractions.1.description"></p>
+            </article>
+            <article class="location-card">
+              <h3 data-content="location.attractions.2.name"></h3>
+              <p class="location-card__distance" data-content="location.attractions.2.distance"></p>
+              <p data-content="location.attractions.2.description"></p>
+            </article>
+            <article class="location-card">
+              <h3 data-content="location.attractions.3.name"></h3>
+              <p class="location-card__distance" data-content="location.attractions.3.distance"></p>
+              <p data-content="location.attractions.3.description"></p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ELEMENTOR NOTE: Sekcja kontaktu do odtworzenia jako dwa Containery; formularz można później zrobić widgetem Form lub zewnętrzną wtyczką. -->
+    <section class="section section--contact" id="kontakt">
+      <div class="shell contact-layout">
+        <div class="contact-copy reveal">
+          <p class="eyebrow eyebrow--dark" data-content="contact.eyebrow"></p>
+          <h2 data-content="contact.title"></h2>
+          <p class="section-copy__lead" data-content="contact.lead"></p>
+
+          <dl class="contact-details">
+            <div>
+              <dt data-content="contact.details.address.label"></dt>
+              <dd data-content="contact.details.address.text"></dd>
+            </div>
+            <div>
+              <dt data-content="contact.details.phone.label"></dt>
+              <dd><a data-content="contact.details.phone.text" data-link="contact.details.phone.href"></a></dd>
+            </div>
+            <div>
+              <dt data-content="contact.details.email.label"></dt>
+              <dd><a data-content="contact.details.email.text" data-link="contact.details.email.href"></a></dd>
+            </div>
+          </dl>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <div class="form-row">
+            <label for="name" data-content="contact.form.nameLabel"></label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="form-row">
+            <label for="email" data-content="contact.form.emailLabel"></label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-row">
+            <label for="phone" data-content="contact.form.phoneLabel"></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="form-row">
+            <label for="topic" data-content="contact.form.topicLabel"></label>
+            <select id="topic" name="topic" required>
+              <option value="" data-content="contact.form.topicOptions.0.label"></option>
+              <option value="nocleg" data-content="contact.form.topicOptions.1.label"></option>
+              <option value="przyjecie" data-content="contact.form.topicOptions.2.label"></option>
+              <option value="konferencja" data-content="contact.form.topicOptions.3.label"></option>
+              <option value="inne" data-content="contact.form.topicOptions.4.label"></option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message" data-content="contact.form.messageLabel"></label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <label class="checkbox-row" for="consent">
+            <input id="consent" name="consent" type="checkbox" required>
+            <span data-content="contact.form.consentLabel"></span>
+          </label>
+          <button class="button button--primary" type="submit" data-content="contact.form.submitLabel"></button>
+          <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell site-footer__grid">
+      <div>
+        <a class="brand brand--footer" href="#top">
+          <span class="brand__name" data-content="site.brand.name"></span>
+          <span class="brand__place" data-content="site.brand.place"></span>
+        </a>
+        <p class="site-footer__copy" data-content="footer.copy"></p>
+      </div>
+
+      <nav class="footer-nav" data-aria-label-content="footer.navigationAriaLabel">
+        <a data-content="site.navigation.0.label" data-link="site.navigation.0.href"></a>
+        <a data-content="site.navigation.1.label" data-link="site.navigation.1.href"></a>
+        <a data-content="site.navigation.2.label" data-link="site.navigation.2.href"></a>
+        <a data-content="site.navigation.3.label" data-link="site.navigation.3.href"></a>
+        <a data-content="site.navigation.4.label" data-link="site.navigation.4.href"></a>
+        <a data-content="site.navigation.5.label" data-link="site.navigation.5.href"></a>
+        <a data-content="site.navigation.6.label" data-link="site.navigation.6.href"></a>
+      </nav>
+    </div>
+    <div class="shell site-footer__bottom">
+      <p data-content="footer.note"></p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" type="button" aria-label="Zamknij podgląd zdjęcia">×</button>
+    <img class="lightbox__image" src="" alt="">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+{
+  "site": {
+    "lang": "pl",
+    "title": "Za Jeziorem | Sztum",
+    "metaDescription": "Za Jeziorem w Sztumie - noclegi, przyjęcia rodzinne, kameralne wydarzenia i spotkania firmowe blisko jeziora i zieleni.",
+    "skipLink": "Przejdź do treści",
+    "brand": {
+      "name": "Za Jeziorem",
+      "place": "Sztum",
+      "ariaLabel": "Za Jeziorem, przejdź do początku strony"
+    },
+    "menu": {
+      "openLabel": "Otwórz menu",
+      "closeLabel": "Zamknij menu"
+    },
+    "navigationAriaLabel": "Główne",
+    "navigation": [
+      { "label": "O obiekcie", "href": "#o-obiekcie" },
+      { "label": "Noclegi", "href": "#noclegi" },
+      { "label": "Przyjęcia", "href": "#przyjecia" },
+      { "label": "Konferencje", "href": "#konferencje" },
+      { "label": "Okolica", "href": "#okolica" },
+      { "label": "Galeria", "href": "#galeria" },
+      { "label": "Kontakt", "href": "#kontakt" }
+    ],
+    "headerCta": {
+      "label": "Zapytaj o termin",
+      "href": "#kontakt"
+    }
+  },
+  "booking": {
+    "url": "#kontakt"
+  },
+  "hero": {
+    "ariaLabel": "Wprowadzenie",
+    "background": [
+      {
+        "src": "media/696526792.jpg",
+        "alt": "Front obiektu Za Jeziorem z alejką prowadzącą do wejścia"
+      },
+      {
+        "src": "media/535270259.jpg",
+        "alt": "Taras i elegancka fasada obiektu Za Jeziorem w słoneczny dzień"
+      },
+      {
+        "src": "media/697245597.jpg",
+        "alt": "Boczna elewacja obiektu w otoczeniu zieleni"
+      },
+      {
+        "src": "media/696527296.jpg",
+        "alt": "Za Jeziorem od strony wjazdu i dziedzińca"
+      }
+    ],
+    "eyebrow": "Sztum · jezioro · noclegi · przyjęcia",
+    "title": "Za Jeziorem",
+    "lead": "Kameralny pensjonat blisko jeziora, gdzie pobyt łączy ciszę, elegancki detal i wygodę nowego obiektu.",
+    "text": "Za Jeziorem w Sztumie łączy noclegi, rodzinne uroczystości i spokojny wypoczynek. Zaledwie kilka minut spaceru od jeziora goście mają do dyspozycji ogród, taras, bezpłatne rowery i prywatny parking.",
+    "actions": {
+      "primary": {
+        "label": "Zobacz ofertę",
+        "href": "#oferta"
+      },
+      "event": {
+        "label": "Zapytaj o wydarzenie",
+        "href": "#przyjecia"
+      },
+      "booking": {
+        "label": "Rezerwuj nocleg"
+      }
+    },
+    "highlightsAriaLabel": "Najważniejsze atuty",
+    "highlights": [
+      "Ocena gości 9.4 na Bookingu",
+      "3 minuty spacerem do jeziora",
+      "Bezpłatne rowery i prywatny parking"
+    ],
+    "showcaseAriaLabel": "Wybrane zdjęcia obiektu",
+    "showcase": {
+      "eyebrow": "Kadry obiektu",
+      "title": "Spokojny detal i świeży standard",
+      "text": "Mini galeria pokazuje obecny charakter miejsca: nowy budynek, dopracowane pokoje i jasną, uporządkowaną estetykę.",
+      "slides": [
+        {
+          "src": "media/696526792.jpg",
+          "alt": "Front obiektu Za Jeziorem z alejką i zadbaną zielenią"
+        },
+        {
+          "src": "media/696526669.jpg",
+          "alt": "Pokój dwuosobowy z dużym łóżkiem i wysokim oknem"
+        },
+        {
+          "src": "media/703751902.jpg",
+          "alt": "Nowoczesna łazienka z prysznicem"
+        }
+      ]
+    }
+  },
+  "proof": {
+    "items": [
+      {
+        "value": "9.4/10",
+        "label": "Ocena gości",
+        "text": "Na podstawie 39 opinii na Bookingu."
+      },
+      {
+        "value": "9.7",
+        "label": "Czystość",
+        "text": "Najmocniej oceniany aspekt całego pobytu."
+      },
+      {
+        "value": "3 min",
+        "label": "Do jeziora",
+        "text": "Goście regularnie podkreślają bliskość wody i spacerów."
+      },
+      {
+        "value": "4 typy",
+        "label": "Pokoi",
+        "text": "Dwuosobowy, twin, trzyosobowy i rodzinny."
+      }
+    ]
+  },
+  "experience": {
+    "eyebrow": "Rytm pobytu",
+    "title": "To miejsce warto pokazać nie tylko jako nocleg",
+    "lead": "Z recenzji i opisu na Bookingu wynika bardzo konkretny obraz pobytu: spokojna okolica, świeże wnętrza, taras, śniadanie i krótki spacer nad jezioro. Dlatego ten fragment strony pokazuje prawdziwy rytm miejsca, a nie tylko listę usług.",
+    "items": [
+      {
+        "label": "Poranek",
+        "title": "Śniadanie i spokojny start dnia",
+        "text": "Na Bookingu pojawia się informacja o śniadaniach i to właśnie ten element wraca w recenzjach jako ważna część pobytu. Warto go pokazywać jako konkretny moment doświadczenia, a nie tylko punkt w liście udogodnień.",
+        "image": {
+          "src": "media/731627348.jpg",
+          "alt": "Kawa i deser podane na tarasie w ogrodzie"
+        }
+      },
+      {
+        "label": "Pobyt",
+        "title": "Nowe wnętrza, czystość i wygoda",
+        "text": "Najmocniejszy sygnał z Bookingu to świeży standard obiektu: nowy budynek, schludne pokoje, prywatne łazienki i bardzo dobra ocena czystości. To powinno pracować na zaufanie od pierwszych sekund.",
+        "image": {
+          "src": "media/703751379.jpg",
+          "alt": "Pokój rodzinny z sofą, biurkiem i telewizorem"
+        }
+      },
+      {
+        "label": "Okolica",
+        "title": "Spacer nad jezioro i baza do okolicy",
+        "text": "W recenzjach regularnie wraca cisza, bliskość jeziora i dobry punkt wypadowy w stronę Sztumu oraz Malborka. To bardziej klimat pobytu niż klasyczna atrakcja i właśnie tak warto to komunikować.",
+        "image": {
+          "src": "media/696527296.jpg",
+          "alt": "Widok na obiekt Za Jeziorem od strony podjazdu"
+        }
+      }
+    ]
+  },
+  "intro": {
+    "eyebrow": "Miejsce z charakterem",
+    "title": "Miejsce, do którego przyjeżdża się po spokój",
+    "lead": "Za Jeziorem to nowy, kameralny obiekt w Sztumie przy ul. Zajezierze 35 D. Na Bookingu goście najmocniej podkreślają ciszę, czystość, świeże wnętrza i położenie blisko jeziora oraz spacerowych tras wokół wody.",
+    "pillsAriaLabel": "Atuty obiektu",
+    "pills": [
+      "Śniadania i pobyty wypoczynkowe",
+      "Przyjęcia i spotkania",
+      "Dobra baza do Sztumu i Malborka"
+    ],
+    "image": {
+      "src": "media/696527296.jpg",
+      "alt": "Front obiektu Za Jeziorem od strony dziedzińca i wjazdu",
+      "caption": "Nowy obiekt z elegancką fasadą, tarasem i spokojnym otoczeniem."
+    }
+  },
+  "offer": {
+    "eyebrow": "Oferta w skrócie",
+    "title": "Jedno miejsce, kilka naturalnych powodów do przyjazdu",
+    "cards": [
+      {
+        "number": "01",
+        "title": "Noclegi",
+        "text": "Pokoje dwuosobowe, twin, trzyosobowe i rodzinne z prywatnymi łazienkami, telewizorem, lodówką oraz zestawem do kawy i herbaty."
+      },
+      {
+        "number": "02",
+        "title": "Przyjęcia rodzinne",
+        "text": "Chrzciny, komunie, jubileusze i rodzinne obiady w spokojnym obiekcie z ogrodem, tarasem i elegancką salą."
+      },
+      {
+        "number": "03",
+        "title": "Eventy i obiady",
+        "text": "Kameralne wydarzenia z możliwością śniadań, obsługi posiłków i dopracowania pobytu w bardziej prywatnym rytmie niż w dużym hotelu."
+      },
+      {
+        "number": "04",
+        "title": "Konferencje",
+        "text": "Zaplecze bankietowe i konferencyjne, które można połączyć z noclegiem, parkingiem, rowerami i wypoczynkiem nad jeziorem."
+      }
+    ]
+  },
+  "rooms": {
+    "eyebrow": "Noclegi",
+    "title": "Zostań na dłużej",
+    "lead": "Na Bookingu obiekt oferuje pokój dwuosobowy z prywatną łazienką, pokój z 2 łóżkami pojedynczymi, pokój trzyosobowy i pokój rodzinny. Każdy z nich przygotowano w świeżym, nowym standardzie z myślą o wygodnym pobycie blisko jeziora.",
+    "featuresAriaLabel": "Udogodnienia noclegowe",
+    "features": [
+      "Pokój dwuosobowy, twin, trzyosobowy i rodzinny",
+      "Prywatna łazienka z prysznicem",
+      "Telewizor z płaskim ekranem",
+      "Lodówka i zestaw do kawy i herbaty",
+      "Bezpłatne Wi-Fi w całym obiekcie",
+      "Bezpłatny parking i rowery"
+    ],
+    "cta": {
+      "label": "Sprawdź dostępność"
+    },
+    "galleryAriaLabel": "Zdjęcia pokoi",
+    "gallery": [
+      {
+        "src": "media/696526669.jpg",
+        "alt": "Pokój dwuosobowy z prywatną łazienką i wysokim oknem"
+      },
+      {
+        "src": "media/703751379.jpg",
+        "alt": "Pokój rodzinny z sofą, biurkiem i łóżkiem małżeńskim"
+      },
+      {
+        "src": "media/703751902.jpg",
+        "alt": "Nowoczesna prywatna łazienka z prysznicem"
+      }
+    ]
+  },
+  "events": {
+    "eyebrow": "Przyjęcia i uroczystości",
+    "title": "Wydarzenia w spokojnej oprawie",
+    "lead": "Rodzinne uroczystości, kameralne przyjęcia i spotkania przy stole potrzebują miejsca, które nie przytłacza. Za Jeziorem daje przestrzeń, bliskość natury i atmosferę, w której goście mogą po prostu dobrze się czuć.",
+    "image": {
+      "src": "media/696526490.jpg",
+      "alt": "Sala przygotowana na przyjęcie z elegancko nakrytymi stołami"
+    },
+    "tagsAriaLabel": "Rodzaje przyjęć",
+    "tags": [
+      "Chrzciny",
+      "Komunie",
+      "Jubileusze",
+      "Urodziny",
+      "Obiady rodzinne",
+      "Spotkania okolicznościowe"
+    ],
+    "cta": {
+      "label": "Zapytaj o organizację przyjęcia",
+      "href": "#kontakt"
+    }
+  },
+  "conference": {
+    "eyebrow": "Konferencje i spotkania firmowe",
+    "title": "Spotkania firmowe bliżej natury",
+    "lead": "Nie każde spotkanie musi odbywać się w centrum miasta i pod świetlówką. Kameralna przestrzeń, spokojne otoczenie i możliwość połączenia pracy z odpoczynkiem tworzą dobre warunki do rozmów, prezentacji i integracji zespołu.",
+    "featuresAriaLabel": "Zastosowania biznesowe",
+    "features": [
+      "Kameralne szkolenia",
+      "Spotkania zespołu",
+      "Prezentacje i warsztaty",
+      "Przerwy kawowe i śniadania",
+      "Możliwość połączenia spotkania z noclegiem"
+    ],
+    "cta": {
+      "label": "Zapytaj o termin konferencji",
+      "href": "#kontakt"
+    },
+    "image": {
+      "src": "media/731627348.jpg",
+      "alt": "Kawa i deser serwowane na tarasie w ogrodzie"
+    },
+    "sideCard": {
+      "label": "Spokojna logistyka",
+      "text": "Na Bookingu wprost widać zaplecze konferencyjne i bankietowe, więc tę usługę warto na stronie pokazać bardziej premium niż tylko jako dodatek."
+    }
+  },
+  "nature": {
+    "eyebrow": "Natura, jezioro, okolica",
+    "title": "Tu najważniejsze dzieje się spokojniej",
+    "lead": "Bliskość jeziora, ogród, taras i zielone otoczenie sprawiają, że pobyt w Za Jeziorem ma inny rytm. Można wyjść na spacer, odpocząć na świeżym powietrzu, wypić kawę i zaplanować wycieczkę po okolicy.",
+    "mosaicAriaLabel": "Kadry z okolicy",
+    "mosaic": [
+      {
+        "src": "media/731627348.jpg",
+        "alt": "Taras obiektu z kawą i deserem w ogrodowym otoczeniu"
+      },
+      {
+        "src": "media/697245597.jpg",
+        "alt": "Zielone otoczenie obiektu i zadbany teren wokół budynku"
+      },
+      {
+        "src": "media/696526792.jpg",
+        "alt": "Front budynku z szerokim dojściem i uporządkowaną zielenią"
+      }
+    ],
+    "cards": [
+      "Jezioro i spacery",
+      "Bezpłatne rowery",
+      "Plaża i sporty wodne",
+      "Sztum",
+      "Malbork",
+      "Kwidzyn"
+    ],
+    "destination": {
+      "title": "Dobre miejsce wypadowe",
+      "text": "Sztum, Malbork i Kwidzyn są naturalnymi punktami na mapie osób, które chcą połączyć odpoczynek ze zwiedzaniem regionu."
+    }
+  },
+  "gallery": {
+    "eyebrow": "Galeria",
+    "title": "Kadry z obiektu i jego spokojnego otoczenia",
+    "items": [
+      {
+        "src": "media/696526792.jpg",
+        "alt": "Front obiektu Za Jeziorem z aleją prowadzącą do wejścia",
+        "caption": "Front od strony dziedzińca"
+      },
+      {
+        "src": "media/535270259.jpg",
+        "alt": "Taras i jasna elewacja obiektu Za Jeziorem",
+        "caption": "Taras i fasada"
+      },
+      {
+        "src": "media/696527296.jpg",
+        "alt": "Obiekt Za Jeziorem od strony bramy i podjazdu",
+        "caption": "Strefa wjazdu"
+      },
+      {
+        "src": "media/696526669.jpg",
+        "alt": "Pokój dwuosobowy z zieloną narzutą i wysokim oknem",
+        "caption": "Pokój dwuosobowy"
+      },
+      {
+        "src": "media/703751379.jpg",
+        "alt": "Pokój rodzinny z sofą, biurkiem i telewizorem",
+        "caption": "Pokój rodzinny"
+      },
+      {
+        "src": "media/703751902.jpg",
+        "alt": "Nowoczesna łazienka z kabiną prysznicową",
+        "caption": "Prywatna łazienka"
+      },
+      {
+        "src": "media/696525905.jpg",
+        "alt": "Wysokie okno z zasłonami w pokoju gościnnym",
+        "caption": "Detal pokoju"
+      },
+      {
+        "src": "media/696526490.jpg",
+        "alt": "Sala przygotowana na uroczystość z eleganckim nakryciem",
+        "caption": "Przyjęcia i wydarzenia"
+      },
+      {
+        "src": "media/731627348.jpg",
+        "alt": "Deser i kawa na tarasie przy ogrodzie",
+        "caption": "Taras i chwila relaksu"
+      }
+    ]
+  },
+  "reviews": {
+    "eyebrow": "Opinie gości",
+    "title": "Co wraca w publicznych recenzjach",
+    "items": [
+      "Goście najczęściej chwalą ciszę, spokojną okolicę i to, że do jeziora można dojść w kilka minut.",
+      "Bardzo mocno wybrzmiewają czystość, świeże wyposażenie i nowy standard pokoi oraz łazienek.",
+      "Powtarza się też dobra ocena śniadań, kontaktu z gospodarzem i stosunku jakości do ceny.",
+      "Wśród uwag pojawiają się potrzeba lepszego opisania śniadań, brak klimatyzacji w upał oraz to, że auto bardzo się przydaje."
+    ],
+    "note": "Booking.com: ocena 9.4/10 na podstawie 39 opinii. Najwyżej oceniono czystość 9.7, komfort 9.5 i personel 9.4."
+  },
+  "faq": {
+    "eyebrow": "Ważne informacje",
+    "title": "Fakty z profilu Booking, które warto pokazać wprost",
+    "lead": "To są rzeczy, które naprawdę wpływają na decyzję o rezerwacji i wynikają bezpośrednio z profilu obiektu na Bookingu.",
+    "items": [
+      {
+        "question": "Jakie są godziny zameldowania i wymeldowania?",
+        "answer": "Zameldowanie według Bookingu odbywa się od 15:00 do 20:00, a wymeldowanie od 11:00 do 12:00."
+      },
+      {
+        "question": "Czy na miejscu jest parking i Wi‑Fi?",
+        "answer": "Tak. Profil Booking pokazuje bezpłatny prywatny parking na miejscu oraz bezpłatne Wi‑Fi dostępne w całym obiekcie."
+      },
+      {
+        "question": "Czy obiekt jest dobry dla rodzin i dłuższego pobytu?",
+        "answer": "Tak. Na Bookingu widać pokoje rodzinne, prywatne łazienki, lodówkę, telewizor oraz zestaw do parzenia kawy i herbaty, co dobrze wspiera pobyt rodzinny."
+      },
+      {
+        "question": "Czy można przyjechać ze zwierzętami?",
+        "answer": "Nie. Według zasad pobytu na Bookingu zwierzęta nie są akceptowane, a w obiekcie obowiązuje też zakaz palenia i cisza nocna 22:00-06:00."
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Kontakt i rezerwacje",
+    "title": "Planujesz pobyt, przyjęcie albo spotkanie?",
+    "text": "Napisz kilka słów o terminie i charakterze wydarzenia. Odezwiemy się z informacją o dostępności i możliwościach organizacji.",
+    "primaryAction": {
+      "label": "Zapytaj o termin",
+      "href": "#kontakt"
+    },
+    "bookingAction": {
+      "label": "Rezerwuj nocleg"
+    }
+  },
+  "location": {
+    "eyebrow": "Lokalizacja i atrakcje",
+    "accessTitle": "Jak do nas trafić?",
+    "attractionsTitle": "Co zobaczyć w okolicy?",
+    "attractionsAriaLabel": "Lista atrakcji w okolicy obiektu",
+    "map": {
+      "embedUrl": "https://maps.google.com/maps?q=Sztum%2C%20Polska&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    },
+    "directions": [
+      "Obiekt Za Jeziorem znajduje się w Sztumie, przy ul. Zajezierze 35 D, w spokojnej części miasta blisko jeziora.",
+      "Najwygodniejszy dojazd prowadzi drogą krajową nr 55, a na miejscu dostępny jest bezpłatny parking dla gości.",
+      "Podróż z Malborka zajmuje około 20 minut, a z Trójmiasta około 1 godziny i 15 minut."
+    ],
+    "attractions": [
+      {
+        "name": "Zamek w Malborku",
+        "distance": "ok. 15 km",
+        "description": "Największa ceglana twierdza na świecie."
+      },
+      {
+        "name": "Zamek Krzyżacki w Sztumie",
+        "distance": "na wyciągnięcie ręki",
+        "description": "Dawna letnia rezydencja Wielkich Mistrzów."
+      },
+      {
+        "name": "Jezioro Sztumskie i Barlewickie",
+        "distance": "tuż obok",
+        "description": "Z 5-kilometrową oświetloną ścieżką rowerowo-spacerową."
+      },
+      {
+        "name": "Śluza Biała Góra (Wodny Zamek Żuław)",
+        "distance": "krótka wycieczka autem",
+        "description": "Niezwykły zabytek na styku Wisły i Nogatu."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Skontaktuj się z nami",
+    "lead": "To wersja prototypowa strony, dlatego dane kontaktowe są tymczasowe. Układ i sekcje są już gotowe do dalszego uzupełnienia.",
+    "details": {
+      "address": {
+        "label": "Adres",
+        "text": "Sztum, Polska"
+      },
+      "phone": {
+        "label": "Telefon",
+        "text": "+48 000 000 000",
+        "href": "tel:+48000000000"
+      },
+      "email": {
+        "label": "E-mail",
+        "text": "kontakt@zajeziorem.pl",
+        "href": "mailto:kontakt@zajeziorem.pl"
+      }
+    },
+    "form": {
+      "nameLabel": "Imię i nazwisko",
+      "emailLabel": "E-mail",
+      "phoneLabel": "Telefon",
+      "topicLabel": "Czego dotyczy zapytanie?",
+      "topicOptions": [
+        { "label": "Wybierz temat" },
+        { "label": "Nocleg" },
+        { "label": "Przyjęcie" },
+        { "label": "Konferencja" },
+        { "label": "Inne" }
+      ],
+      "messageLabel": "Wiadomość",
+      "consentLabel": "Zgoda testowa",
+      "submitLabel": "Wyślij zapytanie",
+      "successMessage": "Dziękujemy. To testowy formularz w prototypie strony."
+    }
+  },
+  "footer": {
+    "copy": "Noclegi, wydarzenia i spotkania w otoczeniu natury. Kameralny obiekt w Sztumie.",
+    "navigationAriaLabel": "Nawigacja stopki",
+    "note": "Projekt testowy strony. Treści, zdjęcia i dane kontaktowe do weryfikacji przed publikacją."
+  }
+}
