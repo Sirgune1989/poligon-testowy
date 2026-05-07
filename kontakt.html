@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt | Luxor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f8f5;
+      --text: #18212d;
+      --muted: #6a7480;
+      --line: #e5ebe8;
+      --blue: #2d8fe4;
+      --blue-dark: #11558d;
+      --card: #ffffff;
+      --lime: #e2ff79;
+      --navy-soft: #1f679b;
+      --navy-deep: #114c7d;
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top right, rgba(223,252,114,0.18), transparent 20%), var(--bg);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+    }
+
+    .page { width: 100%; min-width: 0; overflow: hidden; }
+    .container { width: min(calc(100% - 32px), 1453px); margin: 0 auto; }
+
+    .topbar {
+      width: min(calc(100% - 30px), 1360px);
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #535c67;
+      font-size: 14px;
+      margin-top: 18px;
+      padding: 0 18px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(17,76,125,0.08);
+      border-radius: 999px;
+      box-shadow: 0 12px 30px rgba(20, 38, 62, 0.06);
+      position: relative;
+      z-index: 30;
+    }
+    .top-left, .top-right { display: flex; align-items: center; gap: 38px; }
+    .circle-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #1d74b5, #0f4c7b);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 11px;
+      margin-right: 8px;
+    }
+    .social { display: flex; gap: 8px; }
+    .social .circle-icon { width: 32px; height: 32px; font-size: 11px; margin-right: 0; }
+
+    .navbar {
+      width: min(calc(100% - 30px), 1360px);
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 16px;
+      padding: 18px 26px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(17,76,125,0.08);
+      border-radius: 28px;
+      box-shadow: 0 18px 38px rgba(16, 42, 67, 0.08);
+      transition: min-height 0.3s ease, padding 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.nav-compact .navbar {
+      min-height: 76px;
+      padding: 12px 22px;
+      border-radius: 22px;
+      box-shadow: 0 14px 34px rgba(16, 42, 67, 0.12);
+    }
+    .logo {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: #16314f;
+      line-height: 1;
+      text-decoration: none;
+      transition: font-size 0.3s ease, letter-spacing 0.3s ease;
+    }
+    body.nav-compact .logo { font-size: 46px; letter-spacing: -1.5px; }
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      font-size: 16px;
+      font-weight: 600;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex: 1 1 auto;
+    }
+    .nav-links a { color: #334155; text-decoration: none; }
+    .nav-links a.active { color: #17a7dd; }
+    .cta-phone {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+      font-size: 14px;
+      color: #52606d;
+      flex: 0 0 auto;
+    }
+    .phone-text {
+      display: grid;
+      gap: 2px;
+      text-align: left;
+    }
+    .phone-link {
+      color: #1e2026;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-pill {
+      border: 0;
+      border-radius: 999px;
+      padding: 16px 32px;
+      background: var(--lime);
+      color: #13253f;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(183, 214, 52, 0.28);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .btn-pill:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(183, 214, 52, 0.26); }
+    .cta-phone .btn-pill {
+      background: linear-gradient(135deg, #1a3657, #255f91);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .kicker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #14527f;
+      background: #e8f4fb;
+      border-radius: 999px;
+      padding: 8px 14px;
+      margin-bottom: 22px;
+    }
+
+    .contact-hero {
+      margin-top: 14px;
+      border-radius: 40px;
+      border: 1px solid #e7ece7;
+      background:
+        radial-gradient(circle at 82% 20%, rgba(45,143,228,0.16), transparent 16%),
+        radial-gradient(circle at 76% 62%, rgba(223,252,114,0.18), transparent 14%),
+        radial-gradient(circle at 70% 72%, rgba(17,85,141,0.08), transparent 22%),
+        linear-gradient(135deg, #ffffff, #f6fafb 52%, #f8fbf3 100%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(16, 42, 67, 0.06);
+    }
+    .contact-hero::after {
+      content: "";
+      position: absolute;
+      right: -110px;
+      top: -90px;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(17,85,141,0.07), rgba(17,85,141,0.01) 56%, transparent 68%);
+    }
+    .contact-hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 24px;
+      align-items: center;
+      min-height: 420px;
+      padding: 72px 62px;
+    }
+    .contact-hero h1 {
+      margin: 0 0 18px;
+      font-size: 58px;
+      line-height: 1.02;
+      letter-spacing: -1.8px;
+      color: #102a43;
+    }
+    .contact-hero p {
+      margin: 0;
+      max-width: 700px;
+      font-size: 18px;
+      line-height: 1.82;
+      color: #5c6978;
+    }
+    .hero-chip {
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(17,76,125,0.08);
+      border-radius: 30px;
+      padding: 24px;
+      box-shadow: 0 18px 34px rgba(16, 42, 67, 0.08);
+    }
+    .hero-chip strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: #102a43;
+    }
+    .hero-chip p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #607080;
+    }
+
+    .contact-cards {
+      margin: 34px 0 44px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .contact-card {
+      background: #ffffff;
+      border: 1px solid #e4ebee;
+      border-radius: 30px;
+      padding: 28px 28px 26px;
+      box-shadow: 0 16px 36px rgba(16,42,67,0.05);
+      display: grid;
+      gap: 16px;
+    }
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #eef7ff, #f3fae7);
+      border: 1px solid #dce7eb;
+      display: grid;
+      place-items: center;
+    }
+    .contact-icon svg {
+      width: 30px;
+      height: 30px;
+      fill: none;
+      stroke: #155a8d;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .contact-card h3 {
+      margin: 0;
+      font-size: 22px;
+      color: #102a43;
+    }
+    .contact-card p,
+    .contact-card a {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #607080;
+      text-decoration: none;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 26px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+    .contact-panel {
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+    }
+    .contact-panel.left {
+      background: linear-gradient(135deg, #16314f, #235a87);
+      padding: 34px 30px;
+      color: #e8f0f8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 620px;
+    }
+    .contact-panel.left::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -40px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.14), transparent 68%);
+    }
+    .contact-panel.left h2 {
+      margin: 0 0 14px;
+      font-size: 36px;
+      line-height: 1.1;
+      color: #ffffff;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-panel.left p {
+      margin: 0 0 28px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(232,240,248,0.82);
+      position: relative;
+      z-index: 1;
+    }
+    .contact-badges {
+      display: grid;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-badge {
+      border-radius: 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 16px 18px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #e8f0f8;
+    }
+
+    .contact-panel.right {
+      background:
+        radial-gradient(circle at 88% 8%, rgba(255,255,255,0.44), transparent 18%),
+        radial-gradient(circle at 82% 88%, rgba(45,143,228,0.12), transparent 18%),
+        linear-gradient(135deg, #f8fbfc, #ffffff 52%, #f3f8f4 100%);
+      border: 1px solid #e4ebee;
+      padding: 34px;
+      box-shadow: 0 20px 48px rgba(16,42,67,0.06);
+      min-height: 620px;
+    }
+    .contact-panel.right h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      color: #102a43;
+    }
+    .contact-panel.right p {
+      margin: 0 0 22px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #607080;
+      max-width: 700px;
+    }
+    .contact-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .input,
+    .textarea {
+      width: 100%;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(17,85,141,0.08);
+      padding: 0 20px;
+      font-size: 14px;
+      color: #4f5965;
+      outline: none;
+      box-shadow: inset 0 1px 2px rgba(16,42,67,0.02);
+    }
+    .input {
+      height: 54px;
+    }
+    .textarea {
+      min-height: 162px;
+      border-radius: 24px;
+      padding: 18px 20px;
+      resize: vertical;
+      grid-column: 1 / -1;
+    }
+    .form-actions {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .form-note {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #708090;
+      max-width: 460px;
+    }
+
+    .map-section {
+      margin-bottom: 28px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid #e4ebee;
+      background: #ffffff;
+      box-shadow: 0 20px 48px rgba(16,42,67,0.06);
+    }
+    .map-head {
+      padding: 28px 30px;
+      border-bottom: 1px solid #edf2f4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .map-head h3 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      color: #102a43;
+    }
+    .map-head p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #607080;
+    }
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #eef5f7;
+      color: #16314f;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .map-frame-wrap {
+      padding: 18px;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(45,143,228,0.08), transparent 20%),
+        radial-gradient(circle at 90% 90%, rgba(223,252,114,0.12), transparent 18%),
+        linear-gradient(180deg, #f8fbfc, #f5f9f6);
+    }
+    .map-frame {
+      width: 100%;
+      height: 460px;
+      border: 0;
+      border-radius: 28px;
+      display: block;
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #102a43 0%, #183a5d 55%, #255682 100%);
+      border-radius: 24px;
+      padding: 34px 40px 24px;
+      margin-bottom: 20px;
+    }
+    .footer-logo { font-size: 84px; font-weight: 900; color: #ffffff; line-height: 1; margin-bottom: 18px; }
+    .footer-grid {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 16px;
+      padding-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+      color: #cbd5e1;
+    }
+    .footer h4 { margin: 0 0 14px; font-size: 18px; color: #ffffff; }
+    .footer ul { padding: 0; margin: 0; }
+    .footer li {
+      list-style: none;
+      font-size: 14px;
+      margin: 9px 0;
+      color: #94a3b8;
+    }
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #64748b;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 18px;
+      margin-top: 20px;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1200px) {
+      .topbar, .navbar { width: min(calc(100% - 24px), 1360px); }
+      .contact-cards,
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .contact-layout,
+      .contact-hero-grid { grid-template-columns: 1fr; }
+      .contact-panel.left,
+      .contact-panel.right { min-height: 0; }
+    }
+
+    @media (max-width: 900px) {
+      .topbar { display: none; }
+      .navbar {
+        gap: 18px;
+        padding: 16px 18px;
+        border-radius: 24px;
+      }
+      .logo { font-size: 44px; }
+      body.nav-compact .logo { font-size: 38px; }
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 16px 20px;
+        font-size: 15px;
+      }
+      .contact-cards,
+      .footer-grid,
+      .contact-form { grid-template-columns: 1fr; }
+      .contact-hero-grid { padding: 56px 26px; min-height: 0; }
+      .contact-hero h1,
+      .contact-panel.left h2,
+      .map-head h3 { font-size: 38px; }
+      .contact-panel.right,
+      .contact-panel.left,
+      .contact-card { padding-left: 24px; padding-right: 24px; }
+      .form-actions { align-items: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 20px), 1453px); }
+      .navbar {
+        padding: 14px 14px 16px;
+        gap: 14px;
+      }
+      .nav-links { gap: 12px 16px; }
+      .cta-phone {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .cta-phone .circle-icon { width: 42px !important; height: 42px !important; }
+      .phone-link { font-size: 22px; }
+      .cta-phone .btn-pill {
+        padding: 12px 18px;
+        font-size: 13px;
+      }
+      .contact-hero,
+      .contact-panel,
+      .map-section,
+      .footer { border-radius: 28px; }
+      .contact-hero h1,
+      .contact-panel.left h2,
+      .map-head h3 { font-size: 32px; }
+      .map-frame { height: 340px; }
+      .footer { padding-left: 20px; padding-right: 20px; }
+      .footer-logo { font-size: 62px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="container topbar">
+      <div class="top-left">
+        <div><span class="circle-icon">✉</span><a href="mailto:luxor.kuc@gmail.com" style="color:inherit; text-decoration:none;">luxor.kuc@gmail.com</a></div>
+        <div><span class="circle-icon">⌖</span>Os. Witosa 30, 82-400 Sztum</div>
+      </div>
+      <div class="top-right">
+        <div class="social">
+          <span class="circle-icon">f</span>
+          <span class="circle-icon">in</span>
+          <span class="circle-icon">ig</span>
+        </div>
+        <div style="font-size:16px;">⌕</div>
+      </div>
+    </header>
+
+    <nav class="container navbar">
+      <a class="logo" href="index.html">LUXOR</a>
+      <div class="nav-links">
+        <a href="index.html">Start</a>
+        <a href="index.html#about">O firmie</a>
+        <a href="uslugi.html">Usługi</a>
+        <a href="index.html#why-us">Dlaczego my</a>
+        <a class="active" href="kontakt.html">Kontakt</a>
+      </div>
+      <div class="cta-phone">
+        <span class="circle-icon" style="background:#17a7dd; width:50px; height:50px;">☎</span>
+        <div class="phone-text">Zadzwoń<a class="phone-link" href="tel:+48505874144">+48 505 874 144</a></div>
+        <a class="btn-pill" href="kontakt.html">Zamów usługę</a>
+      </div>
+    </nav>
+
+    <section class="container contact-hero">
+      <div class="contact-hero-grid">
+        <div>
+          <span class="kicker">KONTAKT</span>
+          <h1>Porozmawiajmy o czystości w Twoim obiekcie</h1>
+          <p>Skontaktuj się z nami, jeśli potrzebujesz regularnego serwisu sprzątającego, wsparcia specjalistycznego lub indywidualnie przygotowanej oferty. Odpowiadamy sprawnie i dobieramy rozwiązania do realnych potrzeb obiektu.</p>
+        </div>
+        <div class="hero-chip">
+          <strong>Bezpłatna wycena</strong>
+          <p>Po wcześniejszym kontakcie ustalamy dogodny termin, poznajemy zakres prac i przygotowujemy dopasowaną ofertę.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container contact-cards">
+      <article class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" opacity="0"></path><path d="m4 7 8 6 8-6"></path><rect x="3" y="5" width="18" height="14" rx="3"></rect></svg>
+        </div>
+        <h3>Napisz do nas</h3>
+        <a href="mailto:luxor.kuc@gmail.com">luxor.kuc@gmail.com</a>
+        <p>Wyślij wiadomość z krótkim opisem obiektu lub potrzeb, a wrócimy z propozycją kolejnych kroków.</p>
+      </article>
+      <article class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 4h4l2 5-2.5 2.5a15 15 0 0 0 3 3L15 12l5 2v4a2 2 0 0 1-2 2c-7.7 0-14-6.3-14-14a2 2 0 0 1 2-2Z"></path></svg>
+        </div>
+        <h3>Zadzwoń</h3>
+        <a href="tel:+48505874144">+48 505 874 144</a>
+        <p>Najwygodniejsza forma kontaktu przy szybkiej konsultacji, ustaleniu terminu lub omówieniu zakresu usługi.</p>
+      </article>
+      <article class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 21s7-4.5 7-10V6l-7-3-7 3v5c0 5.5 7 10 7 10Z"></path><path d="M12 9a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"></path></svg>
+        </div>
+        <h3>Adres firmy</h3>
+        <p>Os. Witosa 30<br>82-400 Sztum</p>
+        <p>Działamy na terenie całej Polski, ze szczególnym uwzględnieniem północnych województw.</p>
+      </article>
+    </section>
+
+    <section class="container contact-layout">
+      <div class="contact-panel left">
+        <span class="kicker" style="background:rgba(255,255,255,.18); color:#e8f0f8;">ZAMÓW USŁUGĘ</span>
+        <h2>Opisz potrzeby swojego obiektu</h2>
+        <p>W wiadomości możesz podać typ obiektu, oczekiwaną częstotliwość sprzątania, lokalizację oraz preferowany termin kontaktu. Dzięki temu szybciej przygotujemy adekwatną odpowiedź.</p>
+        <div class="contact-badges">
+          <div class="contact-badge">Indywidualny zakres prac i harmonogram.</div>
+          <div class="contact-badge">Stała obsługa lub jednorazowe realizacje.</div>
+          <div class="contact-badge">Elastyczne godziny pracy bez zakłócania działania obiektu.</div>
+        </div>
+      </div>
+
+      <div class="contact-panel right">
+        <h3>Formularz kontaktowy</h3>
+        <p>Skorzystaj z formularza, jeśli chcesz zostawić nam komplet informacji w jednym miejscu. To wygodny sposób na rozpoczęcie rozmowy o regularnej współpracy lub usłudze jednorazowej.</p>
+        <form class="contact-form">
+          <input class="input" type="text" placeholder="*Imię i nazwisko..." />
+          <input class="input" type="email" placeholder="*Adres email..." />
+          <input class="input" type="tel" placeholder="*Numer telefonu..." />
+          <input class="input" type="text" placeholder="Rodzaj obiektu / usługi" />
+          <input class="input" type="text" placeholder="Lokalizacja obiektu" />
+          <input class="input" type="text" placeholder="Preferowany termin kontaktu" />
+          <textarea class="textarea" placeholder="Opisz zakres prac, częstotliwość oraz wszystko, co pomoże przygotować wycenę..."></textarea>
+          <div class="form-actions">
+            <div class="form-note">Wysłanie formularza nie zobowiązuje do współpracy. To pierwszy krok do przygotowania dopasowanej oferty i bezpłatnej wyceny.</div>
+            <button class="btn-pill" type="button">Wyślij wiadomość</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="container map-section">
+      <div class="map-head">
+        <div>
+          <h3>Znajdź nas na mapie</h3>
+          <p>Osiedle Witosa 30, 82-400 Sztum</p>
+        </div>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Osiedle+Witosa+30%2C+82-400+Sztum" target="_blank" rel="noopener noreferrer">Otwórz w Google Maps</a>
+      </div>
+      <div class="map-frame-wrap">
+        <iframe
+          class="map-frame"
+          src="https://www.google.com/maps?q=Osiedle%20Witosa%2030,%2082-400%20Sztum&z=15&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa dojazdu do firmy Luxor">
+        </iframe>
+      </div>
+    </section>
+
+    <footer class="container footer">
+      <div class="footer-logo">LUXOR</div>
+      <div style="font-size:24px; color:#ffffff; margin-bottom:14px;">Wprowadź blask do swojego wnętrza</div>
+      <div class="footer-grid">
+        <div>
+          <h4>Dane kontaktowe</h4>
+          <ul>
+            <li>Adres: Os. Witosa 30, 82-400 Sztum</li>
+            <li>Godziny pracy: Pon.-Pt. 8:00 - 17:00</li>
+            <li>Adres email: <a href="mailto:luxor.kuc@gmail.com" style="color:inherit; text-decoration:none;">luxor.kuc@gmail.com</a></li>
+            <li style="font-weight:800; color:#ffffff;"><a href="tel:+48505874144" style="color:inherit; text-decoration:none;">+48 505 874 144</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Nasze usługi</h4>
+          <ul>
+            <li>Sprzątanie biura</li>
+            <li>Sprzątanie po remoncie</li>
+            <li>Sprzątanie magazynu</li>
+            <li>Sprzątanie po przeprowadzce</li>
+            <li>Mycie okien na wysokości</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Social media</h4>
+          <div style="margin-top:24px; display:flex; gap:12px; align-items:center;">
+            <span style="color:#94a3b8; font-size:14px;">Obserwuj nas:</span>
+            <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:14px;font-weight:700;">f</a>
+            <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:14px;font-weight:700;">in</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <div>Polityka Prywatności &nbsp;&nbsp; Regulamin &nbsp;&nbsp; Rodo</div>
+      </div>
+    </footer>
+  </div>
+  <script>
+    const syncNavbarState = () => {
+      document.body.classList.toggle("nav-compact", window.scrollY > 48);
+    };
+
+    syncNavbarState();
+    window.addEventListener("scroll", syncNavbarState, { passive: true });
+  </script>
+</body>
+</html>

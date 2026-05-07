@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usługi | Luxor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f8f5;
+      --text: #18212d;
+      --muted: #6a7480;
+      --line: #e5ebe8;
+      --blue: #2d8fe4;
+      --blue-dark: #11558d;
+      --card: #ffffff;
+      --lime: #e2ff79;
+      --navy-soft: #1f679b;
+      --navy-deep: #114c7d;
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top right, rgba(223,252,114,0.18), transparent 20%), var(--bg);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+    }
+
+    .page { width: 100%; min-width: 0; overflow: hidden; }
+    .container { width: min(calc(100% - 32px), 1453px); margin: 0 auto; }
+
+    .topbar {
+      width: min(calc(100% - 30px), 1360px);
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #535c67;
+      font-size: 14px;
+      margin-top: 18px;
+      padding: 0 18px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(17,76,125,0.08);
+      border-radius: 999px;
+      box-shadow: 0 12px 30px rgba(20, 38, 62, 0.06);
+      position: relative;
+      z-index: 30;
+    }
+    .top-left, .top-right { display: flex; align-items: center; gap: 38px; }
+    .circle-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #1d74b5, #0f4c7b);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 11px;
+      margin-right: 8px;
+    }
+    .social { display: flex; gap: 8px; }
+    .social .circle-icon { width: 32px; height: 32px; font-size: 11px; margin-right: 0; }
+
+    .navbar {
+      width: min(calc(100% - 30px), 1360px);
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 16px;
+      padding: 18px 26px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(17,76,125,0.08);
+      border-radius: 28px;
+      box-shadow: 0 18px 38px rgba(16, 42, 67, 0.08);
+      transition: min-height 0.3s ease, padding 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.nav-compact .navbar {
+      min-height: 76px;
+      padding: 12px 22px;
+      border-radius: 22px;
+      box-shadow: 0 14px 34px rgba(16, 42, 67, 0.12);
+    }
+    .logo {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: #16314f;
+      line-height: 1;
+      text-decoration: none;
+      transition: font-size 0.3s ease, letter-spacing 0.3s ease;
+    }
+    body.nav-compact .logo { font-size: 46px; letter-spacing: -1.5px; }
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      font-size: 16px;
+      font-weight: 600;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex: 1 1 auto;
+    }
+    .nav-links a { color: #334155; text-decoration: none; }
+    .nav-links a.active { color: #17a7dd; }
+    .cta-phone {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+      font-size: 14px;
+      color: #52606d;
+      flex: 0 0 auto;
+    }
+    .phone-text {
+      display: grid;
+      gap: 2px;
+      text-align: left;
+    }
+    .phone-link {
+      color: #1e2026;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-pill {
+      border: 0;
+      border-radius: 999px;
+      padding: 16px 32px;
+      background: var(--lime);
+      color: #13253f;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(183, 214, 52, 0.28);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .btn-pill:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(183, 214, 52, 0.26); }
+    .cta-phone .btn-pill {
+      background: linear-gradient(135deg, #1a3657, #255f91);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .kicker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #14527f;
+      background: #e8f4fb;
+      border-radius: 999px;
+      padding: 8px 14px;
+      margin-bottom: 22px;
+    }
+
+    .services-hero {
+      margin-top: 14px;
+      border-radius: 40px;
+      border: 1px solid #e7ece7;
+      background:
+        radial-gradient(circle at 78% 22%, rgba(45,143,228,0.16), transparent 18%),
+        radial-gradient(circle at 82% 58%, rgba(223,252,114,0.24), transparent 14%),
+        radial-gradient(circle at 70% 78%, rgba(17,85,141,0.08), transparent 20%),
+        linear-gradient(135deg, #ffffff, #f6fafb 52%, #f8fbf3 100%);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 24px 70px rgba(16, 42, 67, 0.06);
+    }
+    .services-hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -80px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(17,85,141,0.08), rgba(17,85,141,0.02) 52%, transparent 64%);
+    }
+    .services-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 28px;
+      align-items: center;
+      min-height: 520px;
+      padding: 72px 62px;
+      position: relative;
+      z-index: 1;
+    }
+    .services-hero h1 {
+      margin: 0 0 18px;
+      font-size: 60px;
+      line-height: 1.02;
+      letter-spacing: -1.8px;
+      color: #102a43;
+    }
+    .services-hero p {
+      margin: 0;
+      max-width: 620px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #5c6978;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .ghost-btn {
+      border-radius: 999px;
+      padding: 15px 28px;
+      text-decoration: none;
+      font-weight: 700;
+      color: #16314f;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(17,76,125,0.1);
+      box-shadow: 0 12px 28px rgba(16, 42, 67, 0.05);
+    }
+    .hero-visual {
+      position: relative;
+      min-height: 360px;
+    }
+    .hero-photo-main {
+      position: absolute;
+      right: 22px;
+      top: 0;
+      width: min(100%, 430px);
+      height: 100%;
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: 0 22px 46px rgba(16, 42, 67, 0.12);
+    }
+    .hero-photo-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .floating-note {
+      position: absolute;
+      left: 0;
+      bottom: 28px;
+      max-width: 260px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(17,76,125,0.08);
+      border-radius: 28px;
+      padding: 22px 24px;
+      box-shadow: 0 18px 34px rgba(16, 42, 67, 0.1);
+    }
+    .floating-note strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: #102a43;
+    }
+    .floating-note p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #5c6978;
+    }
+
+    .quick-facts {
+      margin: 34px 0 92px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .fact-card {
+      background: #ffffff;
+      border: 1px solid #e4ebee;
+      border-radius: 30px;
+      padding: 28px 30px;
+      box-shadow: 0 16px 36px rgba(16, 42, 67, 0.05);
+      display: grid;
+      gap: 14px;
+    }
+    .fact-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #eef7ff, #f3fae7);
+      border: 1px solid #dce7eb;
+      display: grid;
+      place-items: center;
+    }
+    .fact-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: #155a8d;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .fact-card strong {
+      font-size: 28px;
+      line-height: 1;
+      color: #102a43;
+    }
+    .fact-card p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #607080;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+    .section-head h2 {
+      margin: 0 0 14px;
+      font-size: 46px;
+      line-height: 1.08;
+      letter-spacing: -0.8px;
+      color: #102a43;
+    }
+    .section-head p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #607080;
+    }
+
+    .service-section {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 34px;
+      align-items: center;
+      margin-bottom: 86px;
+    }
+    .service-section.reverse {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    }
+    .service-photo {
+      min-height: 420px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid #e4ebee;
+      box-shadow: 0 20px 48px rgba(16,42,67,0.08);
+    }
+    .service-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .service-copy {
+      background: #ffffff;
+      border: 1px solid #e4ebee;
+      border-radius: 34px;
+      padding: 38px 40px;
+      box-shadow: 0 20px 48px rgba(16,42,67,0.05);
+    }
+    .service-copy h3 {
+      margin: 0 0 16px;
+      font-size: 34px;
+      line-height: 1.15;
+      color: #102a43;
+    }
+    .service-copy p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.82;
+      color: #607080;
+    }
+    .service-points {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+    .service-points li {
+      position: relative;
+      padding-left: 34px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #445264;
+    }
+    .service-points li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: #edf6e7;
+      color: #5d8a49;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: inset 0 0 0 1px #d3e4c9;
+    }
+
+    .custom-services {
+      margin-bottom: 100px;
+    }
+    .custom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 28px;
+    }
+    .custom-card {
+      background: #ffffff;
+      border: 1px solid #e4ebee;
+      border-radius: 28px;
+      padding: 28px 26px;
+      box-shadow: 0 16px 36px rgba(16,42,67,0.05);
+      display: grid;
+      gap: 12px;
+    }
+    .custom-card span {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #e8f4fb, #eef7e7);
+      color: #14527f;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .custom-card h4 {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.4;
+      color: #102a43;
+    }
+    .custom-card p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.72;
+      color: #607080;
+    }
+    .custom-summary {
+      margin-top: 28px;
+      background: linear-gradient(135deg, #16314f, #255f91);
+      color: #e8f0f8;
+      border-radius: 34px;
+      padding: 34px 38px;
+      display: grid;
+      gap: 14px;
+      box-shadow: 0 24px 48px rgba(16,42,67,0.14);
+    }
+    .custom-summary p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .services-cta {
+      margin-bottom: 28px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, #f3f8f7, #eef5ed);
+      border: 1px solid #dfe7e4;
+      padding: 40px 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .services-cta h3 {
+      margin: 0 0 8px;
+      font-size: 34px;
+      line-height: 1.12;
+      color: #102a43;
+    }
+    .services-cta p {
+      margin: 0;
+      max-width: 720px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: #607080;
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #102a43 0%, #183a5d 55%, #255682 100%);
+      border-radius: 24px;
+      padding: 34px 40px 24px;
+      margin-bottom: 20px;
+    }
+    .footer-logo { font-size: 84px; font-weight: 900; color: #ffffff; line-height: 1; margin-bottom: 18px; }
+    .footer-grid {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 16px;
+      padding-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+      color: #cbd5e1;
+    }
+    .footer h4 { margin: 0 0 14px; font-size: 18px; color: #ffffff; }
+    .footer ul { padding: 0; margin: 0; }
+    .footer li {
+      list-style: none;
+      font-size: 14px;
+      margin: 9px 0;
+      color: #94a3b8;
+    }
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #64748b;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 18px;
+      margin-top: 20px;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1200px) {
+      .topbar, .navbar { width: min(calc(100% - 24px), 1360px); }
+      .services-hero-grid,
+      .service-section,
+      .service-section.reverse {
+        grid-template-columns: 1fr;
+      }
+      .quick-facts,
+      .custom-grid,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .services-cta { flex-direction: column; align-items: flex-start; }
+      .hero-photo-main {
+        position: relative;
+        right: auto;
+        width: 100%;
+        height: 340px;
+      }
+      .floating-note {
+        position: relative;
+        bottom: auto;
+        margin-top: -36px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .topbar { display: none; }
+      .navbar {
+        gap: 18px;
+        padding: 16px 18px;
+        border-radius: 24px;
+      }
+      .logo { font-size: 44px; }
+      body.nav-compact .logo { font-size: 38px; }
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 16px 20px;
+        font-size: 15px;
+      }
+      .services-hero-grid {
+        padding: 58px 26px;
+        min-height: 0;
+      }
+      .services-hero h1 { font-size: 44px; }
+      .quick-facts,
+      .custom-grid,
+      .footer-grid { grid-template-columns: 1fr; }
+      .service-copy,
+      .services-cta,
+      .custom-summary,
+      .fact-card { padding-left: 24px; padding-right: 24px; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 20px), 1453px); }
+      .navbar {
+        padding: 14px 14px 16px;
+        gap: 14px;
+      }
+      .nav-links { gap: 12px 16px; }
+      .cta-phone {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .cta-phone .circle-icon { width: 42px !important; height: 42px !important; }
+      .phone-link { font-size: 22px; }
+      .cta-phone .btn-pill {
+        padding: 12px 18px;
+        font-size: 13px;
+      }
+      .services-hero,
+      .service-photo,
+      .service-copy,
+      .custom-summary,
+      .services-cta,
+      .footer { border-radius: 28px; }
+      .services-hero h1,
+      .section-head h2,
+      .services-cta h3 { font-size: 34px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .footer { padding-left: 20px; padding-right: 20px; }
+      .footer-logo { font-size: 62px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="container topbar">
+      <div class="top-left">
+        <div><span class="circle-icon">✉</span><a href="mailto:luxor.kuc@gmail.com" style="color:inherit; text-decoration:none;">luxor.kuc@gmail.com</a></div>
+        <div><span class="circle-icon">⌖</span>Os. Witosa 30, 82-400 Sztum</div>
+      </div>
+      <div class="top-right">
+        <div class="social">
+          <span class="circle-icon">f</span>
+          <span class="circle-icon">in</span>
+          <span class="circle-icon">ig</span>
+        </div>
+        <div style="font-size:16px;">⌕</div>
+      </div>
+    </header>
+
+    <nav class="container navbar">
+      <a class="logo" href="index.html">LUXOR</a>
+      <div class="nav-links">
+        <a href="index.html">Start</a>
+        <a href="index.html#about">O firmie</a>
+        <a class="active" href="uslugi.html">Usługi</a>
+        <a href="index.html#why-us">Dlaczego my</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <div class="cta-phone">
+        <span class="circle-icon" style="background:#17a7dd; width:50px; height:50px;">☎</span>
+        <div class="phone-text">Zadzwoń<a class="phone-link" href="tel:+48505874144">+48 505 874 144</a></div>
+        <a class="btn-pill" href="kontakt.html">Zamów usługę</a>
+      </div>
+    </nav>
+
+    <section class="container services-hero">
+      <div class="services-hero-grid">
+        <div>
+          <span class="kicker">OFERTA LUXOR</span>
+          <h1>Usługi dopasowane do rytmu Twojego obiektu</h1>
+          <p>Od codziennego utrzymania czystości po zadania specjalistyczne i niestandardowe realizacje — przygotowujemy ofertę tak, aby odpowiadała specyfice branży, skali obiektu i oczekiwanemu standardowi.</p>
+          <div class="hero-actions">
+            <a class="btn-pill" href="kontakt.html">Umów bezpłatną wycenę</a>
+            <a class="ghost-btn" href="index.html#services">Zobacz skrót oferty na stronie głównej</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-photo-main">
+            <img src="zdjecia/4.jpg" alt="Usługi sprzątające Luxor">
+          </div>
+          <div class="floating-note">
+            <strong>Skutecznie, terminowo, elastycznie</strong>
+            <p>Pracujemy dla biur, hoteli, instytucji publicznych, placówek medycznych, obiektów sportowych i terenów zielonych.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container quick-facts">
+      <article class="fact-card">
+        <div class="fact-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 8v5l3 3"></path><circle cx="12" cy="12" r="9"></circle></svg>
+        </div>
+        <strong>13+ lat</strong>
+        <p>Wieloletnie doświadczenie pozwala nam sprawnie dobierać zakres prac do realnych potrzeb klienta.</p>
+      </article>
+      <article class="fact-card">
+        <div class="fact-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18"></path><path d="M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"></path><circle cx="12" cy="12" r="9"></circle></svg>
+        </div>
+        <strong>Cała Polska</strong>
+        <p>Działamy ogólnopolsko, ze szczególnym uwzględnieniem województwa pomorskiego, warmińsko-mazurskiego i kujawsko-pomorskiego.</p>
+      </article>
+      <article class="fact-card">
+        <div class="fact-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 21c5-3 7-6.6 7-10.7C19 6.5 16.4 4 12 3 7.6 4 5 6.5 5 10.3 5 14.4 7 18 12 21Z"></path><path d="M12 20V9"></path></svg>
+        </div>
+        <strong>Ekologiczne rozwiązania</strong>
+        <p>Stawiamy na skuteczne, certyfikowane środki czystości oraz biodegradowalne rozwiązania przyjazne dla środowiska.</p>
+      </article>
+    </section>
+
+    <main class="container">
+      <section class="service-section">
+        <div class="service-copy">
+          <span class="kicker" style="color:#7d8f42; background:#edf5e8;">SPRZĄTANIE CODZIENNE</span>
+          <h3>Stałe utrzymanie czystości w obiektach o różnej skali</h3>
+          <p>Zapewniamy bieżące utrzymanie czystości w różnego typu obiektach – od biur, hoteli, instytucji publicznych, galerii handlowych i placówek medycznych, po banki, obiekty sportowe oraz tereny zielone. Dbamy o każdy detal, by każda przestrzeń była zawsze zadbana, czysta i przyjazna w codziennym użytkowaniu.</p>
+        </div>
+        <div class="service-photo">
+          <img src="zdjecia/1.jpg" alt="Sprzątanie codzienne i standardowe">
+        </div>
+      </section>
+
+      <section class="service-section reverse">
+        <div class="service-photo">
+          <img src="zdjecia/2.jpg" alt="Sprzątanie specjalistyczne">
+        </div>
+        <div class="service-copy">
+          <span class="kicker">SPRZĄTANIE SPECJALISTYCZNE</span>
+          <h3>Zaawansowane prace wymagające odpowiednich technologii</h3>
+          <p>Nie każde zlecenie można zrealizować tradycyjnymi metodami. Dlatego w ofercie posiadamy usługi specjalistyczne, które wykorzystują zaawansowane technologie oraz dedykowane środki czystości. Oferujemy m.in.:</p>
+          <ul class="service-points">
+            <li>Czyszczenie po remontach i pracach budowlanych.</li>
+            <li>Mycie okien i elewacji.</li>
+            <li>Polimeryzację podłóg.</li>
+            <li>Usuwanie graffiti.</li>
+            <li>Czyszczenie wykładzin, dywanów i tapicerki meblowej.</li>
+            <li>Czyszczenie techniczne hal produkcyjnych i magazynów.</li>
+          </ul>
+          <p style="margin-top:20px;">Wszystkie usługi wykonujemy z zachowaniem najwyższych standardów bezpieczeństwa, dbając zarówno o skuteczność, jak i trwałość efektów.</p>
+        </div>
+      </section>
+
+      <section class="custom-services">
+        <div class="section-head">
+          <span class="kicker" style="color:#17a7dd; background:#e8f4fb;">USŁUGI NIESTANDARDOWE</span>
+          <h2>Elastyczne rozwiązania szyte pod obiekt i branżę</h2>
+          <p>Rozumiemy, że każda branża ma swoje unikalne potrzeby. Dlatego oferujemy w pełni dopasowane realizacje, dostosowane do rodzaju działalności, wielkości obiektu oraz preferencji klienta.</p>
+        </div>
+
+        <div class="custom-grid">
+          <article class="custom-card">
+            <span>01</span>
+            <h4>Serwis dzienny w obiektach o dużym natężeniu ruchu</h4>
+            <p>Zapewniamy obecność pracowników sprzątających przez cały dzień w centrach handlowych, hotelach, urzędach, szkołach, placówkach medycznych i innych obiektach wymagających bieżącego utrzymania porządku.</p>
+          </article>
+          <article class="custom-card">
+            <span>02</span>
+            <h4>Sprzątanie mieszkań i domów po wynajmie, wyprowadzkach lub sprzedaży</h4>
+            <p>Przygotowujemy lokale do kolejnych najemców lub właścicieli, wykonując szybkie i dokładne porządkowanie wnętrz w różnym stanie technicznym.</p>
+          </article>
+          <article class="custom-card">
+            <span>03</span>
+            <h4>Sprzątanie interwencyjne</h4>
+            <p>Reagujemy natychmiast w przypadku awarii, zalania, nagromadzenia zanieczyszczeń lub innych zdarzeń losowych, które wymagają szybkiego przywrócenia porządku.</p>
+          </article>
+          <article class="custom-card">
+            <span>04</span>
+            <h4>Porządkowanie pomieszczeń magazynowych, piwnic i strychów</h4>
+            <p>Usuwamy zbędne przedmioty, odpady i stare materiały wraz z wyniesieniem oraz utylizacją, jeśli zachodzi taka potrzeba.</p>
+          </article>
+          <article class="custom-card">
+            <span>05</span>
+            <h4>Doraźne zlecenia jednorazowe lub sezonowe</h4>
+            <p>Realizujemy usługi takie jak mycie okien przed sezonem letnim, sprzątanie po remoncie czy przygotowanie obiektu do otwarcia.</p>
+          </article>
+          <article class="custom-card">
+            <span>06</span>
+            <h4>Sprzątanie po imprezach, eventach i wydarzeniach plenerowych</h4>
+            <p>Sprawnie przywracamy czystość po zakończonych wydarzeniach — zarówno w obiektach zamkniętych, jak i na terenach otwartych.</p>
+          </article>
+        </div>
+
+        <div class="custom-summary">
+          <p>Wspólnie z klientem ustalamy <strong>indywidualny harmonogram, zakres działań, czas realizacji oraz oczekiwany efekt</strong>. Gwarantujemy pełną dyskrecję, terminowość i maksymalną elastyczność — również w zakresie godzin pracy, tak aby nie zakłócać bieżącego funkcjonowania obiektu.</p>
+          <p>Jeśli potrzebujesz usługi niestandardowej, która nie została wymieniona — skontaktuj się z nami. Z przyjemnością przygotujemy ofertę dopasowaną do Twoich oczekiwań.</p>
+        </div>
+      </section>
+
+      <section class="services-cta">
+        <div>
+          <h3>Potrzebujesz oferty dopasowanej do swojego obiektu?</h3>
+          <p>Przygotujemy indywidualną wycenę po wcześniejszym poznaniu miejsca, częstotliwości serwisu i oczekiwanego standardu wykonania. Dzięki temu oferta od początku odpowiada realnym potrzebom.</p>
+        </div>
+        <a class="btn-pill" href="kontakt.html">Przejdź do kontaktu</a>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <div class="footer-logo">LUXOR</div>
+      <div style="font-size:24px; color:#ffffff; margin-bottom:14px;">Wprowadź blask do swojego wnętrza</div>
+      <div class="footer-grid">
+        <div>
+          <h4>Dane kontaktowe</h4>
+          <ul>
+            <li>Adres: Os. Witosa 30, 82-400 Sztum</li>
+            <li>Godziny pracy: Pon.-Pt. 8:00 - 17:00</li>
+            <li>Adres email: <a href="mailto:luxor.kuc@gmail.com" style="color:inherit; text-decoration:none;">luxor.kuc@gmail.com</a></li>
+            <li style="font-weight:800; color:#ffffff;"><a href="tel:+48505874144" style="color:inherit; text-decoration:none;">+48 505 874 144</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Nasze usługi</h4>
+          <ul>
+            <li>Sprzątanie biura</li>
+            <li>Sprzątanie po remoncie</li>
+            <li>Sprzątanie magazynu</li>
+            <li>Sprzątanie po przeprowadzce</li>
+            <li>Mycie okien na wysokości</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Social media</h4>
+          <div style="margin-top:24px; display:flex; gap:12px; align-items:center;">
+            <span style="color:#94a3b8; font-size:14px;">Obserwuj nas:</span>
+            <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:14px;font-weight:700;">f</a>
+            <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:14px;font-weight:700;">in</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <div>Polityka Prywatności &nbsp;&nbsp; Regulamin &nbsp;&nbsp; Rodo</div>
+      </div>
+    </footer>
+  </div>
+  <script>
+    const syncNavbarState = () => {
+      document.body.classList.toggle("nav-compact", window.scrollY > 48);
+    };
+
+    syncNavbarState();
+    window.addEventListener("scroll", syncNavbarState, { passive: true });
+  </script>
+</body>
+</html>

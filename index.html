@@ -1,517 +1,1778 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <title>Za Jeziorem</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxor Clone</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f8f5;
+      --text: #18212d;
+      --muted: #6a7480;
+      --line: #e5ebe8;
+      --green: #dffc72;
+      --green-dark: #9bc920;
+      --blue: #2d8fe4;
+      --blue-dark: #11558d;
+      --card: #ffffff;
+      --lime: #e2ff79;
+      --navy-soft: #1f679b;
+      --navy-deep: #114c7d;
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top right, rgba(223,252,114,0.18), transparent 20%), var(--bg);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+    }
+
+    .page { width: 100%; min-width: 0; overflow: hidden; }
+    .container { width: min(calc(100% - 32px), 1453px); margin: 0 auto; }
+    [id] { scroll-margin-top: 120px; }
+
+    .topbar {
+      width: min(calc(100% - 30px), 1360px);
+      height: 50px;
+      border-bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #535c67;
+      font-size: 14px;
+      margin-top: 18px;
+      padding: 0 18px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(17,76,125,0.08);
+      border-radius: 999px;
+      box-shadow: 0 12px 30px rgba(20, 38, 62, 0.06);
+      position: relative;
+      z-index: 30;
+    }
+    .top-left, .top-right { display: flex; align-items: center; gap: 38px; }
+    .circle-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #1d74b5, #0f4c7b);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 11px;
+      margin-right: 8px;
+    }
+    .social { display: flex; gap: 8px; }
+    .social .circle-icon { width: 32px; height: 32px; font-size: 11px; margin-right: 0; }
+
+    .navbar {
+      width: min(calc(100% - 30px), 1360px);
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 16px;
+      padding: 18px 26px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(17,76,125,0.08);
+      border-radius: 28px;
+      box-shadow: 0 18px 38px rgba(16, 42, 67, 0.08);
+      transition: min-height 0.3s ease, padding 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    body.nav-compact .navbar {
+      min-height: 76px;
+      padding: 12px 22px;
+      border-radius: 22px;
+      box-shadow: 0 14px 34px rgba(16, 42, 67, 0.12);
+    }
+    .logo {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: #16314f;
+      line-height: 1;
+      transition: font-size 0.3s ease, letter-spacing 0.3s ease;
+    }
+    body.nav-compact .logo { font-size: 46px; letter-spacing: -1.5px; }
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      font-size: 16px;
+      font-weight: 600;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex: 1 1 auto;
+    }
+    .nav-links a { color: #334155; text-decoration: none; }
+    .nav-links a.active { color: #17a7dd; }
+    .cta-phone {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+      font-size: 14px;
+      color: #52606d;
+      flex: 0 0 auto;
+    }
+    .cta-phone b {
+      color: #1e2026;
+      font-size: 28px;
+      line-height: 1;
+      display: block;
+    }
+    .phone-text {
+      display: grid;
+      gap: 2px;
+      text-align: left;
+    }
+    .phone-link {
+      color: #1e2026;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-pill {
+      border: 0;
+      border-radius: 999px;
+      padding: 16px 32px;
+      background: var(--lime);
+      color: #13253f;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(183, 214, 52, 0.28);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .btn-pill:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(183, 214, 52, 0.26); }
+    .cta-phone .btn-pill {
+      background: linear-gradient(135deg, #1a3657, #255f91);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .hero {
+      margin-top: 10px;
+      border-radius: 40px;
+      background: linear-gradient(180deg, #ffffff, #fbfcfa);
+      border: 1px solid #e7ece7;
+      height: 575px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      box-shadow: 0 24px 70px rgba(16, 42, 67, 0.06);
+    }
+    .hero-copy {
+      width: 44%;
+      padding: 104px 50px 0;
+      position: relative;
+      z-index: 3;
+    }
+    .kicker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #14527f;
+      background: #e8f4fb;
+      border-radius: 999px;
+      padding: 8px 14px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 54px;
+      line-height: 1.04;
+      letter-spacing: -1.5px;
+      max-width: 500px;
+    }
+    .hero-image {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 69%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(17, 85, 141, 0.06) 0%, rgba(17, 85, 141, 0.03) 28%, transparent 29%),
+        radial-gradient(circle at center, rgba(17, 85, 141, 0.04) 0%, rgba(17, 85, 141, 0.02) 40%, transparent 41%);
+      border-radius: 0 40px 40px 0;
+    }
+    .hero-fade {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 56%;
+      height: 100%;
+      background: linear-gradient(90deg, #f7f8f5 0%, rgba(247,248,245,0.96) 45%, rgba(247,248,245,0) 100%);
+      z-index: 2;
+    }
+    .rating-card {
+      position: absolute;
+      right: 28px;
+      bottom: 28px;
+      border-radius: 26px;
+      background: #fff;
+      box-shadow: 0 16px 38px rgba(30, 35, 45, 0.08);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      z-index: 3;
+    }
+    .rating-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #e8f4fb, #f7ffd5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f5f9a;
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .rating-card strong { font-size: 24px; }
+    .rating-card span { font-size: 13px; color: #50555b; }
+    .orbital {
+      position: absolute;
+      right: 24px;
+      top: 42px;
+      width: 650px;
+      height: 470px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      z-index: 3;
+    }
+    .orbital-nebula {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(ellipse at center, rgba(18, 42, 97, 0.08), rgba(36, 197, 227, 0.05) 50%, transparent 70%);
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      filter: blur(25px);
+      z-index: 1;
+      animation: morph 15s ease-in-out infinite;
+    }
+    @keyframes morph {
+      0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: scale(1); }
+      50% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; transform: scale(1.05) rotate(8deg); }
+    }
+    .orbital::before,
+    .orbital::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px dashed rgba(17,85,141,0.25);
+      z-index: 2;
+    }
+    .orbital::before { inset: 34px 70px; }
+    .orbital::after { inset: 100px 180px; }
+    .orbital-center {
+      width: 126px;
+      height: 126px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #122a61, #2d6ea9, #24c5e3, #a7ea63, #2d6ea9, #122a61);
+      box-shadow: 0 0 40px rgba(36, 197, 227, 0.3), inset 0 0 20px rgba(0,0,0,0.2);
+      display: grid;
+      place-items: center;
+      position: relative;
+      z-index: 3;
+      animation: spin 6s linear infinite;
+    }
+    .orbital-center::after {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border-radius: 50%;
+      background: #f7f8f5;
+      box-shadow: inset 0 0 12px rgba(0,0,0,0.1);
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .float-tile {
+      position: absolute;
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(17,85,141,0.12);
+      box-shadow: 0 14px 28px rgba(16, 42, 67, 0.1);
+      display: grid;
+      place-items: center;
+      z-index: 4;
+    }
+    .float-tile img {
+      width: 48px;
+      height: 48px;
+      filter: brightness(0) saturate(100%) invert(23%) sepia(35%) saturate(3033%) hue-rotate(185deg) brightness(97%) contrast(93%);
+    }
+    .tile-a { top: 0; left: 278px; }
+    .tile-b { bottom: 82px; left: 20px; }
+    .tile-c { top: 82px; right: 16px; }
+    .tile-d { bottom: 0; left: 276px; }
+    .tile-e { top: 196px; left: 44px; }
+    .tile-f { bottom: 122px; right: 44px; }
+
+    .stats {
+      margin: 34px 0 120px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      background: transparent;
+      border-radius: 34px;
+      overflow: hidden;
+    }
+    .stat {
+      display: grid;
+      grid-template-columns: 118px 190px 1fr;
+      align-items: center;
+      gap: 22px;
+      padding: 34px 30px;
+      border: 1px solid #c7dac2;
+      background: linear-gradient(180deg, #edf6e9, #e3efde);
+      min-height: 184px;
+    }
+    .stat + .stat { border-left: 0; }
+    .stat:first-child { border-radius: 30px 0 0 30px; }
+    .stat:last-child { border-radius: 0 30px 30px 0; }
+    .stat-icon {
+      width: 108px;
+      height: 108px;
+      border-radius: 999px;
+      border: 1px solid #b7ccb4;
+      background: radial-gradient(circle at center, #f8fcf5, #dce9d6);
+      flex: 0 0 auto;
+      box-shadow: inset 0 0 0 8px rgba(255,255,255,0.18);
+      display: grid;
+      place-items: center;
+    }
+    .stat-icon svg {
+      width: 56px;
+      height: 56px;
+      fill: none;
+      stroke: #557c5f;
+      stroke-width: 1.65;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .stat h3 {
+      margin: 0;
+      font-size: 62px;
+      line-height: 0.95;
+      font-weight: 700;
+    }
+    .stat b { font-size: 18px; display: block; line-height: 1.2; color: #1c2850; }
+    .stat p { margin: 0; color: #5a606d; font-size: 16px; line-height: 1.5; max-width: 280px; }
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+      gap: 56px;
+      max-width: 1280px;
+      margin: 0 auto 92px;
+      align-items: start;
+    }
+    .about-copy { padding-top: 12px; }
+    .about h2 {
+      margin: 0 0 16px;
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: -0.8px;
+      color: #102a43;
+      font-weight: 600;
+    }
+    .about p {
+      color: #55616f;
+      font-size: 18px;
+      line-height: 1.7;
+      margin: 0 0 20px;
+      max-width: 100%;
+    }
+    .about-more {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.55s ease, opacity 0.35s ease;
+    }
+    .about-more.is-open { opacity: 1; }
+    .read-more-btn {
+      margin-top: 6px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #1474ab;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .read-more-btn::after {
+      content: "+";
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: #e8f4fb;
+      color: #14527f;
+      display: inline-grid;
+      place-items: center;
+      font-size: 17px;
+      line-height: 1;
+      transition: transform 0.25s ease;
+    }
+    .read-more-btn[aria-expanded="true"]::after { transform: rotate(45deg); }
+    .list { margin: 16px 0 0; padding: 0; }
+    .list li {
+      list-style: none;
+      font-size: 16px;
+      margin: 0 0 12px;
+      color: #13253f;
+    }
+    .list li::before {
+      content: "●";
+      color: #17a7dd;
+      margin-right: 12px;
+    }
+    .about-cta {
+      background: #ffffff;
+      border: 1px solid #e3eaee;
+      box-shadow: 0 18px 40px rgba(16, 42, 67, 0.05);
+      border-radius: 30px;
+      padding: 36px 42px 36px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      max-width: 100%;
+      margin-top: 42px;
+    }
+    .about-cta .phone { font-size: 30px; font-weight: 700; line-height: 1.1; color: #102a43; }
+    .about-visual {
+      min-height: 560px;
+      border-radius: 36px;
+      background: linear-gradient(180deg, #f6fafc, #ffffff);
+      border: 1px solid #e5edf1;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(16, 42, 67, 0.05);
+    }
+    .about-visual::before {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(45,143,228,0.12), transparent 68%);
+      right: -120px;
+      top: -90px;
+      z-index: 0;
+    }
+    .about-slider {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    .about-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.75s ease;
+    }
+    .about-slide.is-active { opacity: 1; }
+    .about-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .about-overlay {
+      position: absolute;
+      inset: auto 24px 24px 24px;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+    }
+    .about-caption {
+      max-width: 360px;
+      padding: 20px 22px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.9);
+      box-shadow: 0 16px 34px rgba(16, 42, 67, 0.12);
+    }
+    .about-caption strong {
+      display: block;
+      font-size: 18px;
+      color: #13253f;
+      margin-bottom: 8px;
+    }
+    .about-caption p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #55616f;
+    }
+    .slider-dots {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 0 0 auto;
+    }
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(255,255,255,0.55);
+      box-shadow: inset 0 0 0 1px rgba(19, 37, 63, 0.12);
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .slider-dot.is-active { background: #ffffff; transform: scale(1.18); }
+
+    .services-band {
+      margin: 0 calc(50% - 50vw);
+      padding: 88px 0;
+      background: linear-gradient(180deg, #f4f7f4, #eef3ef);
+    }
+    .services {
+      width: min(calc(100% - 32px), 1280px);
+      margin: 0 auto;
+    }
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 38px;
+    }
+    .section-head h2 {
+      margin: 0 0 14px;
+      font-size: 46px;
+      line-height: 1.08;
+      letter-spacing: -0.8px;
+      color: #102a43;
+    }
+    .section-head p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #607080;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: #ffffff;
+      border: 1px solid #e5eaef;
+      border-radius: 32px;
+      padding: 32px;
+      box-shadow: 0 18px 40px rgba(16,42,67,0.05);
+    }
+    .service-card.wide { grid-column: 1 / -1; }
+    .service-top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .service-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #ebf6ff, #f5fbef);
+      border: 1px solid #d9e6ea;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+    }
+    .service-icon svg {
+      width: 30px;
+      height: 30px;
+      fill: none;
+      stroke: #1a5d90;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .service-card h3 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.2;
+      color: #102a43;
+    }
+    .service-card p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #5c6978;
+    }
+    .service-points {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0 0;
+      display: grid;
+      gap: 14px;
+    }
+    .service-points li {
+      position: relative;
+      padding-left: 36px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #405062;
+    }
+    .service-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #dff0d7, #edf7e8);
+      box-shadow: inset 0 0 0 1px #bfd7bb;
+    }
+    .service-points li::after {
+      content: "✓";
+      position: absolute;
+      left: 6px;
+      top: 4px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #4d7c57;
+    }
+    .service-accordion {
+      display: grid;
+      gap: 14px;
+      margin-top: 26px;
+    }
+    .service-item {
+      border: 1px solid #e6edf2;
+      border-radius: 22px;
+      background: #f9fbfc;
+      overflow: hidden;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .service-item[open] {
+      background: #ffffff;
+      border-color: #d8e4ea;
+      box-shadow: 0 14px 28px rgba(16,42,67,0.05);
+    }
+    .service-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 24px;
+      cursor: pointer;
+    }
+    .service-item summary::-webkit-details-marker { display: none; }
+    .service-item summary strong {
+      font-size: 18px;
+      line-height: 1.4;
+      color: #102a43;
+    }
+    .service-plus {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #edf4f7;
+      color: #1d5f90;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      line-height: 1;
+      flex: 0 0 auto;
+      transition: transform 0.25s ease;
+    }
+    .service-item[open] .service-plus { transform: rotate(45deg); }
+    .service-item .service-body {
+      padding: 0 24px 24px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #5c6978;
+    }
+    .service-item .service-body p { margin: 0; }
+
+    .why {
+      background: linear-gradient(135deg, #1d679d 0%, #175a8a 52%, #114c77 100%);
+      border-radius: 34px;
+      padding: 56px 46px 44px;
+      margin-bottom: 110px;
+      display: grid;
+      grid-template-columns: .82fr .98fr;
+      gap: 36px;
+      color: #e8f0f8;
+      min-height: auto;
+      align-items: start;
+    }
+    .why h2 {
+      margin: 20px 0 30px;
+      font-size: 48px;
+      line-height: 1.04;
+      letter-spacing: -0.8px;
+      color: #ffffff;
+    }
+    .why .feature {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 24px;
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      min-height: 0;
+      padding: 18px 20px;
+      align-items: center;
+      gap: 18px;
+    }
+    .why .feature .img {
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.94);
+      box-shadow: 0 16px 32px rgba(7, 29, 48, 0.16);
+      display: grid;
+      place-items: center;
+    }
+    .why .feature .img svg {
+      width: 40px;
+      height: 40px;
+      fill: none;
+      stroke-width: 1.8;
+    }
+    .why .feature .txt { padding: 6px 6px 6px 20px; position: relative; }
+    .why .feature h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.4; color: #ffffff; }
+    .why .feature p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.7; }
+    .idx {
+      position: absolute;
+      left: -22px;
+      top: calc(50% - 21px);
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: #fbbf24;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      color: #102a43;
+    }
+    .why-visual {
+      display: grid;
+      gap: 18px;
+      align-content: center;
+    }
+    .why-photo {
+      width: min(65%, 420px);
+      min-height: 400px;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 24px 50px rgba(7, 29, 48, 0.22);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .why-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .why-caption {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: #e8f0f8;
+      max-width: 360px;
+    }
+    .why .feature .img img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter: brightness(0) saturate(100%) invert(32%) sepia(18%) saturate(918%) hue-rotate(92deg) brightness(92%) contrast(88%);
+    }
+
+    .area {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      gap: 28px;
+      align-items: center;
+      margin: 0 auto 110px;
+    }
+    .area-copy p {
+      margin: 0 0 18px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #5c6978;
+      max-width: 520px;
+    }
+    .area-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: #eff5f7;
+      color: #476173;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .map-card {
+      position: relative;
+      min-height: 460px;
+      border-radius: 36px;
+      overflow: hidden;
+      border: 1px solid #e3eaef;
+      background: linear-gradient(180deg, #f7fafb, #ecf2f5);
+      box-shadow: 0 20px 48px rgba(16,42,67,0.06);
+    }
+    .map-card::before,
+    .map-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(45,143,228,0.12), transparent 68%);
+    }
+    .map-card::before {
+      width: 280px;
+      height: 280px;
+      top: -70px;
+      right: -80px;
+    }
+    .map-card::after {
+      width: 220px;
+      height: 220px;
+      left: -70px;
+      bottom: -70px;
+    }
+    .region {
+      position: absolute;
+      border-radius: 120px;
+      border: 1px solid rgba(59, 97, 121, 0.1);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45);
+    }
+    .region.pomorskie {
+      width: 250px;
+      height: 180px;
+      left: 90px;
+      top: 104px;
+      background: linear-gradient(135deg, #d8e9ee, #c3dce3);
+      clip-path: polygon(16% 11%, 64% 4%, 88% 20%, 96% 42%, 86% 72%, 58% 94%, 24% 88%, 6% 58%, 4% 28%);
+    }
+    .region.warmia {
+      width: 278px;
+      height: 220px;
+      left: 274px;
+      top: 128px;
+      background: linear-gradient(135deg, #dbe9d4, #c8debc);
+      clip-path: polygon(18% 8%, 64% 2%, 92% 20%, 96% 52%, 78% 86%, 48% 98%, 16% 88%, 2% 58%, 6% 28%);
+    }
+    .region-label {
+      position: absolute;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: #355166;
+    }
+    .region-label.one { left: 132px; top: 84px; }
+    .region-label.two { left: 338px; top: 102px; }
+    .map-pin {
+      position: absolute;
+      transform: translate(-50%, -100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .map-pin::before {
+      content: "";
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #175a8a, #2d8fe4);
+      box-shadow: 0 10px 18px rgba(17,85,141,0.26);
+      border: 4px solid rgba(255,255,255,0.9);
+    }
+    .map-pin::after {
+      content: "";
+      width: 2px;
+      height: 24px;
+      background: linear-gradient(180deg, rgba(23,90,138,0.75), rgba(23,90,138,0));
+      margin-top: -4px;
+    }
+    .map-pin span {
+      order: -1;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid #dde8ee;
+      color: #102a43;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(16,42,67,0.08);
+      white-space: nowrap;
+    }
+    .pin-sztum { left: 222px; top: 228px; }
+    .pin-elblag { left: 298px; top: 210px; }
+    .pin-olsztyn { left: 432px; top: 252px; }
+    .map-placeholder {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      padding: 14px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid #e3eaef;
+      max-width: 260px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #607080;
+      box-shadow: 0 14px 30px rgba(16,42,67,0.08);
+    }
+
+    .testimonials {
+      background: linear-gradient(180deg, #f0f4f1, #edf2ef);
+      margin: 0 calc(50% - 50vw);
+      padding: 90px 0 80px;
+      text-align: center;
+    }
+    .testimonials h2 {
+      margin: 0 0 60px;
+      font-size: 48px;
+      color: #595f64;
+      font-weight: 600;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      width: min(calc(100% - 30px), 1453px);
+      margin: 0 auto;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e5eaef;
+      box-shadow: 0 18px 40px rgba(16,42,67,0.05);
+      border-radius: 28px;
+      text-align: left;
+      padding: 26px 28px;
+      min-height: 260px;
+    }
+    .avatar-line {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #edf9ff, #fff7da);
+      border: 1px solid #e6eef3;
+      box-shadow: 0 10px 24px rgba(16,42,67,0.06);
+    }
+    .card h4 { margin: 0; font-size: 18px; }
+    .card .city { color: #6d757f; font-size: 14px; }
+    .card p { font-size: 16px; color: #2f3740; line-height: 1.6; }
+    .source-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f3f7f3;
+      color: #628b4f;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .contact {
+      padding: 28px 0 0;
+      background: transparent;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 22px;
+      margin-bottom: 28px;
+      align-items: stretch;
+    }
+    .panel-left {
+      background: linear-gradient(135deg, #16314f, #235a87);
+      border-radius: 28px;
+      min-height: 340px;
+      padding: 34px 30px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .panel-right {
+      border-radius: 28px;
+      background: linear-gradient(90deg, #ebff92, #def87d);
+      min-height: 340px;
+      padding: 44px 52px;
+      color: #243039;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 22px 50px rgba(171, 203, 58, 0.16);
+    }
+    .panel-right::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -20px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.45), transparent 62%);
+    }
+    .form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+      max-width: 100%;
+    }
+    .input {
+      height: 52px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(17,85,141,0.06);
+      padding: 0 20px;
+      font-size: 14px;
+      color: #4f5965;
+    }
+    .form .btn-pill {
+      background: linear-gradient(135deg, #16314f, #2b77b2);
+      color: #fff;
+      height: 52px;
+      font-size: 14px;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #102a43 0%, #183a5d 55%, #255682 100%);
+      border-radius: 0 0 24px 24px;
+      padding: 34px 40px 24px;
+      margin-bottom: 20px;
+    }
+    .footer-logo { font-size: 84px; font-weight: 900; color: #ffffff; line-height: 1; margin-bottom: 18px; }
+    .footer-grid {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      margin-top: 16px;
+      padding-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+      color: #cbd5e1;
+    }
+    .footer h4 { margin: 0 0 14px; font-size: 18px; color: #ffffff; }
+    .footer li {
+      list-style: none;
+      font-size: 14px;
+      margin: 9px 0;
+      color: #94a3b8;
+    }
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #64748b;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 18px;
+      margin-top: 20px;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1200px) {
+      .topbar, .navbar { width: min(calc(100% - 24px), 1360px); }
+      .hero {
+        height: auto;
+        min-height: 720px;
+      }
+      .hero-copy {
+        width: 100%;
+        max-width: 580px;
+        padding: 88px 36px 0;
+      }
+      .hero-image {
+        width: 100%;
+        border-radius: 40px;
+      }
+      .hero-fade {
+        width: 100%;
+        background: linear-gradient(180deg, #f7f8f5 0%, rgba(247,248,245,0.94) 34%, rgba(247,248,245,0.2) 62%, rgba(247,248,245,0) 100%);
+      }
+      .orbital {
+        top: auto;
+        bottom: 30px;
+        right: 8px;
+        width: 560px;
+        height: 392px;
+      }
+      .rating-card { right: 22px; bottom: 22px; }
+      .stats { grid-template-columns: 1fr; }
+      .stat + .stat { border-left: 1px solid #c7dac2; border-top: 0; }
+      .stat:first-child { border-radius: 30px 30px 0 0; }
+      .stat:last-child { border-radius: 0 0 30px 30px; }
+      .about,
+      .why,
+      .area,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .services-grid,
+      .cards,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .why-photo { min-height: 520px; }
+      .why-photo { width: min(100%, 520px); }
+      .map-card { min-height: 420px; }
+    }
+
+    @media (max-width: 900px) {
+      .topbar { display: none; }
+      .navbar {
+        gap: 18px;
+        padding: 16px 18px;
+        border-radius: 24px;
+      }
+      .logo { font-size: 44px; }
+      body.nav-compact .logo { font-size: 38px; }
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 16px 20px;
+        font-size: 15px;
+      }
+      .cta-phone { margin-left: auto; }
+      .hero {
+        min-height: 760px;
+        border-radius: 32px;
+      }
+      .hero-copy {
+        padding: 74px 28px 0;
+      }
+      h1 { font-size: 42px; }
+      .orbital {
+        width: 470px;
+        height: 330px;
+        transform: scale(0.86);
+        transform-origin: bottom right;
+        right: -24px;
+      }
+      .stat {
+        grid-template-columns: 92px 1fr;
+        gap: 18px;
+      }
+      .stat p { grid-column: 1 / -1; }
+      .services-grid,
+      .cards,
+      .footer-grid,
+      .form {
+        grid-template-columns: 1fr;
+      }
+      .about-visual,
+      .why-photo,
+      .map-card { min-height: 380px; }
+      .why-photo { width: min(100%, 460px); }
+      .region.pomorskie {
+        left: 32px;
+        top: 96px;
+        width: 210px;
+      }
+      .region.warmia {
+        left: 180px;
+        top: 132px;
+        width: 236px;
+        height: 196px;
+      }
+      .region-label.one { left: 68px; }
+      .region-label.two { left: 242px; }
+      .pin-sztum { left: 154px; top: 226px; }
+      .pin-elblag { left: 222px; top: 208px; }
+      .pin-olsztyn { left: 334px; top: 252px; }
+    }
+
+    @media (max-width: 640px) {
+      [id] { scroll-margin-top: 96px; }
+      .container,
+      .services { width: min(calc(100% - 20px), 1453px); }
+      .navbar {
+        padding: 14px 14px 16px;
+        gap: 14px;
+      }
+      .nav-links { gap: 12px 16px; }
+      .cta-phone {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .cta-phone .circle-icon { width: 42px !important; height: 42px !important; }
+      .phone-link { font-size: 22px; }
+      .cta-phone .btn-pill {
+        padding: 12px 18px;
+        font-size: 13px;
+      }
+      .hero {
+        min-height: 680px;
+        border-radius: 28px;
+      }
+      .hero-copy { padding: 64px 22px 0; }
+      h1 { font-size: 34px; }
+      .kicker { margin-bottom: 18px; }
+      .orbital {
+        width: 410px;
+        height: 286px;
+        transform: scale(0.72);
+        right: -52px;
+        bottom: 14px;
+      }
+      .rating-card {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+      }
+      .stat,
+      .service-card,
+      .card,
+      .panel-right,
+      .panel-left,
+      .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .about h2,
+      .section-head h2,
+      .why h2,
+      .testimonials h2 {
+        font-size: 34px;
+      }
+      .about-cta,
+      .about-overlay,
+      .footer-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .about-visual { min-height: 320px; }
+      .why-photo { width: 100%; min-height: 320px; }
+      .map-card { min-height: 360px; }
+      .region.pomorskie {
+        left: 18px;
+        top: 104px;
+        width: 168px;
+        height: 148px;
+      }
+      .region.warmia {
+        left: 130px;
+        top: 144px;
+        width: 186px;
+        height: 164px;
+      }
+      .region-label,
+      .map-placeholder { font-size: 12px; }
+      .region-label.one { left: 28px; top: 84px; }
+      .region-label.two { left: 164px; top: 118px; }
+      .pin-sztum { left: 108px; top: 228px; }
+      .pin-elblag { left: 164px; top: 212px; }
+      .pin-olsztyn { left: 250px; top: 252px; }
+      .map-pin span { font-size: 11px; padding: 6px 10px; }
+    }
+  </style>
 </head>
-<body class="hero-showcase-off">
-  <a class="skip-link" href="#main-content" data-content="site.skipLink"></a>
-
-  <div class="top-bar" role="status" aria-live="polite">
-    <div class="shell">
-      <p>Strona w wersji demonstracyjnej. Trwają prace deweloperskie.</p>
-    </div>
-  </div>
-
-  <header class="site-header" id="site-header">
-    <div class="shell site-header__inner">
-      <a class="brand" href="#top" data-aria-label-content="site.brand.ariaLabel">
-        <span class="brand__name" data-content="site.brand.name"></span>
-        <span class="brand__place" data-content="site.brand.place"></span>
-      </a>
-
-      <button
-        class="menu-toggle"
-        id="menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="site-nav"
-        data-aria-label-open="site.menu.openLabel"
-        data-aria-label-close="site.menu.closeLabel"
-      >
-        <span class="menu-toggle__line"></span>
-        <span class="menu-toggle__line"></span>
-        <span class="menu-toggle__line"></span>
-      </button>
-
-      <nav class="site-nav" id="site-nav" data-aria-label-content="site.navigationAriaLabel">
-        <a data-content="site.navigation.0.label" data-link="site.navigation.0.href"></a>
-        <a data-content="site.navigation.1.label" data-link="site.navigation.1.href"></a>
-        <a data-content="site.navigation.2.label" data-link="site.navigation.2.href"></a>
-        <a data-content="site.navigation.3.label" data-link="site.navigation.3.href"></a>
-        <a data-content="site.navigation.4.label" data-link="site.navigation.4.href"></a>
-        <a data-content="site.navigation.5.label" data-link="site.navigation.5.href"></a>
-        <a data-content="site.navigation.6.label" data-link="site.navigation.6.href"></a>
-        <a class="button button--small nav-cta" data-content="site.headerCta.label" data-link="site.headerCta.href"></a>
-      </nav>
-
-      <a class="button button--small site-header__cta" data-content="site.headerCta.label" data-link="site.headerCta.href"></a>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <!-- ELEMENTOR NOTE: Jedna Section / Container z tłem, overlayem, Inner Container dla treści i subtelnym paskiem wyróżników pod hero. -->
-    <section class="hero" id="top" data-aria-label-content="hero.ariaLabel">
-      <div class="hero__media" aria-hidden="true" data-hero-media></div>
-      <div class="hero__veil" aria-hidden="true"></div>
-      <div class="hero__mist" aria-hidden="true"></div>
-      <div class="shell hero__layout">
-        <div class="hero__content reveal">
-          <p class="eyebrow" data-content="hero.eyebrow"></p>
-          <h1 data-content="hero.title"></h1>
-          <p class="hero__lead" data-content="hero.lead"></p>
-          <p class="hero__text" data-content="hero.text"></p>
-          <div class="hero__actions">
-            <a class="button button--primary" data-content="hero.actions.primary.label" data-link="hero.actions.primary.href"></a>
-            <a class="button button--ghost" data-content="hero.actions.event.label" data-link="hero.actions.event.href"></a>
-            <!-- ELEMENTOR NOTE: Zamień href na docelowy link do Bookingu lub systemu rezerwacji w content.json. -->
-            <a class="button button--ghost-light" data-content="hero.actions.booking.label" data-link="booking.url"></a>
-          </div>
-          <div class="hero__highlights reveal" data-aria-label-content="hero.highlightsAriaLabel">
-            <span class="highlight-pill" data-content="hero.highlights.0"></span>
-            <span class="highlight-pill" data-content="hero.highlights.1"></span>
-            <span class="highlight-pill" data-content="hero.highlights.2"></span>
-          </div>
-        </div>
-
-        <aside class="hero-showcase reveal" data-aria-label-content="hero.showcaseAriaLabel">
-          <div class="hero-showcase__frame">
-            <img
-              class="hero-showcase__image"
-              data-hero-showcase-image
-              data-image-src="hero.showcase.slides.0.src"
-              data-image-alt="hero.showcase.slides.0.alt"
-              loading="eager"
-            >
-          </div>
-          <div class="hero-showcase__controls">
-            <button class="hero-showcase__button" type="button" data-hero-prev aria-label="Poprzednie zdjęcie">‹</button>
-            <div class="hero-showcase__dots" data-hero-dots aria-label="Wybór zdjęcia hero"></div>
-            <button class="hero-showcase__button" type="button" data-hero-next aria-label="Następne zdjęcie">›</button>
-          </div>
-        </aside>
+<body>
+  <div class="page">
+    <header class="container topbar">
+      <div class="top-left">
+        <div><span class="circle-icon">✉</span><a href="mailto:luxor.kuc@gmail.com" style="color:inherit; text-decoration:none;">luxor.kuc@gmail.com</a></div>
+        <div><span class="circle-icon">⌖</span>Os. Witosa 30, 82-400 Sztum</div>
       </div>
-    </section>
-
-    <!-- ELEMENTOR NOTE: Jedna Section / Container z dwoma Inner Containerami: tekst po lewej, obraz po prawej. -->
-    <section class="section section--intro" id="o-obiekcie">
-      <div class="shell section-grid section-grid--intro">
-        <div class="section-copy reveal">
-          <p class="eyebrow eyebrow--dark" data-content="intro.eyebrow"></p>
-          <h2 data-content="intro.title"></h2>
-          <p class="section-copy__lead" data-content="intro.lead"></p>
-          <div class="pill-row" data-aria-label-content="intro.pillsAriaLabel">
-            <span class="pill" data-content="intro.pills.0"></span>
-            <span class="pill" data-content="intro.pills.1"></span>
-            <span class="pill" data-content="intro.pills.2"></span>
-          </div>
+      <div class="top-right">
+        <div class="social">
+          <span class="circle-icon">f</span>
+          <span class="circle-icon">in</span>
+          <span class="circle-icon">ig</span>
         </div>
-
-        <figure class="featured-photo reveal">
-          <img data-image-src="intro.image.src" data-image-alt="intro.image.alt" loading="lazy">
-          <figcaption data-content="intro.image.caption"></figcaption>
-        </figure>
+        <div style="font-size:16px;">⌕</div>
       </div>
-    </section>
+    </header>
 
-    <!-- ELEMENTOR NOTE: Jedna Section / Container i siatka czterech Inner Containerów lub Icon Boxów bez dodatkowej logiki. -->
-    <section class="section section--offer" id="oferta">
-      <div class="shell">
-        <div class="section-heading reveal">
-          <p class="eyebrow eyebrow--dark" data-content="offer.eyebrow"></p>
-          <h2 data-content="offer.title"></h2>
-        </div>
-
-        <div class="offer-grid">
-          <article class="offer-card reveal">
-            <span class="offer-card__number" data-content="offer.cards.0.number"></span>
-            <h3 data-content="offer.cards.0.title"></h3>
-            <p data-content="offer.cards.0.text"></p>
-          </article>
-          <article class="offer-card reveal">
-            <span class="offer-card__number" data-content="offer.cards.1.number"></span>
-            <h3 data-content="offer.cards.1.title"></h3>
-            <p data-content="offer.cards.1.text"></p>
-          </article>
-          <article class="offer-card reveal">
-            <span class="offer-card__number" data-content="offer.cards.2.number"></span>
-            <h3 data-content="offer.cards.2.title"></h3>
-            <p data-content="offer.cards.2.text"></p>
-          </article>
-          <article class="offer-card reveal">
-            <span class="offer-card__number" data-content="offer.cards.3.number"></span>
-            <h3 data-content="offer.cards.3.title"></h3>
-            <p data-content="offer.cards.3.text"></p>
-          </article>
-        </div>
+    <nav class="container navbar">
+      <a class="logo" href="index.html" style="text-decoration:none;">LUXOR</a>
+      <div class="nav-links">
+        <a class="active" href="index.html">Start</a>
+        <a href="index.html#about">O firmie</a>
+        <a href="uslugi.html">Usługi</a>
+        <a href="index.html#why-us">Dlaczego my</a>
+        <a href="kontakt.html">Kontakt</a>
       </div>
-    </section>
-
-    <!-- ELEMENTOR NOTE: Jedna Section / Container z dwoma kolumnami: tekst i lista po lewej, dwa lub trzy widgety Image po prawej. -->
-    <section class="section section--rooms" id="noclegi">
-      <div class="shell section-grid section-grid--rooms">
-        <div class="section-copy reveal">
-          <p class="eyebrow eyebrow--dark" data-content="rooms.eyebrow"></p>
-          <h2 data-content="rooms.title"></h2>
-          <p class="section-copy__lead" data-content="rooms.lead"></p>
-          <ul class="feature-list" data-aria-label-content="rooms.featuresAriaLabel">
-            <li data-content="rooms.features.0"></li>
-            <li data-content="rooms.features.1"></li>
-            <li data-content="rooms.features.2"></li>
-            <li data-content="rooms.features.3"></li>
-            <li data-content="rooms.features.4"></li>
-            <li data-content="rooms.features.5"></li>
-          </ul>
-          <!-- ELEMENTOR NOTE: Link do Bookingu ustawiany w content.json. -->
-          <a class="button button--primary" data-content="rooms.cta.label" data-link="booking.url"></a>
-        </div>
-
-        <div class="room-gallery reveal" data-aria-label-content="rooms.galleryAriaLabel">
-          <figure class="room-gallery__primary">
-            <img data-image-src="rooms.gallery.0.src" data-image-alt="rooms.gallery.0.alt" loading="lazy">
-          </figure>
-          <figure class="room-gallery__secondary">
-            <img data-image-src="rooms.gallery.1.src" data-image-alt="rooms.gallery.1.alt" loading="lazy">
-          </figure>
-          <figure class="room-gallery__secondary">
-            <img data-image-src="rooms.gallery.2.src" data-image-alt="rooms.gallery.2.alt" loading="lazy">
-          </figure>
-        </div>
+      <div class="cta-phone">
+        <span class="circle-icon" style="background:#17a7dd; width:50px; height:50px;">☎</span>
+        <div class="phone-text">Zadzwoń<a class="phone-link" href="tel:+48505874144">+48 505 874 144</a></div>
+        <a class="btn-pill" href="kontakt.html">Zamów usługę</a>
       </div>
-    </section>
+    </nav>
 
-    <!-- ELEMENTOR NOTE: Section / Container z dwoma Inner Containerami: jedno duże zdjęcie i blok tekstowy z listą oraz przyciskiem. -->
-    <section class="section section--events" id="przyjecia">
-      <div class="shell section-grid section-grid--events">
-        <figure class="immersive-photo reveal">
-          <img data-image-src="events.image.src" data-image-alt="events.image.alt" loading="lazy">
-        </figure>
-
-        <div class="section-copy reveal">
-          <p class="eyebrow eyebrow--dark" data-content="events.eyebrow"></p>
-          <h2 data-content="events.title"></h2>
-          <p class="section-copy__lead" data-content="events.lead"></p>
-          <ul class="tag-list" data-aria-label-content="events.tagsAriaLabel">
-            <li data-content="events.tags.0"></li>
-            <li data-content="events.tags.1"></li>
-            <li data-content="events.tags.2"></li>
-            <li data-content="events.tags.3"></li>
-            <li data-content="events.tags.4"></li>
-            <li data-content="events.tags.5"></li>
-          </ul>
-          <a class="button button--primary" data-content="events.cta.label" data-link="events.cta.href"></a>
-        </div>
+    <section id="start" class="container hero">
+      <div class="hero-copy">
+        <span class="kicker">PRZYCHODZIMY, SPRZĄTAMY, ZNIKAMY</span>
+        <h1>Twoje biuro lśni.<br>Ty skupiasz się na<br>biznesie.</h1>
       </div>
-    </section>
-
-    <!-- ELEMENTOR NOTE: Section / Container z dwoma Inner Containerami: tekst i prosty panel z obrazem oraz tekstem pomocniczym. -->
-    <section class="section section--conference" id="konferencje">
-      <div class="shell section-grid section-grid--conference">
-        <div class="section-copy reveal">
-          <p class="eyebrow eyebrow--dark" data-content="conference.eyebrow"></p>
-          <h2 data-content="conference.title"></h2>
-          <p class="section-copy__lead" data-content="conference.lead"></p>
-          <ul class="feature-list feature-list--compact" data-aria-label-content="conference.featuresAriaLabel">
-            <li data-content="conference.features.0"></li>
-            <li data-content="conference.features.1"></li>
-            <li data-content="conference.features.2"></li>
-            <li data-content="conference.features.3"></li>
-            <li data-content="conference.features.4"></li>
-          </ul>
-          <a class="button button--secondary" data-content="conference.cta.label" data-link="conference.cta.href"></a>
+      <div class="hero-fade"></div>
+      <div class="hero-image"></div>
+      <div class="orbital">
+        <div class="orbital-nebula"></div>
+        <div class="float-tile tile-a">
+          <img src="../IKONY_LUXOR/mop.svg" alt="Mop">
         </div>
-
-        <div class="conference-panel reveal">
-          <figure class="conference-panel__photo">
-            <img data-image-src="conference.image.src" data-image-alt="conference.image.alt" loading="lazy">
-          </figure>
-          <div class="conference-panel__card">
-            <span class="conference-panel__label" data-content="conference.sideCard.label"></span>
-            <p data-content="conference.sideCard.text"></p>
-          </div>
+        <div class="float-tile tile-b">
+          <img src="../IKONY_LUXOR/odku.svg" alt="Odkurzacz">
         </div>
+        <div class="float-tile tile-c">
+          <img src="../IKONY_LUXOR/okno.svg" alt="Mycie okien">
+        </div>
+        <div class="float-tile tile-d">
+          <img src="../IKONY_LUXOR/zmiotka.svg" alt="Zmiotka">
+        </div>
+        <div class="float-tile tile-e">
+          <img src="../IKONY_LUXOR/polerka.svg" alt="Polerka">
+        </div>
+        <div class="float-tile tile-f">
+          <img src="../IKONY_LUXOR/czyst.svg" alt="Sprzątanie">
+        </div>
+        <div class="orbital-center"></div>
       </div>
-    </section>
-
-    <!-- ELEMENTOR NOTE: Sekcja z jednym Containerem na wstęp, drugim na mozaikę zdjęć i osobnym gridem kart, łatwa do odtworzenia widgetami Image i Heading. -->
-    <section class="section section--nature" id="okolica">
-      <div class="shell">
-        <div class="section-grid section-grid--nature">
-          <div class="section-copy reveal">
-            <p class="eyebrow eyebrow--dark" data-content="nature.eyebrow"></p>
-            <h2 data-content="nature.title"></h2>
-            <p class="section-copy__lead" data-content="nature.lead"></p>
-          </div>
-
-          <div class="nature-mosaic reveal" data-aria-label-content="nature.mosaicAriaLabel">
-            <figure class="nature-mosaic__large">
-              <img data-image-src="nature.mosaic.0.src" data-image-alt="nature.mosaic.0.alt" loading="lazy">
-            </figure>
-            <figure class="nature-mosaic__small">
-              <img data-image-src="nature.mosaic.1.src" data-image-alt="nature.mosaic.1.alt" loading="lazy">
-            </figure>
-            <figure class="nature-mosaic__small">
-              <img data-image-src="nature.mosaic.2.src" data-image-alt="nature.mosaic.2.alt" loading="lazy">
-            </figure>
-          </div>
-        </div>
-
-        <div class="nature-cards">
-          <article class="nature-card reveal"><h3 data-content="nature.cards.0"></h3></article>
-          <article class="nature-card reveal"><h3 data-content="nature.cards.1"></h3></article>
-          <article class="nature-card reveal"><h3 data-content="nature.cards.2"></h3></article>
-          <article class="nature-card reveal"><h3 data-content="nature.cards.3"></h3></article>
-          <article class="nature-card reveal"><h3 data-content="nature.cards.4"></h3></article>
-          <article class="nature-card reveal"><h3 data-content="nature.cards.5"></h3></article>
-        </div>
-
-        <aside class="destination-note reveal">
-          <h3 data-content="nature.destination.title"></h3>
-          <p data-content="nature.destination.text"></p>
-        </aside>
-      </div>
-    </section>
-
-    <!-- ELEMENTOR NOTE: Galerię można odtworzyć jako Gallery lub jako grid Containerów z widgetami Image i podpisami. -->
-    <section class="section section--gallery" id="galeria">
-      <div class="shell">
-        <div class="section-heading reveal">
-          <p class="eyebrow eyebrow--dark" data-content="gallery.eyebrow"></p>
-          <h2 data-content="gallery.title"></h2>
-        </div>
-
-        <div class="gallery-grid">
-          <figure class="gallery-item gallery-item--wide reveal">
-            <img data-image-src="gallery.items.0.src" data-image-alt="gallery.items.0.alt" loading="lazy">
-            <figcaption data-content="gallery.items.0.caption"></figcaption>
-          </figure>
-          <figure class="gallery-item reveal">
-            <img data-image-src="gallery.items.1.src" data-image-alt="gallery.items.1.alt" loading="lazy">
-            <figcaption data-content="gallery.items.1.caption"></figcaption>
-          </figure>
-          <figure class="gallery-item reveal">
-            <img data-image-src="gallery.items.2.src" data-image-alt="gallery.items.2.alt" loading="lazy">
-            <figcaption data-content="gallery.items.2.caption"></figcaption>
-          </figure>
-          <figure class="gallery-item reveal">
-            <img data-image-src="gallery.items.3.src" data-image-alt="gallery.items.3.alt" loading="lazy">
-            <figcaption data-content="gallery.items.3.caption"></figcaption>
-          </figure>
-          <figure class="gallery-item reveal">
-            <img data-image-src="gallery.items.4.src" data-image-alt="gallery.items.4.alt" loading="lazy">
-            <figcaption data-content="gallery.items.4.caption"></figcaption>
-          </figure>
-          <figure class="gallery-item gallery-item--tall reveal">
-            <img data-image-src="gallery.items.5.src" data-image-alt="gallery.items.5.alt" loading="lazy">
-            <figcaption data-content="gallery.items.5.caption"></figcaption>
-          </figure>
-          <figure class="gallery-item reveal">
-            <img data-image-src="gallery.items.6.src" data-image-alt="gallery.items.6.alt" loading="lazy">
-            <figcaption data-content="gallery.items.6.caption"></figcaption>
-          </figure>
-          <figure class="gallery-item reveal">
-            <img data-image-src="gallery.items.7.src" data-image-alt="gallery.items.7.alt" loading="lazy">
-            <figcaption data-content="gallery.items.7.caption"></figcaption>
-          </figure>
-          <figure class="gallery-item reveal">
-            <img data-image-src="gallery.items.8.src" data-image-alt="gallery.items.8.alt" loading="lazy">
-            <figcaption data-content="gallery.items.8.caption"></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ELEMENTOR NOTE: Cztery proste kontenery tekstowe; docelowo można je podmienić na prawdziwe cytaty lub widget opinii. -->
-    <section class="section section--reviews">
-      <div class="shell">
-        <div class="section-heading reveal">
-          <p class="eyebrow eyebrow--dark" data-content="reviews.eyebrow"></p>
-          <h2 data-content="reviews.title"></h2>
-        </div>
-
-        <div class="reviews-grid">
-          <article class="review-card reveal">
-            <p data-content="reviews.items.0"></p>
-          </article>
-          <article class="review-card reveal">
-            <p data-content="reviews.items.1"></p>
-          </article>
-          <article class="review-card reveal">
-            <p data-content="reviews.items.2"></p>
-          </article>
-          <article class="review-card reveal">
-            <p data-content="reviews.items.3"></p>
-          </article>
-        </div>
-
-        <p class="reviews-note reveal" data-content="reviews.note"></p>
-      </div>
-    </section>
-
-    <!-- ELEMENTOR NOTE: Osobna Section / Container z tłem, Heading, Text Editor i dwoma Button widgetami. -->
-    <section class="section cta-band">
-      <div class="shell cta-band__inner reveal">
+      <div class="rating-card">
+        <div class="rating-logo">★</div>
         <div>
-          <p class="eyebrow" data-content="cta.eyebrow"></p>
-          <h2 data-content="cta.title"></h2>
-          <p data-content="cta.text"></p>
-        </div>
-        <div class="cta-band__actions">
-          <a class="button button--ghost-light" data-content="cta.primaryAction.label" data-link="cta.primaryAction.href"></a>
-          <!-- ELEMENTOR NOTE: Link do Bookingu ustawiany w content.json. -->
-          <a class="button button--primary-light" data-content="cta.bookingAction.label" data-link="booking.url"></a>
+          <strong>4.9</strong> ★★★★★<br>
+          <span>Overall Client Rating</span>
         </div>
       </div>
     </section>
 
-    <section class="section section--location" id="lokalizacja">
-      <div class="shell section-grid section-grid--location">
-        <div class="location-access reveal">
-          <p class="eyebrow eyebrow--dark" data-content="location.eyebrow"></p>
-          <h2 data-content="location.accessTitle"></h2>
-          <div class="location-map-wrap">
-            <iframe
-              class="location-map"
-              data-embed-src="location.map.embedUrl"
-              title="Mapa dojazdu do obiektu Za Jeziorem"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen
-            ></iframe>
+    <section class="container stats">
+      <article class="stat">
+        <div class="stat-icon">
+          <svg viewBox="0 0 64 64">
+            <path d="M22 23a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"></path>
+            <path d="M42 25a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"></path>
+            <path d="M11 50a11 11 0 0 1 22 0"></path>
+            <path d="M33 50a9 9 0 0 1 18 0"></path>
+          </svg>
+        </div>
+        <div>
+          <h3>20+</h3>
+          <b>Wykwalifikowanych pracowników</b>
+        </div>
+        <p>Nasz zespół to sprawdzeni profesjonaliści, którym możesz zaufać</p>
+      </article>
+      <article class="stat">
+        <div class="stat-icon">
+          <svg viewBox="0 0 64 64">
+            <rect x="12" y="21" width="40" height="26" rx="6"></rect>
+            <path d="M24 21v-6a8 8 0 0 1 16 0v6"></path>
+            <path d="M12 31h40"></path>
+          </svg>
+        </div>
+        <div>
+          <h3>15+</h3>
+          <b>Doświadczenie</b>
+        </div>
+        <p>Przez lata wypracowaliśmy standardy, które wyróżniają nas spośród konkurencji</p>
+      </article>
+      <article class="stat">
+        <div class="stat-icon">
+          <svg viewBox="0 0 64 64">
+            <path d="M20 36c3-6 8-9 12-9 4 0 9 3 12 9"></path>
+            <path d="M18 35 11 28a5 5 0 0 1 7-7l7 7"></path>
+            <path d="m46 35 7-7a5 5 0 1 0-7-7l-7 7"></path>
+            <path d="M24 40h16"></path>
+            <path d="M28 48h8"></path>
+          </svg>
+        </div>
+        <div>
+          <h3>5k+</h3>
+          <b>Zleceń</b>
+        </div>
+        <p>Każde zlecenie traktujemy z taką samą starannością</p>
+      </article>
+    </section>
+
+    <section id="about" class="container about">
+      <div class="about-copy">
+        <span class="kicker" style="color:#17a7dd; background:#e0f2fe;">O FIRMIE</span>
+        <h2>Twój zaufany partner w<br>trosce o wnętrza</h2>
+        <div style="font-size:18px; font-weight:800; color:#102a43; margin:0 0 18px;">LUXOR – Profesjonalne sprzątanie dla biznesu</div>
+        <p>Od ponad 13 lat oferujemy kompleksowe usługi sprzątające, troszcząc się zarówno o czystość przestrzeni, jak i komfort naszych klientów. Choć działamy na terenie całej Polski, największą aktywność prowadzimy w województwach: pomorskim, warmińsko-mazurskim oraz kujawsko-pomorskim.</p>
+        <p>Naszą firmę wyróżnia wieloletnie doświadczenie, rzetelność oraz indywidualne podejście do każdego zlecenia. Fundamentem naszej działalności jest profesjonalizm – pracujemy na sprzęcie wysokiej klasy, certyfikowanymi środkami czystości i artykułami higienicznymi, które są zarówno skuteczne, jak i przyjazne dla środowiska. W trosce o naturę, stawiamy na biodegradowalne i ekologiczne rozwiązania.</p>
+        <button class="read-more-btn" type="button" aria-expanded="false" data-about-toggle><span>Czytaj więcej...</span></button>
+        <div class="about-more" data-about-more>
+          <p>Doskonale wiemy, jak istotna jest czystość w miejscu pracy – wpływa ona nie tylko na wizerunek firmy, ale także na samopoczucie i efektywność klientów oraz komfort ich pracowników. Dzięki naszym usługom przestrzenie stają się bardziej funkcjonalne, estetyczne i sprzyjają zwiększonej wydajności.</p>
+          <p>Oprócz prac porządkowych w obiektach zamkniętych, dbamy również o <strong>tereny zielone</strong> – zapewniamy kompleksową pielęgnację zieleni przy firmach, instytucjach i wspólnotach mieszkaniowych, dostosowaną do pory roku i indywidualnych potrzeb klienta.</p>
+          <p>Każde zlecenie traktujemy z pełnym zaangażowaniem. Nasi klienci mogą liczyć na najwyższą jakość obsługi, staranność oraz elastyczność we współpracy. Szczególną wartość przykładamy do bezpośredniego kontaktu z kontrahentem – właścicielski nadzór nad realizacją usług pozwala nam szybko reagować na sugestie, modyfikować zakres działań i dostosowywać ofertę do zmieniających się potrzeb.</p>
+          <p>Nieustannie inwestujemy w rozwój naszego zespołu. Organizujemy szkolenia podnoszące kwalifikacje pracowników oraz monitorujemy jakość świadczonych usług, aby niezmiennie oferować najwyższy standard.</p>
+          <p>Zaufanie, jakim obdarzają nas klienci, to nasza najlepsza wizytówka. Wielu z nich wraca do nas regularnie, polecając LUXOR jako godnego zaufania i sprawdzonego partnera w utrzymaniu czystości.</p>
+        </div>
+        <div style="font-size:18px; font-weight:700; margin-bottom:5px;">Współpraca z nami to:</div>
+        <ul class="list">
+          <li>Indywidualny plan sprzątania</li>
+          <li>Ekologiczne środki czystości</li>
+          <li>Stała jakość i przewidywalny harmonogram</li>
+        </ul>
+        <div class="about-cta">
+          <div>
+            <div style="font-size:18px; color:#6b737d;">Skontaktuj się z nami i zamów usługę</div>
+            <a class="phone" href="tel:+48505874144" style="text-decoration:none; display:inline-block;">+48 505 874 144</a>
           </div>
-          <div class="location-directions">
-            <p data-content="location.directions.0"></p>
-            <p data-content="location.directions.1"></p>
-            <p data-content="location.directions.2"></p>
+          <a class="btn-pill" href="#contact">Zamów usługę</a>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-slider" data-slider>
+          <div class="about-slide is-active" data-slide>
+            <img src="zdjecia/1.jpg" alt="Ekipa Luxor przy pracy">
+          </div>
+          <div class="about-slide" data-slide>
+            <img src="zdjecia/2.jpg" alt="Starannie przygotowane wnętrze po sprzątaniu">
+          </div>
+          <div class="about-slide" data-slide>
+            <img src="zdjecia/3.jpg" alt="Detale wykończenia i czysta przestrzeń">
           </div>
         </div>
-
-        <div class="location-attractions reveal">
-          <h2 data-content="location.attractionsTitle"></h2>
-          <div class="location-cards" data-aria-label-content="location.attractionsAriaLabel">
-            <article class="location-card">
-              <h3 data-content="location.attractions.0.name"></h3>
-              <p class="location-card__distance" data-content="location.attractions.0.distance"></p>
-              <p data-content="location.attractions.0.description"></p>
-            </article>
-            <article class="location-card">
-              <h3 data-content="location.attractions.1.name"></h3>
-              <p class="location-card__distance" data-content="location.attractions.1.distance"></p>
-              <p data-content="location.attractions.1.description"></p>
-            </article>
-            <article class="location-card">
-              <h3 data-content="location.attractions.2.name"></h3>
-              <p class="location-card__distance" data-content="location.attractions.2.distance"></p>
-              <p data-content="location.attractions.2.description"></p>
-            </article>
-            <article class="location-card">
-              <h3 data-content="location.attractions.3.name"></h3>
-              <p class="location-card__distance" data-content="location.attractions.3.distance"></p>
-              <p data-content="location.attractions.3.description"></p>
-            </article>
+        <div class="about-overlay">
+          <div class="about-caption">
+            <strong>Pracujemy regularnie, dyskretnie i dokładnie</strong>
+            <p>Zapewniamy wysoki standard obsługi, terminowość oraz elastyczne dopasowanie usług do charakteru każdego obiektu.</p>
+          </div>
+          <div class="slider-dots">
+            <button class="slider-dot is-active" type="button" aria-label="Zdjęcie 1" data-slide-dot></button>
+            <button class="slider-dot" type="button" aria-label="Zdjęcie 2" data-slide-dot></button>
+            <button class="slider-dot" type="button" aria-label="Zdjęcie 3" data-slide-dot></button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ELEMENTOR NOTE: Sekcja kontaktu do odtworzenia jako dwa Containery; formularz można później zrobić widgetem Form lub zewnętrzną wtyczką. -->
-    <section class="section section--contact" id="kontakt">
-      <div class="shell contact-layout">
-        <div class="contact-copy reveal">
-          <p class="eyebrow eyebrow--dark" data-content="contact.eyebrow"></p>
-          <h2 data-content="contact.title"></h2>
-          <p class="section-copy__lead" data-content="contact.lead"></p>
-
-          <dl class="contact-details">
-            <div>
-              <dt data-content="contact.details.address.label"></dt>
-              <dd data-content="contact.details.address.text"></dd>
-            </div>
-            <div>
-              <dt data-content="contact.details.phone.label"></dt>
-              <dd><a data-content="contact.details.phone.text" data-link="contact.details.phone.href"></a></dd>
-            </div>
-            <div>
-              <dt data-content="contact.details.email.label"></dt>
-              <dd><a data-content="contact.details.email.text" data-link="contact.details.email.href"></a></dd>
-            </div>
-          </dl>
+    <section id="services" class="services-band">
+      <div class="services">
+        <div class="section-head">
+          <span class="kicker" style="color:#7d8f42; background:#edf5e8;">NASZE USŁUGI</span>
+          <h2>Kompleksowe usługi<br>sprzątające</h2>
+          <p>Zapewniamy bieżące utrzymanie czystości, prace specjalistyczne oraz elastyczne rozwiązania dopasowane do specyfiki obiektu i oczekiwań klienta.</p>
         </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-top">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24"><path d="M4 19h16"></path><path d="M7 19v-7"></path><path d="M12 19V8"></path><path d="M17 19v-4"></path></svg>
+              </div>
+              <h3>Sprzątanie codzienne / standardowe</h3>
+            </div>
+            <p>Zapewniamy bieżące utrzymanie czystości w różnego typu obiektach – od biur, hoteli, instytucji publicznych, galerii handlowych i placówek medycznych, po banki, obiekty sportowe oraz tereny zielone. Dbamy o każdy detal, by każda przestrzeń była zawsze zadbana, czysta i przyjazna w codziennym użytkowaniu.</p>
+          </article>
 
-        <form class="contact-form reveal" id="contact-form" novalidate>
-          <div class="form-row">
-            <label for="name" data-content="contact.form.nameLabel"></label>
-            <input id="name" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="form-row">
-            <label for="email" data-content="contact.form.emailLabel"></label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="form-row">
-            <label for="phone" data-content="contact.form.phoneLabel"></label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel">
-          </div>
-          <div class="form-row">
-            <label for="topic" data-content="contact.form.topicLabel"></label>
-            <select id="topic" name="topic" required>
-              <option value="" data-content="contact.form.topicOptions.0.label"></option>
-              <option value="nocleg" data-content="contact.form.topicOptions.1.label"></option>
-              <option value="przyjecie" data-content="contact.form.topicOptions.2.label"></option>
-              <option value="konferencja" data-content="contact.form.topicOptions.3.label"></option>
-              <option value="inne" data-content="contact.form.topicOptions.4.label"></option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="message" data-content="contact.form.messageLabel"></label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <label class="checkbox-row" for="consent">
-            <input id="consent" name="consent" type="checkbox" required>
-            <span data-content="contact.form.consentLabel"></span>
-          </label>
-          <button class="button button--primary" type="submit" data-content="contact.form.submitLabel"></button>
-          <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
-        </form>
+          <article class="service-card">
+            <div class="service-top">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24"><path d="M5 20h14"></path><path d="m8 20 2-8h4l2 8"></path><path d="M12 12V5"></path><path d="M9 8h6"></path></svg>
+              </div>
+              <h3>Sprzątanie specjalistyczne</h3>
+            </div>
+            <p>Nie każde zlecenie można zrealizować tradycyjnymi metodami. Dlatego w ofercie posiadamy usługi specjalistyczne, które wykorzystują zaawansowane technologie oraz dedykowane środki czystości.</p>
+            <ul class="service-points">
+              <li>Czyszczenie po remontach i pracach budowlanych.</li>
+              <li>Mycie okien i elewacji.</li>
+              <li>Polimeryzacja podłóg.</li>
+              <li>Usuwanie graffiti.</li>
+              <li>Czyszczenie wykładzin, dywanów i tapicerki meblowej.</li>
+              <li>Czyszczenie techniczne hal produkcyjnych i magazynów.</li>
+            </ul>
+            <p style="margin-top:20px;">Wszystkie usługi wykonujemy z zachowaniem najwyższych standardów bezpieczeństwa, dbając zarówno o skuteczność, jak i trwałość efektów.</p>
+          </article>
+
+          <article class="service-card wide">
+            <div class="service-top">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 3v18"></path><path d="M3 12h18"></path><circle cx="12" cy="12" r="8"></circle></svg>
+              </div>
+              <h3>Usługi niestandardowe</h3>
+            </div>
+            <p>Rozumiemy, że każda branża ma swoje unikalne potrzeby. Dlatego oferujemy elastyczne, w pełni dopasowane rozwiązania – również w formie indywidualnych, „szytych na miarę” zleceń, dostosowanych do rodzaju działalności, wielkości obiektu oraz preferencji klienta. Dzięki otwartości i wieloletniemu doświadczeniu potrafimy sprostać nawet najbardziej nietypowym oczekiwaniom – także tym, które wykraczają poza standardowy zakres usług porządkowych.</p>
+            <p style="margin-top:16px;">Nasze usługi niestandardowe obejmują m.in.:</p>
+            <div class="service-accordion">
+              <details class="service-item" open>
+                <summary><strong>Serwis dzienny w obiektach o dużym natężeniu ruchu</strong><span class="service-plus">+</span></summary>
+                <div class="service-body"><p>Zapewniamy obecność pracowników sprzątających przez cały dzień w obiektach takich jak centra handlowe, hotele, urzędy, pomieszczenia administracyjno-biurowe, placówki użyteczności publicznej, szkoły oraz placówki medyczne – w celu bieżącego utrzymania porządku.</p></div>
+              </details>
+              <details class="service-item">
+                <summary><strong>Sprzątanie mieszkań i domów po wynajmie, wyprowadzkach lub sprzedaży</strong><span class="service-plus">+</span></summary>
+                <div class="service-body"><p>Przygotowujemy lokale do kolejnych najemców lub właścicieli, zapewniając szybkie i dokładne porządkowanie wnętrz w różnym stanie technicznym.</p></div>
+              </details>
+              <details class="service-item">
+                <summary><strong>Sprzątanie interwencyjne</strong><span class="service-plus">+</span></summary>
+                <div class="service-body"><p>Realizujemy natychmiastowe działania w przypadku nagłych zdarzeń, takich jak awarie, zalania, nagromadzenie zanieczyszczeń lub inne zdarzenia losowe.</p></div>
+              </details>
+              <details class="service-item">
+                <summary><strong>Porządkowanie pomieszczeń magazynowych, piwnic i strychów</strong><span class="service-plus">+</span></summary>
+                <div class="service-body"><p>Usuwamy zbędne przedmioty, odpady i stare materiały wraz z wyniesieniem oraz utylizacją, jeśli zachodzi taka potrzeba.</p></div>
+              </details>
+              <details class="service-item">
+                <summary><strong>Doraźne zlecenia jednorazowe lub sezonowe</strong><span class="service-plus">+</span></summary>
+                <div class="service-body"><p>Realizujemy usługi takie jak mycie okien przed sezonem letnim, sprzątanie po remoncie czy przygotowanie obiektu do otwarcia.</p></div>
+              </details>
+              <details class="service-item">
+                <summary><strong>Sprzątanie po imprezach, eventach i wydarzeniach plenerowych</strong><span class="service-plus">+</span></summary>
+                <div class="service-body"><p>Sprawnie przywracamy czystość po zakończonych wydarzeniach – zarówno w obiektach zamkniętych, jak i na terenach otwartych.</p></div>
+              </details>
+            </div>
+            <p style="margin-top:24px;">Wspólnie z klientem ustalamy <strong>indywidualny harmonogram, zakres działań, czas realizacji oraz oczekiwany efekt</strong>. Gwarantujemy pełną dyskrecję, terminowość i maksymalną elastyczność – również w zakresie godzin pracy, tak aby nie zakłócać bieżącego funkcjonowania obiektu.</p>
+            <p style="margin-top:16px;">Jeśli potrzebujesz usługi niestandardowej, która nie została wymieniona – skontaktuj się z nami. Z przyjemnością przygotujemy ofertę dopasowaną do Twoich oczekiwań.</p>
+          </article>
+        </div>
       </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="shell site-footer__grid">
+    <section id="why-us" class="container why">
+      <div class="why-visual">
+        <span class="kicker" style="background:rgba(255,255,255,.25); color:#e8f0f8;">DLACZEGO WYBRAĆ NAS</span>
+        <h2>Dlaczego firmy<br>wybierają<br>właśnie nas?</h2>
+        <a class="btn-pill" href="#contact" style="background:#fbbf24; color:#102a43; margin-top:10px;">Zamów usługę</a>
+        <div class="why-photo">
+          <img src="zdjecia/5.jpg" alt="Profesjonalny serwis sprzątający Luxor">
+        </div>
+        <div class="why-caption">
+          <strong style="font-size:15px;">Ponad 13 lat doświadczenia w utrzymaniu czystości obiektów dla biznesu i instytucji.</strong>
+        </div>
+      </div>
       <div>
-        <a class="brand brand--footer" href="#top">
-          <span class="brand__name" data-content="site.brand.name"></span>
-          <span class="brand__place" data-content="site.brand.place"></span>
-        </a>
-        <p class="site-footer__copy" data-content="footer.copy"></p>
+        <article class="feature">
+          <div class="img">
+            <svg viewBox="0 0 24 24" stroke="#2d8fe4"><path d="M7 10h3V6a3 3 0 0 1 6 0v4h2a2 2 0 0 1 2 2c0 3.9-2.5 6.9-6.5 7.8L9 21l-2-6.5V12a2 2 0 0 1 2-2Z"></path></svg>
+          </div>
+          <div class="txt"><div class="idx">01</div><h3>Profesjonalna jakość.<br>Widoczne efekty.</h3><p>Nasi przeszkoleni pracownicy stosują sprawdzone techniki i profesjonalne narzędzia, które gwarantują najwyższy standard czystości.</p></div>
+        </article>
+        <article class="feature">
+          <div class="img">
+            <svg viewBox="0 0 24 24" stroke="#86b814"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M16 3v4"></path><path d="M8 3v4"></path><path d="M3 10h18"></path></svg>
+          </div>
+          <div class="txt"><div class="idx">02</div><h3>Stały harmonogram<br>sprzątania</h3><p>Nasze regularne usługi gwarantują czyste i zadbane wnętrze bez konieczności pamiętania o organizacji porządków.</p></div>
+        </article>
+        <article class="feature">
+          <div class="img">
+            <img src="../IKONY_LUXOR/czyst.svg" alt="Profesjonalne środki czystości">
+          </div>
+          <div class="txt"><div class="idx">03</div><h3>Profesjonalny sprzęt i<br>środki czystości</h3><p>Dysponujemy nowoczesnym wyposażeniem i bezpiecznymi preparatami, z których większość firm zwyczajnie nie posiada.</p></div>
+        </article>
+        <article class="feature" style="margin-bottom:0;">
+          <div class="img">
+            <svg viewBox="0 0 24 24" stroke="#4ade80"><path d="M12 21c5-3 7-6.6 7-10.7C19 6.5 16.4 4 12 3 7.6 4 5 6.5 5 10.3 5 14.4 7 18 12 21Z"></path><path d="M12 20V9"></path><path d="M12 14c-1.8 0-3.4-.7-4.5-2"></path><path d="M12 12c1.8 0 3.4-.7 4.5-2"></path></svg>
+          </div>
+          <div class="txt"><div class="idx">04</div><h3>Ekologiczne i<br>bezpieczne rozwiązania</h3><p>Stosujemy rozwiązania przyjazne dla zdrowia i środowiska, dlatego jesteśmy jedną z najbardziej zaufanych firm sprzątających.</p></div>
+        </article>
       </div>
+    </section>
 
-      <nav class="footer-nav" data-aria-label-content="footer.navigationAriaLabel">
-        <a data-content="site.navigation.0.label" data-link="site.navigation.0.href"></a>
-        <a data-content="site.navigation.1.label" data-link="site.navigation.1.href"></a>
-        <a data-content="site.navigation.2.label" data-link="site.navigation.2.href"></a>
-        <a data-content="site.navigation.3.label" data-link="site.navigation.3.href"></a>
-        <a data-content="site.navigation.4.label" data-link="site.navigation.4.href"></a>
-        <a data-content="site.navigation.5.label" data-link="site.navigation.5.href"></a>
-        <a data-content="site.navigation.6.label" data-link="site.navigation.6.href"></a>
-      </nav>
-    </div>
-    <div class="shell site-footer__bottom">
-      <p data-content="footer.note"></p>
-    </div>
-  </footer>
+    <section id="area" class="container area">
+      <div class="area-copy">
+        <span class="kicker" style="color:#17a7dd; background:#e8f4fb;">OBSZAR DZIAŁANIA</span>
+        <h2 style="margin:0 0 16px; font-size:46px; line-height:1.08; letter-spacing:-0.8px; color:#102a43;">Działamy na styku<br>dwóch województw</h2>
+        <p>Zasięg naszych usług obejmuje teren całej Polski, ze szczególnym uwzględnieniem województwa pomorskiego i warmińsko-mazurskiego.</p>
+        <div class="area-note">Pomorskie • Warmińsko-Mazurskie • Cała Polska</div>
+      </div>
+      <div class="map-card">
+        <div class="region pomorskie"></div>
+        <div class="region warmia"></div>
+        <div class="region-label one">POMORSKIE</div>
+        <div class="region-label two">WARMIŃSKO-MAZURSKIE</div>
+        <div class="map-pin pin-sztum"><span>Sztum</span></div>
+        <div class="map-pin pin-elblag"><span>Elbląg</span></div>
+        <div class="map-pin pin-olsztyn"><span>Olsztyn</span></div>
+        <div class="map-placeholder">Sztum, Elbląg i Olsztyn to kluczowe punkty naszej aktywności w północnej części kraju.</div>
+      </div>
+    </section>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox__close" type="button" aria-label="Zamknij podgląd zdjęcia">×</button>
-    <img class="lightbox__image" src="" alt="">
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <span class="kicker" style="color:#7bbf3e; background:#edf6e5;">OPINIE NASZYCH KLIENTÓW</span>
+        <h2>Co klienci mówią o naszej pracy</h2>
+        <p style="text-align:center; color:#64748b; font-size:15px; margin:-40px 0 40px;">Opinie naszych klientów potwierdzają jakość, terminowość i rzetelność realizowanych usług.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="avatar-line"><div class="avatar"></div><div><h4>Opinia 1</h4><div class="city">Panorama Firm</div></div></div>
+          <p>Autentyczny komentarz ze strony Panorama Firm.</p>
+          <div class="source-tag">Panorama Firm</div>
+        </article>
+        <article class="card">
+          <div class="avatar-line"><div class="avatar"></div><div><h4>Opinia 2</h4><div class="city">Panorama Firm</div></div></div>
+          <p>Autentyczny komentarz ze strony Panorama Firm.</p>
+          <div class="source-tag">Panorama Firm</div>
+        </article>
+        <article class="card">
+          <div class="avatar-line"><div class="avatar"></div><div><h4>Opinia 3</h4><div class="city">Panorama Firm</div></div></div>
+          <p>Autentyczny komentarz ze strony Panorama Firm.</p>
+          <div class="source-tag">Panorama Firm</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="container contact">
+      <div class="contact-grid">
+        <div class="panel-left">
+          <h3 style="font-size:24px; margin:18px 0 10px; line-height:1.25;">Zadbaj o czystość<br>swojego otoczenia</h3>
+          <p style="font-size:16px; line-height:1.5; margin:0; color:#e6f0f3;">Wybierz usługę i umów termin - zajmiemy się resztą.</p>
+        </div>
+        <div class="panel-right">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:30px;">
+            <h3 style="margin:0; font-size:24px;">Zamów usługę</h3>
+            <div style="font-size:14px; color:#1e293b; text-align:right; line-height:1.5;">Jeśli masz miejsce, które wymaga posprzątania,<br>chętnie Ci w tym pomożemy</div>
+          </div>
+          <div class="form">
+            <input class="input" placeholder="*Imię i nazwisko..." />
+            <input class="input" placeholder="Wybierz usługę" />
+            <input class="input" placeholder="*Adres email..." />
+            <input class="input" placeholder="dd.mm.rrrr" />
+            <input class="input" placeholder="*Numer telefonu..." />
+            <button class="btn-pill">Umów się na wizytę</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container footer">
+      <div class="footer-logo">LUXOR</div>
+      <div style="font-size:24px; color:#ffffff; margin-bottom:14px;">Wprowadź blask do swojego wnętrza</div>
+      <div class="footer-grid">
+        <div>
+          <h4>Dane kontaktowe</h4>
+          <ul>
+            <li>Adres: Os. Witosa 30, 82-400 Sztum</li>
+            <li>Godziny pracy: Pon.-Pt. 8:00 - 17:00</li>
+            <li>Adres email: <a href="mailto:luxor.kuc@gmail.com" style="color:inherit; text-decoration:none;">luxor.kuc@gmail.com</a></li>
+            <li style="font-weight:800; color:#ffffff;"><a href="tel:+48505874144" style="color:inherit; text-decoration:none;">+48 505 874 144</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Nasze usługi</h4>
+          <ul>
+            <li>Sprzątanie biura</li>
+            <li>Sprzątanie po remoncie</li>
+            <li>Sprzątanie magazynu</li>
+            <li>Sprzątanie po przeprowadzce</li>
+            <li>Mycie okien na wysokości</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Social media</h4>
+          <div style="margin-top:24px; display:flex; gap:12px; align-items:center;">
+            <span style="color:#94a3b8; font-size:14px;">Obserwuj nas:</span>
+            <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:14px;font-weight:700;">f</a>
+            <a href="#" style="width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:14px;font-weight:700;">in</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <div>Polityka Prywatności &nbsp;&nbsp; Regulamin &nbsp;&nbsp; Rodo</div>
+      </div>
+    </footer>
   </div>
+  <script>
+    const syncNavbarState = () => {
+      document.body.classList.toggle("nav-compact", window.scrollY > 48);
+    };
 
-  <script src="script.js"></script>
+    syncNavbarState();
+    window.addEventListener("scroll", syncNavbarState, { passive: true });
+
+    const aboutToggle = document.querySelector("[data-about-toggle]");
+    const aboutMore = document.querySelector("[data-about-more]");
+
+    if (aboutToggle && aboutMore) {
+      const aboutLabel = aboutToggle.querySelector("span");
+
+      const setAboutExpanded = (expanded) => {
+        aboutToggle.setAttribute("aria-expanded", String(expanded));
+        if (aboutLabel) {
+          aboutLabel.textContent = expanded ? "Zwiń" : "Czytaj więcej...";
+        }
+        aboutMore.classList.toggle("is-open", expanded);
+        aboutMore.style.maxHeight = expanded ? aboutMore.scrollHeight + "px" : "0px";
+      };
+
+      setAboutExpanded(false);
+
+      aboutToggle.addEventListener("click", () => {
+        const expanded = aboutToggle.getAttribute("aria-expanded") === "true";
+        setAboutExpanded(!expanded);
+      });
+
+      window.addEventListener("resize", () => {
+        if (aboutToggle.getAttribute("aria-expanded") === "true") {
+          aboutMore.style.maxHeight = aboutMore.scrollHeight + "px";
+        }
+      });
+    }
+
+    const slides = Array.from(document.querySelectorAll("[data-slide]"));
+    const dots = Array.from(document.querySelectorAll("[data-slide-dot]"));
+    let activeSlideIndex = 0;
+    let sliderTimer;
+
+    const activateSlide = (index) => {
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === index);
+      });
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === index);
+      });
+      activeSlideIndex = index;
+    };
+
+    const startSlider = () => {
+      if (slides.length < 2) return;
+      clearInterval(sliderTimer);
+      sliderTimer = window.setInterval(() => {
+        activateSlide((activeSlideIndex + 1) % slides.length);
+      }, 4200);
+    };
+
+    if (slides.length) {
+      activateSlide(0);
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          activateSlide(index);
+          startSlider();
+        });
+      });
+      startSlider();
+    }
+  </script>
 </body>
 </html>
