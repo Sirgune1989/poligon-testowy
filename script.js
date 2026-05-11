@@ -11,7 +11,12 @@ const heroNext = document.querySelector("[data-hero-next]");
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector(".lightbox__image");
 const lightboxClose = document.querySelector(".lightbox__close");
+const fullGalleryGrid = document.querySelector("[data-full-gallery-grid]");
+const fullGalleryEmpty = document.querySelector("[data-full-gallery-empty]");
+const galleryFilterButtons = document.querySelectorAll("[data-gallery-filter]");
+const gridToggle = document.querySelector("[data-grid-toggle]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const defaultDocumentTitle = document.title;
 
 const pageState = {
   content: null,
@@ -19,6 +24,9 @@ const pageState = {
   heroIntervalId: null,
   heroShowcaseIntervalId: null,
   heroShowcaseIndex: 0,
+  fullGalleryCategory: "all",
+  lightboxSelector:
+    ".section--gallery img, .section--rooms img, .section-grid--intro img, .section-grid--events img, .section-grid--conference img, .section-grid--nature img, .gallery-page-hero img, .full-gallery-item img",
 };
 
 function getValueByPath(source, path) {
@@ -33,11 +41,19 @@ function getValueByPath(source, path) {
 
 function setDocumentMeta(content) {
   document.documentElement.lang = content.site.lang || "pl";
-  document.title = content.site.title || document.title;
+
+  if (document.body.classList.contains("gallery-page")) {
+    document.title = `${content.fullGallery?.title || "Galeria"} | ${content.site.brand.name || "Za Jeziorem"}`;
+  } else {
+    document.title = content.site.title || defaultDocumentTitle;
+  }
 
   const description = document.querySelector('meta[name="description"]');
   if (description) {
-    description.setAttribute("content", content.site.metaDescription || "");
+    const descriptionText = document.body.classList.contains("gallery-page")
+      ? content.fullGallery?.lead || content.site.metaDescription || ""
+      : content.site.metaDescription || "";
+    description.setAttribute("content", descriptionText);
   }
 }
 
@@ -241,6 +257,77 @@ function setupHeroShowcase(content) {
   restartHeroShowcaseInterval();
 }
 
+function getFullGalleryItems(content) {
+  const items = content.fullGallery?.items;
+  if (!Array.isArray(items)) {
+    return [];
+  }
+
+  return items.filter((item) => item && typeof item.src === "string");
+}
+
+function getFilteredFullGalleryItems() {
+  const items = getFullGalleryItems(pageState.content || {});
+  if (pageState.fullGalleryCategory === "all") {
+    return items;
+  }
+
+  return items.filter((item) => item.category === pageState.fullGalleryCategory);
+}
+
+function syncGalleryFilterButtons() {
+  galleryFilterButtons.forEach((button) => {
+    const isActive = button.dataset.galleryFilter === pageState.fullGalleryCategory;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+  });
+}
+
+function renderFullGallery() {
+  if (!fullGalleryGrid) {
+    return;
+  }
+
+  const items = getFilteredFullGalleryItems();
+  fullGalleryGrid.innerHTML = "";
+
+  items.forEach((item) => {
+    const figure = document.createElement("figure");
+    figure.className = "full-gallery-item reveal is-visible";
+
+    const image = document.createElement("img");
+    image.src = item.src;
+    image.alt = typeof item.alt === "string" ? item.alt : "";
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.style.cursor = "zoom-in";
+
+    const caption = document.createElement("figcaption");
+    caption.textContent = typeof item.caption === "string" ? item.caption : "";
+
+    figure.append(image, caption);
+    fullGalleryGrid.appendChild(figure);
+  });
+
+  if (fullGalleryEmpty) {
+    fullGalleryEmpty.hidden = items.length > 0;
+  }
+}
+
+function setupGalleryFilters() {
+  if (!galleryFilterButtons.length) {
+    return;
+  }
+
+  galleryFilterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      pageState.fullGalleryCategory = button.dataset.galleryFilter || "all";
+      syncGalleryFilterButtons();
+      renderFullGallery();
+    });
+  });
+}
+
 function setupMenuLabels() {
   if (!menuToggle || !pageState.content) {
     return;
@@ -293,7 +380,7 @@ function setupMenu() {
     return;
   }
 
-  const navLinks = siteNav.querySelectorAll('a[href^="#"]');
+  const navLinks = siteNav.querySelectorAll("a");
 
   menuToggle.addEventListener("click", () => {
     const expanded = menuToggle.getAttribute("aria-expanded") === "true";
@@ -342,17 +429,6 @@ function setupLightbox() {
     return;
   }
 
-  const imageSelector = [
-    ".section--gallery img",
-    ".section--rooms img",
-    ".section-grid--intro img",
-    ".section-grid--events img",
-    ".section-grid--conference img",
-    ".section-grid--nature img",
-  ].join(", ");
-
-  const images = document.querySelectorAll(imageSelector);
-
   function closeLightbox() {
     lightbox.classList.remove("is-open");
     lightbox.setAttribute("aria-hidden", "true");
@@ -372,9 +448,14 @@ function setupLightbox() {
     document.body.classList.add("lightbox-open");
   }
 
-  images.forEach((image) => {
-    image.style.cursor = "zoom-in";
-    image.addEventListener("click", () => openLightbox(image));
+  document.addEventListener("click", (event) => {
+    const clickedImage = event.target.closest(pageState.lightboxSelector);
+    if (!clickedImage) {
+      return;
+    }
+
+    clickedImage.style.cursor = "zoom-in";
+    openLightbox(clickedImage);
   });
 
   lightboxClose.addEventListener("click", closeLightbox);
@@ -392,8 +473,23 @@ function setupLightbox() {
   });
 }
 
+function setupElementorOverlay() {
+  if (!gridToggle) {
+    return;
+  }
+
+  const inactiveLabel = "🔲 Pokaż siatkę Elementor";
+  const activeLabel = "✖ Ukryj siatkę";
+
+  gridToggle.addEventListener("click", () => {
+    const isActive = document.body.classList.toggle("elementor-grid-active");
+    gridToggle.textContent = isActive ? activeLabel : inactiveLabel;
+    gridToggle.setAttribute("aria-pressed", isActive ? "true" : "false");
+  });
+}
+
 function initReveal() {
-  const revealItems = document.querySelectorAll(".reveal");
+  const revealItems = document.querySelectorAll(".reveal:not(.is-visible)");
 
   if (!reduceMotion.matches && "IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
@@ -420,7 +516,7 @@ function initReveal() {
 
 function bindContent(content) {
   pageState.content = content;
-  pageState.formSuccessMessage = content.contact.form.successMessage || "";
+  pageState.formSuccessMessage = content.contact?.form?.successMessage || "";
 
   setDocumentMeta(content);
   bindText(content);
@@ -430,6 +526,8 @@ function bindContent(content) {
   bindEmbeds(content);
   setupHeroMedia(content);
   setupHeroShowcase(content);
+  renderFullGallery();
+  syncGalleryFilterButtons();
   setupMenuLabels();
 }
 
@@ -449,6 +547,8 @@ async function initPage() {
   setupMenu();
   setupForm();
   setupLightbox();
+  setupGalleryFilters();
+  setupElementorOverlay();
   initReveal();
   syncHeaderState();
   window.addEventListener("scroll", syncHeaderState, { passive: true });

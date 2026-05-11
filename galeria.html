@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <title>Galeria | Za Jeziorem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2026-05-11-1">
+</head>
+<body class="gallery-page">
+  <a class="skip-link" href="#main-content" data-content="site.skipLink"></a>
+
+  <div class="top-bar" role="status" aria-live="polite">
+    <div class="shell">
+      <p>Strona w wersji demonstracyjnej. Trwają prace deweloperskie.</p>
+    </div>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="shell site-header__inner">
+      <a class="brand" href="index.html#top" data-aria-label-content="site.brand.ariaLabel">
+        <span class="brand__name" data-content="site.brand.name"></span>
+        <span class="brand__place" data-content="site.brand.place"></span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        data-aria-label-open="site.menu.openLabel"
+        data-aria-label-close="site.menu.closeLabel"
+      >
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+        <span class="menu-toggle__line"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" data-aria-label-content="site.navigationAriaLabel">
+        <a href="index.html#o-obiekcie" data-content="site.navigation.0.label"></a>
+        <a href="index.html#noclegi" data-content="site.navigation.1.label"></a>
+        <a href="index.html#przyjecia" data-content="site.navigation.2.label"></a>
+        <a href="index.html#konferencje" data-content="site.navigation.3.label"></a>
+        <a href="index.html#okolica" data-content="site.navigation.4.label"></a>
+        <a href="index.html#galeria" data-content="site.navigation.5.label"></a>
+        <a href="index.html#kontakt" data-content="site.navigation.6.label"></a>
+        <a class="button button--small nav-cta" href="index.html#kontakt" data-content="site.headerCta.label"></a>
+      </nav>
+
+      <a class="button button--small site-header__cta" href="index.html#kontakt" data-content="site.headerCta.label"></a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="gallery-page-hero" id="top" data-section-label="GALLERY HERO">
+      <div class="gallery-page-hero__media" aria-hidden="true">
+        <img data-image-src="fullGallery.heroImage.src" data-image-alt="fullGallery.heroImage.alt" loading="eager">
+      </div>
+      <div class="gallery-page-hero__veil" aria-hidden="true"></div>
+      <div class="gallery-page-hero__mist" aria-hidden="true"></div>
+      <div class="shell gallery-page-hero__inner reveal">
+        <p class="eyebrow" data-content="fullGallery.eyebrow"></p>
+        <h1 data-content="fullGallery.title"></h1>
+        <p data-content="fullGallery.lead"></p>
+        <div class="gallery-page-hero__actions">
+          <a class="button button--primary" data-content="fullGallery.backLink.label" data-link="fullGallery.backLink.href"></a>
+          <a class="button button--ghost-light" href="index.html#kontakt">Zapytaj o termin</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section full-gallery-section" data-section-label="FULL GALLERY">
+      <div class="shell">
+        <div class="full-gallery-header reveal">
+          <p class="eyebrow" data-content="gallery.eyebrow"></p>
+          <h2 data-content="gallery.title"></h2>
+        </div>
+
+        <div class="gallery-filters reveal" role="tablist" aria-label="Filtry galerii">
+          <button class="gallery-filter is-active" type="button" data-gallery-filter="all" data-content="fullGallery.filters.0.label" aria-pressed="true"></button>
+          <button class="gallery-filter" type="button" data-gallery-filter="pokoje" data-content="fullGallery.filters.1.label" aria-pressed="false"></button>
+          <button class="gallery-filter" type="button" data-gallery-filter="obiekt" data-content="fullGallery.filters.2.label" aria-pressed="false"></button>
+          <button class="gallery-filter" type="button" data-gallery-filter="okolica" data-content="fullGallery.filters.3.label" aria-pressed="false"></button>
+        </div>
+
+        <div class="full-gallery-grid reveal" data-full-gallery-grid></div>
+        <p class="full-gallery-empty reveal" data-full-gallery-empty hidden data-content="fullGallery.emptyMessage"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-section-label="FOOTER">
+    <div class="shell site-footer__grid">
+      <div>
+        <a class="brand brand--footer" href="index.html#top">
+          <span class="brand__name" data-content="site.brand.name"></span>
+          <span class="brand__place" data-content="site.brand.place"></span>
+        </a>
+        <p class="site-footer__copy" data-content="footer.copy"></p>
+      </div>
+
+      <nav class="footer-nav" data-aria-label-content="footer.navigationAriaLabel">
+        <a href="index.html#o-obiekcie" data-content="site.navigation.0.label"></a>
+        <a href="index.html#noclegi" data-content="site.navigation.1.label"></a>
+        <a href="index.html#przyjecia" data-content="site.navigation.2.label"></a>
+        <a href="index.html#konferencje" data-content="site.navigation.3.label"></a>
+        <a href="index.html#okolica" data-content="site.navigation.4.label"></a>
+        <a href="index.html#galeria" data-content="site.navigation.5.label"></a>
+        <a href="index.html#kontakt" data-content="site.navigation.6.label"></a>
+      </nav>
+    </div>
+    <div class="shell site-footer__bottom">
+      <p data-content="footer.note"></p>
+    </div>
+  </footer>
+
+  <div class="elementor-grid-overlay" aria-hidden="true"></div>
+  <button class="elementor-grid-toggle" type="button" data-grid-toggle aria-pressed="false">🔲 Pokaż siatkę Elementor</button>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" type="button" aria-label="Zamknij podgląd zdjęcia">×</button>
+    <img class="lightbox__image" src="" alt="">
+  </div>
+
+  <script src="script.js?v=2026-05-11-1"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@
   "site": {
     "lang": "pl",
     "title": "Za Jeziorem | Sztum",
-    "metaDescription": "Za Jeziorem w Sztumie - noclegi, przyjęcia rodzinne, kameralne wydarzenia i spotkania firmowe blisko jeziora i zieleni.",
+    "metaDescription": "Za Jeziorem w Sztumie - rodzinny pensjonat z noclegami, przyjęciami i spokojnym wypoczynkiem blisko jeziora.",
     "skipLink": "Przejdź do treści",
     "brand": {
       "name": "Za Jeziorem",
@@ -33,6 +33,10 @@
   },
   "hero": {
     "ariaLabel": "Wprowadzenie",
+    "logo": {
+      "src": "media/logo-hero.png",
+      "alt": "Logo obiektu Za Jeziorem"
+    },
     "background": [
       {
         "src": "media/696526792.jpg",
@@ -49,9 +53,21 @@
       {
         "src": "media/696527296.jpg",
         "alt": "Za Jeziorem od strony wjazdu i dziedzińca"
+      },
+      {
+        "src": "media/dron1.jpg",
+        "alt": "Widok obiektu Za Jeziorem i zielonej okolicy z lotu ptaka"
+      },
+      {
+        "src": "media/dron2.jpg",
+        "alt": "Szerokie ujęcie obiektu Za Jeziorem i jego otoczenia"
+      },
+      {
+        "src": "media/dron3.jpg",
+        "alt": "Za Jeziorem w spokojnym, jasnym otoczeniu zieleni"
       }
     ],
-    "eyebrow": "Sztum · jezioro · noclegi · przyjęcia",
+    "eyebrow": "Sztum",
     "title": "Za Jeziorem",
     "lead": "Kameralny pensjonat blisko jeziora, gdzie pobyt łączy ciszę, elegancki detal i wygodę nowego obiektu.",
     "text": "Za Jeziorem w Sztumie łączy noclegi, rodzinne uroczystości i spokojny wypoczynek. Zaledwie kilka minut spaceru od jeziora goście mają do dyspozycji ogród, taras, bezpłatne rowery i prywatny parking.",
@@ -81,26 +97,29 @@
       "text": "Mini galeria pokazuje obecny charakter miejsca: nowy budynek, dopracowane pokoje i jasną, uporządkowaną estetykę.",
       "slides": [
         {
-          "src": "media/696526792.jpg",
-          "alt": "Front obiektu Za Jeziorem z alejką i zadbaną zielenią"
+          "src": "media/dron1.jpg",
+          "alt": "Widok obiektu Za Jeziorem z lotu ptaka"
         },
         {
-          "src": "media/696526669.jpg",
-          "alt": "Pokój dwuosobowy z dużym łóżkiem i wysokim oknem"
+          "src": "media/pokoj4.jpg",
+          "alt": "Nowoczesny pokój z dużym łóżkiem i dopracowanym detalem"
         },
         {
-          "src": "media/703751902.jpg",
-          "alt": "Nowoczesna łazienka z prysznicem"
+          "src": "media/696526490.jpg",
+          "alt": "Sala przygotowana na eleganckie przyjęcie"
         }
       ]
     }
   },
   "proof": {
+    "badgeLabel": "Booking.com",
+    "stars": "★★★★★",
+    "sourceNote": "Oceny na podstawie zweryfikowanych opinii gości — Booking.com",
     "items": [
       {
         "value": "9.4/10",
         "label": "Ocena gości",
-        "text": "Na podstawie 39 opinii na Bookingu."
+        "text": "Na podstawie 39 opinii potwierdzających bardzo wysoki standard pobytu."
       },
       {
         "value": "9.7",
@@ -108,14 +127,14 @@
         "text": "Najmocniej oceniany aspekt całego pobytu."
       },
       {
-        "value": "3 min",
-        "label": "Do jeziora",
-        "text": "Goście regularnie podkreślają bliskość wody i spacerów."
+        "value": "9.5",
+        "label": "Komfort",
+        "text": "Doceniane są świeże wnętrza, wygodne łóżka i spokojny rytm miejsca."
       },
       {
-        "value": "4 typy",
-        "label": "Pokoi",
-        "text": "Dwuosobowy, twin, trzyosobowy i rodzinny."
+        "value": "9.4",
+        "label": "Personel",
+        "text": "Goście podkreślają pomocność i serdeczny kontakt z gospodarzami."
       }
     ]
   },
@@ -138,8 +157,8 @@
         "title": "Nowe wnętrza, czystość i wygoda",
         "text": "Najmocniejszy sygnał z Bookingu to świeży standard obiektu: nowy budynek, schludne pokoje, prywatne łazienki i bardzo dobra ocena czystości. To powinno pracować na zaufanie od pierwszych sekund.",
         "image": {
-          "src": "media/703751379.jpg",
-          "alt": "Pokój rodzinny z sofą, biurkiem i telewizorem"
+          "src": "media/pokoj7.jpg",
+          "alt": "Pokój rodzinny z eleganckim wykończeniem i miejscem do odpoczynku"
         }
       },
       {
@@ -147,8 +166,8 @@
         "title": "Spacer nad jezioro i baza do okolicy",
         "text": "W recenzjach regularnie wraca cisza, bliskość jeziora i dobry punkt wypadowy w stronę Sztumu oraz Malborka. To bardziej klimat pobytu niż klasyczna atrakcja i właśnie tak warto to komunikować.",
         "image": {
-          "src": "media/696527296.jpg",
-          "alt": "Widok na obiekt Za Jeziorem od strony podjazdu"
+          "src": "media/dron1.jpg",
+          "alt": "Widok obiektu i okolicy z lotu ptaka"
         }
       }
     ]
@@ -157,6 +176,7 @@
     "eyebrow": "Miejsce z charakterem",
     "title": "Miejsce, do którego przyjeżdża się po spokój",
     "lead": "Za Jeziorem to nowy, kameralny obiekt w Sztumie przy ul. Zajezierze 35 D. Na Bookingu goście najmocniej podkreślają ciszę, czystość, świeże wnętrza i położenie blisko jeziora oraz spacerowych tras wokół wody.",
+    "familyNote": "Za Jeziorem to obiekt prowadzony przez rodzinę — z troską o każdy detal pobytu i serdecznością, którą goście zauważają w opiniach. To nie hotel z recepcją 24h, ale miejsce, gdzie zawsze można zapytać, ustalić coś indywidualnie i poczuć się jak u dobrych znajomych w pięknym miejscu.",
     "pillsAriaLabel": "Atuty obiektu",
     "pills": [
       "Śniadania i pobyty wypoczynkowe",
@@ -164,7 +184,7 @@
       "Dobra baza do Sztumu i Malborka"
     ],
     "image": {
-      "src": "media/696527296.jpg",
+      "src": "media/dron3.jpg",
       "alt": "Front obiektu Za Jeziorem od strony dziedzińca i wjazdu",
       "caption": "Nowy obiekt z elegancką fasadą, tarasem i spokojnym otoczeniem."
     }
@@ -214,16 +234,20 @@
     "galleryAriaLabel": "Zdjęcia pokoi",
     "gallery": [
       {
-        "src": "media/696526669.jpg",
-        "alt": "Pokój dwuosobowy z prywatną łazienką i wysokim oknem"
+        "src": "media/pokoj1.jpg",
+        "alt": "Pokój dwuosobowy z wysokim oknem i elegancką zieloną narzutą"
       },
       {
-        "src": "media/703751379.jpg",
-        "alt": "Pokój rodzinny z sofą, biurkiem i łóżkiem małżeńskim"
+        "src": "media/pokoj2.jpg",
+        "alt": "Jasny pokój z wygodnym łóżkiem i nowym wyposażeniem"
       },
       {
-        "src": "media/703751902.jpg",
-        "alt": "Nowoczesna prywatna łazienka z prysznicem"
+        "src": "media/pokoj4.jpg",
+        "alt": "Pokój z dużym łóżkiem i dopracowanym detalem wykończenia"
+      },
+      {
+        "src": "media/pokoj7.jpg",
+        "alt": "Pokój rodzinny przygotowany do dłuższego, wygodnego pobytu"
       }
     ]
   },
@@ -281,16 +305,16 @@
     "mosaicAriaLabel": "Kadry z okolicy",
     "mosaic": [
       {
-        "src": "media/731627348.jpg",
-        "alt": "Taras obiektu z kawą i deserem w ogrodowym otoczeniu"
+        "src": "media/dron1.jpg",
+        "alt": "Widok obiektu i zielonej okolicy z lotu ptaka"
       },
       {
         "src": "media/697245597.jpg",
         "alt": "Zielone otoczenie obiektu i zadbany teren wokół budynku"
       },
       {
-        "src": "media/696526792.jpg",
-        "alt": "Front budynku z szerokim dojściem i uporządkowaną zielenią"
+        "src": "media/731627348.jpg",
+        "alt": "Taras obiektu z kawą i deserem w ogrodowym otoczeniu"
       }
     ],
     "cards": [
@@ -309,7 +333,16 @@
   "gallery": {
     "eyebrow": "Galeria",
     "title": "Kadry z obiektu i jego spokojnego otoczenia",
+    "cta": {
+      "label": "Zobacz całą galerię →",
+      "href": "galeria.html"
+    },
     "items": [
+      {
+        "src": "media/dron1.jpg",
+        "alt": "Obiekt Za Jeziorem i otoczenie z lotu ptaka",
+        "caption": "Widok z lotu ptaka"
+      },
       {
         "src": "media/696526792.jpg",
         "alt": "Front obiektu Za Jeziorem z aleją prowadzącą do wejścia",
@@ -321,29 +354,19 @@
         "caption": "Taras i fasada"
       },
       {
-        "src": "media/696527296.jpg",
-        "alt": "Obiekt Za Jeziorem od strony bramy i podjazdu",
-        "caption": "Strefa wjazdu"
-      },
-      {
-        "src": "media/696526669.jpg",
+        "src": "media/pokoj1.jpg",
         "alt": "Pokój dwuosobowy z zieloną narzutą i wysokim oknem",
         "caption": "Pokój dwuosobowy"
       },
       {
-        "src": "media/703751379.jpg",
-        "alt": "Pokój rodzinny z sofą, biurkiem i telewizorem",
+        "src": "media/pokoj4.jpg",
+        "alt": "Nowoczesny pokój z dużym łóżkiem i jasnym wnętrzem",
+        "caption": "Nowy standard pokoi"
+      },
+      {
+        "src": "media/pokoj7.jpg",
+        "alt": "Pokój rodzinny z dopracowanym wyposażeniem",
         "caption": "Pokój rodzinny"
-      },
-      {
-        "src": "media/703751902.jpg",
-        "alt": "Nowoczesna łazienka z kabiną prysznicową",
-        "caption": "Prywatna łazienka"
-      },
-      {
-        "src": "media/696525905.jpg",
-        "alt": "Wysokie okno z zasłonami w pokoju gościnnym",
-        "caption": "Detal pokoju"
       },
       {
         "src": "media/696526490.jpg",
@@ -354,12 +377,25 @@
         "src": "media/731627348.jpg",
         "alt": "Deser i kawa na tarasie przy ogrodzie",
         "caption": "Taras i chwila relaksu"
+      },
+      {
+        "src": "media/dron2.jpg",
+        "alt": "Szerokie ujęcie obiektu Za Jeziorem i jego otoczenia",
+        "caption": "Obiekt w zieleni"
       }
     ]
   },
   "reviews": {
     "eyebrow": "Opinie gości",
     "title": "Co wraca w publicznych recenzjach",
+    "summary": {
+      "stars": "★★★★★",
+      "score": "9.4 / 10",
+      "label": "Ocena gości · 39 opinii",
+      "metricOne": "Czystość: 9.7",
+      "metricTwo": "Komfort: 9.5",
+      "metricThree": "Personel: 9.4"
+    },
     "items": [
       "Goście najczęściej chwalą ciszę, spokojną okolicę i to, że do jeziora można dojść w kilka minut.",
       "Bardzo mocno wybrzmiewają czystość, świeże wyposażenie i nowy standard pokoi oraz łazienek.",
@@ -481,5 +517,129 @@
     "copy": "Noclegi, wydarzenia i spotkania w otoczeniu natury. Kameralny obiekt w Sztumie.",
     "navigationAriaLabel": "Nawigacja stopki",
     "note": "Projekt testowy strony. Treści, zdjęcia i dane kontaktowe do weryfikacji przed publikacją."
+  },
+  "fullGallery": {
+    "eyebrow": "Galeria Za Jeziorem",
+    "title": "Pełna galeria obiektu",
+    "lead": "Wybrane kadry pokazują pokoje, sam obiekt i spokojne otoczenie blisko jeziora. Możesz filtrować zdjęcia według kategorii i otwierać je w pełnym rozmiarze.",
+    "heroImage": {
+      "src": "media/dron1.jpg",
+      "alt": "Za Jeziorem i zielona okolica z lotu ptaka"
+    },
+    "backLink": {
+      "label": "Wróć na stronę główną",
+      "href": "index.html#galeria"
+    },
+    "filters": [
+      {
+        "label": "Wszystkie",
+        "value": "all"
+      },
+      {
+        "label": "Pokoje",
+        "value": "pokoje"
+      },
+      {
+        "label": "Obiekt",
+        "value": "obiekt"
+      },
+      {
+        "label": "Okolica",
+        "value": "okolica"
+      }
+    ],
+    "emptyMessage": "Brak zdjęć w tej kategorii.",
+    "items": [
+      {
+        "src": "media/pokoj1.jpg",
+        "alt": "Pokój dwuosobowy z zieloną narzutą i wysokim oknem",
+        "caption": "Pokój dwuosobowy",
+        "category": "pokoje"
+      },
+      {
+        "src": "media/pokoj2.jpg",
+        "alt": "Jasny pokój z wygodnym łóżkiem i nowym wyposażeniem",
+        "caption": "Pokój z dużym łóżkiem",
+        "category": "pokoje"
+      },
+      {
+        "src": "media/pokoj3.jpg",
+        "alt": "Pokój przygotowany do wygodnego pobytu w spokojnym stylu",
+        "caption": "Pokój w jasnym stylu",
+        "category": "pokoje"
+      },
+      {
+        "src": "media/pokoj4.jpg",
+        "alt": "Nowoczesny pokój z dużym łóżkiem i eleganckim detalem",
+        "caption": "Nowy standard wnętrz",
+        "category": "pokoje"
+      },
+      {
+        "src": "media/pokoj6.jpg",
+        "alt": "Pokój z dopracowanym wyposażeniem i spokojną kolorystyką",
+        "caption": "Pokój dla dłuższego pobytu",
+        "category": "pokoje"
+      },
+      {
+        "src": "media/pokoj7.jpg",
+        "alt": "Pokój rodzinny z wygodnym układem i jasnym wykończeniem",
+        "caption": "Pokój rodzinny",
+        "category": "pokoje"
+      },
+      {
+        "src": "media/pokoj8.jpg",
+        "alt": "Przytulny pokój z nowym wyposażeniem i prywatnym charakterem",
+        "caption": "Pokój gościnny",
+        "category": "pokoje"
+      },
+      {
+        "src": "media/696526792.jpg",
+        "alt": "Front obiektu Za Jeziorem z zadbaną aleją wejściową",
+        "caption": "Front obiektu",
+        "category": "obiekt"
+      },
+      {
+        "src": "media/535270259.jpg",
+        "alt": "Taras i jasna elewacja obiektu Za Jeziorem",
+        "caption": "Taras i fasada",
+        "category": "obiekt"
+      },
+      {
+        "src": "media/696527296.jpg",
+        "alt": "Obiekt Za Jeziorem od strony bramy i podjazdu",
+        "caption": "Strefa wjazdu",
+        "category": "obiekt"
+      },
+      {
+        "src": "media/696526490.jpg",
+        "alt": "Sala przygotowana na eleganckie przyjęcie",
+        "caption": "Sala na wydarzenia",
+        "category": "obiekt"
+      },
+      {
+        "src": "media/731627348.jpg",
+        "alt": "Kawa i deser na tarasie w ogrodowym otoczeniu",
+        "caption": "Taras i relaks",
+        "category": "obiekt"
+      },
+      {
+        "src": "media/dron1.jpg",
+        "alt": "Obiekt i zielona okolica z lotu ptaka",
+        "caption": "Okolica z góry",
+        "category": "okolica"
+      },
+      {
+        "src": "media/dron2.jpg",
+        "alt": "Szerokie ujęcie obiektu Za Jeziorem i jego zielonego otoczenia",
+        "caption": "Obiekt w zieleni",
+        "category": "okolica"
+      },
+      {
+        "src": "media/dron3.jpg",
+        "alt": "Spokojne otoczenie obiektu i dojazd do pensjonatu",
+        "caption": "Otoczenie pensjonatu",
+        "category": "okolica"
+      }
+    ]
   }
 }
