@@ -8,7 +8,7 @@
       "name": "Za Jeziorem",
       "place": "Sztum",
       "logo": {
-        "src": "media/logo-hero.png",
+        "src": "media-wp/logo-hero.png",
         "alt": "Logo Agroturystyka Za Jeziorem"
       },
       "ariaLabel": "Za Jeziorem, przejdź do początku strony"
@@ -38,32 +38,32 @@
   "hero": {
     "ariaLabel": "Wprowadzenie",
     "logo": {
-      "src": "media/logo-hero.png",
+      "src": "media-wp/logo-hero.png",
       "alt": "Logo obiektu Za Jeziorem"
     },
     "background": [
       {
-        "src": "media/697245597.jpg",
+        "src": "media-wp/697245597.jpg",
         "alt": "Boczna elewacja obiektu w otoczeniu zieleni",
         "position": "center center"
       },
       {
-        "src": "media/696527296.jpg",
+        "src": "media-wp/696527296.jpg",
         "alt": "Za Jeziorem od strony wjazdu i dziedzińca",
         "position": "center center"
       },
       {
-        "src": "media/dron3.jpg",
+        "src": "media-wp/dron3.jpg",
         "alt": "Za Jeziorem w spokojnym, jasnym otoczeniu zieleni",
         "position": "center 58%"
       },
       {
-        "src": "media/696527296.jpg",
+        "src": "media-wp/696527296.jpg",
         "alt": "Za Jeziorem od strony wjazdu i dziedzińca",
         "position": "center 44%"
       },
       {
-        "src": "media/696526792.jpg",
+        "src": "media-wp/696526792.jpg",
         "alt": "Front obiektu Za Jeziorem z alejką prowadzącą do wejścia",
         "position": "center 52%"
       }
@@ -98,15 +98,15 @@
       "text": "Mini galeria pokazuje obecny charakter miejsca: nowy budynek, dopracowane pokoje i jasną, uporządkowaną estetykę.",
       "slides": [
         {
-          "src": "media/dron1.jpg",
+          "src": "media-wp/dron1.jpg",
           "alt": "Widok obiektu Za Jeziorem z lotu ptaka"
         },
         {
-          "src": "media/pokoj4.jpg",
+          "src": "media-wp/pokoj4.jpg",
           "alt": "Nowoczesny pokój z dużym łóżkiem i dopracowanym detalem"
         },
         {
-          "src": "media/696526490.jpg",
+          "src": "media-wp/696526490.jpg",
           "alt": "Sala przygotowana na eleganckie przyjęcie"
         }
       ]
@@ -149,7 +149,7 @@
         "title": "Śniadanie i spokojny start dnia",
         "text": "Na Bookingu pojawia się informacja o śniadaniach i to właśnie ten element wraca w recenzjach jako ważna część pobytu. Warto go pokazywać jako konkretny moment doświadczenia, a nie tylko punkt w liście udogodnień.",
         "image": {
-          "src": "media/731627348.jpg",
+          "src": "media-wp/731627348.jpg",
           "alt": "Kawa i deser podane na tarasie w ogrodzie"
         }
       },
@@ -158,7 +158,7 @@
         "title": "Nowe wnętrza, czystość i wygoda",
         "text": "Najmocniejszy sygnał z Bookingu to świeży standard obiektu: nowy budynek, schludne pokoje, prywatne łazienki i bardzo dobra ocena czystości. To powinno pracować na zaufanie od pierwszych sekund.",
         "image": {
-          "src": "media/pokoj7.jpg",
+          "src": "media-wp/pokoj7.jpg",
           "alt": "Pokój rodzinny z eleganckim wykończeniem i miejscem do odpoczynku"
         }
       },
@@ -167,7 +167,7 @@
         "title": "Spacer nad jezioro i baza do okolicy",
         "text": "W recenzjach regularnie wraca cisza, bliskość jeziora i dobry punkt wypadowy w stronę Sztumu oraz Malborka. To bardziej klimat pobytu niż klasyczna atrakcja i właśnie tak warto to komunikować.",
         "image": {
-          "src": "media/dron1.jpg",
+          "src": "media-wp/dron1.jpg",
           "alt": "Widok obiektu i okolicy z lotu ptaka"
         }
       }
@@ -185,7 +185,7 @@
       "Dobra baza do Sztumu i Malborka"
     ],
     "image": {
-      "src": "media/dron3.jpg",
+      "src": "media-wp/dron3.jpg",
       "alt": "Front obiektu Za Jeziorem od strony dziedzińca i wjazdu",
       "caption": "Nowy obiekt z elegancką fasadą, tarasem i spokojnym otoczeniem."
     }
@@ -235,19 +235,19 @@
     "galleryAriaLabel": "Zdjęcia pokoi",
     "gallery": [
       {
-        "src": "media/pokoj1.jpg",
+        "src": "media-wp/pokoj1.jpg",
         "alt": "Pokój dwuosobowy z wysokim oknem i elegancką zieloną narzutą"
       },
       {
-        "src": "media/pokoj2.jpg",
+        "src": "media-wp/pokoj2.jpg",
         "alt": "Jasny pokój z wygodnym łóżkiem i nowym wyposażeniem"
       },
       {
-        "src": "media/pokoj4.jpg",
+        "src": "media-wp/pokoj4.jpg",
         "alt": "Pokój z dużym łóżkiem i dopracowanym detalem wykończenia"
       },
       {
-        "src": "media/pokoj7.jpg",
+        "src": "media-wp/pokoj7.jpg",
         "alt": "Pokój rodzinny przygotowany do dłuższego, wygodnego pobytu"
       }
     ]
@@ -257,7 +257,7 @@
     "title": "Wydarzenia w spokojnej oprawie",
     "lead": "Rodzinne uroczystości, kameralne przyjęcia i spotkania przy stole potrzebują miejsca, które nie przytłacza. Za Jeziorem daje przestrzeń, bliskość natury i atmosferę, w której goście mogą po prostu dobrze się czuć.",
     "image": {
-      "src": "media/696526490.jpg",
+      "src": "media-wp/696526490.jpg",
       "alt": "Sala przygotowana na przyjęcie z elegancko nakrytymi stołami"
     },
     "tagsAriaLabel": "Rodzaje przyjęć",
@@ -291,7 +291,7 @@
       "href": "#kontakt"
     },
     "image": {
-      "src": "media/731627348.jpg",
+      "src": "media-wp/731627348.jpg",
       "alt": "Kawa i deser serwowane na tarasie w ogrodzie"
     },
     "sideCard": {
@@ -306,15 +306,15 @@
     "mosaicAriaLabel": "Kadry z okolicy",
     "mosaic": [
       {
-        "src": "media/dron1.jpg",
+        "src": "media-wp/dron1.jpg",
         "alt": "Widok obiektu i zielonej okolicy z lotu ptaka"
       },
       {
-        "src": "media/697245597.jpg",
+        "src": "media-wp/697245597.jpg",
         "alt": "Zielone otoczenie obiektu i zadbany teren wokół budynku"
       },
       {
-        "src": "media/731627348.jpg",
+        "src": "media-wp/731627348.jpg",
         "alt": "Taras obiektu z kawą i deserem w ogrodowym otoczeniu"
       }
     ],
@@ -340,47 +340,47 @@
     },
     "items": [
       {
-        "src": "media/dron1.jpg",
+        "src": "media-wp/dron1.jpg",
         "alt": "Obiekt Za Jeziorem i otoczenie z lotu ptaka",
         "caption": "Widok z lotu ptaka"
       },
       {
-        "src": "media/696526792.jpg",
+        "src": "media-wp/696526792.jpg",
         "alt": "Front obiektu Za Jeziorem z aleją prowadzącą do wejścia",
         "caption": "Front od strony dziedzińca"
       },
       {
-        "src": "media/535270259.jpg",
+        "src": "media-wp/535270259.jpg",
         "alt": "Taras i jasna elewacja obiektu Za Jeziorem",
         "caption": "Taras i fasada"
       },
       {
-        "src": "media/pokoj1.jpg",
+        "src": "media-wp/pokoj1.jpg",
         "alt": "Pokój dwuosobowy z zieloną narzutą i wysokim oknem",
         "caption": "Pokój dwuosobowy"
       },
       {
-        "src": "media/pokoj4.jpg",
+        "src": "media-wp/pokoj4.jpg",
         "alt": "Nowoczesny pokój z dużym łóżkiem i jasnym wnętrzem",
         "caption": "Nowy standard pokoi"
       },
       {
-        "src": "media/pokoj7.jpg",
+        "src": "media-wp/pokoj7.jpg",
         "alt": "Pokój rodzinny z dopracowanym wyposażeniem",
         "caption": "Pokój rodzinny"
       },
       {
-        "src": "media/696526490.jpg",
+        "src": "media-wp/696526490.jpg",
         "alt": "Sala przygotowana na uroczystość z eleganckim nakryciem",
         "caption": "Przyjęcia i wydarzenia"
       },
       {
-        "src": "media/731627348.jpg",
+        "src": "media-wp/731627348.jpg",
         "alt": "Deser i kawa na tarasie przy ogrodzie",
         "caption": "Taras i chwila relaksu"
       },
       {
-        "src": "media/dron2.jpg",
+        "src": "media-wp/dron2.jpg",
         "alt": "Szerokie ujęcie obiektu Za Jeziorem i jego otoczenia",
         "caption": "Obiekt w zieleni"
       }
@@ -524,7 +524,7 @@
     "title": "Pełna galeria obiektu",
     "lead": "Wybrane kadry pokazują pokoje, sam obiekt i spokojne otoczenie blisko jeziora. Możesz filtrować zdjęcia według kategorii i otwierać je w pełnym rozmiarze.",
     "heroImage": {
-      "src": "media/dron1.jpg",
+      "src": "media-wp/dron1.jpg",
       "alt": "Za Jeziorem i zielona okolica z lotu ptaka"
     },
     "backLink": {
@@ -552,91 +552,91 @@
     "emptyMessage": "Brak zdjęć w tej kategorii.",
     "items": [
       {
-        "src": "media/pokoj1.jpg",
+        "src": "media-wp/pokoj1.jpg",
         "alt": "Pokój dwuosobowy z zieloną narzutą i wysokim oknem",
         "caption": "Pokój dwuosobowy",
         "category": "pokoje"
       },
       {
-        "src": "media/pokoj2.jpg",
+        "src": "media-wp/pokoj2.jpg",
         "alt": "Jasny pokój z wygodnym łóżkiem i nowym wyposażeniem",
         "caption": "Pokój z dużym łóżkiem",
         "category": "pokoje"
       },
       {
-        "src": "media/pokoj3.jpg",
+        "src": "media-wp/pokoj3.jpg",
         "alt": "Pokój przygotowany do wygodnego pobytu w spokojnym stylu",
         "caption": "Pokój w jasnym stylu",
         "category": "pokoje"
       },
       {
-        "src": "media/pokoj4.jpg",
+        "src": "media-wp/pokoj4.jpg",
         "alt": "Nowoczesny pokój z dużym łóżkiem i eleganckim detalem",
         "caption": "Nowy standard wnętrz",
         "category": "pokoje"
       },
       {
-        "src": "media/pokoj6.jpg",
+        "src": "media-wp/pokoj6.jpg",
         "alt": "Pokój z dopracowanym wyposażeniem i spokojną kolorystyką",
         "caption": "Pokój dla dłuższego pobytu",
         "category": "pokoje"
       },
       {
-        "src": "media/pokoj7.jpg",
+        "src": "media-wp/pokoj7.jpg",
         "alt": "Pokój rodzinny z wygodnym układem i jasnym wykończeniem",
         "caption": "Pokój rodzinny",
         "category": "pokoje"
       },
       {
-        "src": "media/pokoj8.jpg",
+        "src": "media-wp/pokoj8.jpg",
         "alt": "Przytulny pokój z nowym wyposażeniem i prywatnym charakterem",
         "caption": "Pokój gościnny",
         "category": "pokoje"
       },
       {
-        "src": "media/696526792.jpg",
+        "src": "media-wp/696526792.jpg",
         "alt": "Front obiektu Za Jeziorem z zadbaną aleją wejściową",
         "caption": "Front obiektu",
         "category": "obiekt"
       },
       {
-        "src": "media/535270259.jpg",
+        "src": "media-wp/535270259.jpg",
         "alt": "Taras i jasna elewacja obiektu Za Jeziorem",
         "caption": "Taras i fasada",
         "category": "obiekt"
       },
       {
-        "src": "media/696527296.jpg",
+        "src": "media-wp/696527296.jpg",
         "alt": "Obiekt Za Jeziorem od strony bramy i podjazdu",
         "caption": "Strefa wjazdu",
         "category": "obiekt"
       },
       {
-        "src": "media/696526490.jpg",
+        "src": "media-wp/696526490.jpg",
         "alt": "Sala przygotowana na eleganckie przyjęcie",
         "caption": "Sala na wydarzenia",
         "category": "obiekt"
       },
       {
-        "src": "media/731627348.jpg",
+        "src": "media-wp/731627348.jpg",
         "alt": "Kawa i deser na tarasie w ogrodowym otoczeniu",
         "caption": "Taras i relaks",
         "category": "obiekt"
       },
       {
-        "src": "media/dron1.jpg",
+        "src": "media-wp/dron1.jpg",
         "alt": "Obiekt i zielona okolica z lotu ptaka",
         "caption": "Okolica z góry",
         "category": "okolica"
       },
       {
-        "src": "media/dron2.jpg",
+        "src": "media-wp/dron2.jpg",
         "alt": "Szerokie ujęcie obiektu Za Jeziorem i jego zielonego otoczenia",
         "caption": "Obiekt w zieleni",
         "category": "okolica"
       },
       {
-        "src": "media/dron3.jpg",
+        "src": "media-wp/dron3.jpg",
         "alt": "Spokojne otoczenie obiektu i dojazd do pensjonatu",
         "caption": "Otoczenie pensjonatu",
         "category": "okolica"
@@ -997,3 +997,4 @@
     }
   }
 }
+
