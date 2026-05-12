@@ -19,10 +19,12 @@
     </div>
   </div>
 
-  <header class="site-header" id="site-header">
+  <header class="site-header" id="site-header" data-section-label="HEADER" data-guide-key="header">
     <div class="shell site-header__inner">
       <a class="brand" href="index.html#top" data-aria-label-content="site.brand.ariaLabel">
-        <span class="brand__name" data-content="site.brand.name"></span>
+        <span class="brand__badge">
+          <img class="brand__logo" data-image-src="site.brand.logo.src" data-image-alt="site.brand.logo.alt" loading="eager">
+        </span>
         <span class="brand__place" data-content="site.brand.place"></span>
       </a>
 
@@ -56,13 +58,13 @@
   </header>
 
   <main id="main-content">
-    <section class="gallery-page-hero" id="top" data-section-label="GALLERY HERO">
+    <section class="gallery-page-hero" id="top" data-section-label="GALLERY HERO" data-guide-key="galleryHero">
       <div class="gallery-page-hero__media" aria-hidden="true">
         <img data-image-src="fullGallery.heroImage.src" data-image-alt="fullGallery.heroImage.alt" loading="eager">
       </div>
       <div class="gallery-page-hero__veil" aria-hidden="true"></div>
       <div class="gallery-page-hero__mist" aria-hidden="true"></div>
-      <div class="shell gallery-page-hero__inner reveal">
+      <div class="shell gallery-page-hero__inner reveal" data-elementor-label="COPY / HERO">
         <p class="eyebrow" data-content="fullGallery.eyebrow"></p>
         <h1 data-content="fullGallery.title"></h1>
         <p data-content="fullGallery.lead"></p>
@@ -73,7 +75,7 @@
       </div>
     </section>
 
-    <section class="section full-gallery-section" data-section-label="FULL GALLERY">
+    <section class="section full-gallery-section" data-section-label="FULL GALLERY" data-guide-key="fullGallery">
       <div class="shell">
         <div class="full-gallery-header reveal">
           <p class="eyebrow" data-content="gallery.eyebrow"></p>
@@ -93,11 +95,13 @@
     </section>
   </main>
 
-  <footer class="site-footer" data-section-label="FOOTER">
+  <footer class="site-footer" data-section-label="FOOTER" data-guide-key="footer">
     <div class="shell site-footer__grid">
       <div>
         <a class="brand brand--footer" href="index.html#top">
-          <span class="brand__name" data-content="site.brand.name"></span>
+          <span class="brand__badge">
+            <img class="brand__logo" data-image-src="site.brand.logo.src" data-image-alt="site.brand.logo.alt" loading="lazy">
+          </span>
           <span class="brand__place" data-content="site.brand.place"></span>
         </a>
         <p class="site-footer__copy" data-content="footer.copy"></p>
@@ -119,7 +123,13 @@
   </footer>
 
   <div class="elementor-grid-overlay" aria-hidden="true"></div>
-  <button class="elementor-grid-toggle" type="button" data-grid-toggle aria-pressed="false">🔲 Pokaż siatkę Elementor</button>
+  <div class="elementor-tools" aria-label="Narzędzia diagnostyczne">
+    <button class="elementor-tools__button elementor-tools__button--primary" type="button" data-guide-toggle="sections" aria-pressed="false">🔲 Siatka</button>
+    <button class="elementor-tools__button" type="button" data-guide-toggle="layout" aria-pressed="false">Układ</button>
+    <button class="elementor-tools__button" type="button" data-guide-toggle="metrics" aria-pressed="false">Metryki</button>
+    <button class="elementor-tools__button" type="button" data-guide-toggle="comments" aria-pressed="false">Komentarze</button>
+    <button class="elementor-tools__button" type="button" data-guide-toggle="styles" aria-pressed="false">Style</button>
+  </div>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lightbox__close" type="button" aria-label="Zamknij podgląd zdjęcia">×</button>

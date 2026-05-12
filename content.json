@@ -7,6 +7,10 @@
     "brand": {
       "name": "Za Jeziorem",
       "place": "Sztum",
+      "logo": {
+        "src": "media/logo-hero.png",
+        "alt": "Logo Agroturystyka Za Jeziorem"
+      },
       "ariaLabel": "Za Jeziorem, przejdź do początku strony"
     },
     "menu": {
@@ -39,32 +43,29 @@
     },
     "background": [
       {
-        "src": "media/696526792.jpg",
-        "alt": "Front obiektu Za Jeziorem z alejką prowadzącą do wejścia"
-      },
-      {
-        "src": "media/535270259.jpg",
-        "alt": "Taras i elegancka fasada obiektu Za Jeziorem w słoneczny dzień"
-      },
-      {
         "src": "media/697245597.jpg",
-        "alt": "Boczna elewacja obiektu w otoczeniu zieleni"
+        "alt": "Boczna elewacja obiektu w otoczeniu zieleni",
+        "position": "center center"
       },
       {
         "src": "media/696527296.jpg",
-        "alt": "Za Jeziorem od strony wjazdu i dziedzińca"
-      },
-      {
-        "src": "media/dron1.jpg",
-        "alt": "Widok obiektu Za Jeziorem i zielonej okolicy z lotu ptaka"
-      },
-      {
-        "src": "media/dron2.jpg",
-        "alt": "Szerokie ujęcie obiektu Za Jeziorem i jego otoczenia"
+        "alt": "Za Jeziorem od strony wjazdu i dziedzińca",
+        "position": "center center"
       },
       {
         "src": "media/dron3.jpg",
-        "alt": "Za Jeziorem w spokojnym, jasnym otoczeniu zieleni"
+        "alt": "Za Jeziorem w spokojnym, jasnym otoczeniu zieleni",
+        "position": "center 58%"
+      },
+      {
+        "src": "media/696527296.jpg",
+        "alt": "Za Jeziorem od strony wjazdu i dziedzińca",
+        "position": "center 44%"
+      },
+      {
+        "src": "media/696526792.jpg",
+        "alt": "Front obiektu Za Jeziorem z alejką prowadzącą do wejścia",
+        "position": "center 52%"
       }
     ],
     "eyebrow": "Sztum",
@@ -641,5 +642,358 @@
         "category": "okolica"
       }
     ]
+  },
+  "elementorGuide": {
+    "controls": {
+      "sections": "🔲 Siatka",
+      "layout": "Układ",
+      "metrics": "Metryki",
+      "comments": "Komentarze",
+      "styles": "Style",
+      "commentButton": "Pokaż tip Codex",
+      "commentClose": "Ukryj tip"
+    },
+    "sections": {
+      "header": {
+        "label": "HEADER",
+        "elementor": "Theme Builder Header lub pierwszy kontener sticky z 3 obszarami: brand, menu, CTA.",
+        "widgets": [
+          "Logo / Image",
+          "Nav Menu",
+          "Button"
+        ],
+        "metrics": [
+          "Sticky top po pasku informacyjnym",
+          "Desktop: wysokość optyczna ok. 72-88px",
+          "Brand w kremowej kapsule, menu po prawej"
+        ],
+        "styles": [
+          "Tło po scrollu: kremowe szkło",
+          "Akcent CTA: burgund z logo",
+          "Menu linki: jasne na hero, ciemne po scrollu"
+        ],
+        "comment": "W Elementorze najłatwiej zrobić to jako osobny header globalny i tylko przepisać sticky, blur oraz kapsułę pod logo."
+      },
+      "hero": {
+        "label": "HERO",
+        "elementor": "Sekcja full width z tłem-slajderem, overlayem i inner containerem 60/40 lub 1 kolumna gdy chowasz showcase.",
+        "widgets": [
+          "Image z logo",
+          "Heading H1",
+          "Text Editor x2",
+          "Buttons x3",
+          "Pills / Icon List"
+        ],
+        "metrics": [
+          "Desktop padding-top: ok. 144px + pasek górny",
+          "Max szerokość copy: ok. 48rem",
+          "Gap przycisków: ok. 14px"
+        ],
+        "styles": [
+          "Logo w kremowym badge z blur i cieniem",
+          "Lewa strona overlayu mocniej przyciemniona pod białe copy",
+          "Primary CTA: burgund #4b1e2a, tekst jasny"
+        ],
+        "comment": "Najpierw odtwórz strukturę i maski tła, a zdjęcia podmieniaj na końcu. Czytelność copy zależy tu bardziej od overlayu niż od samej fotki."
+      },
+      "proof": {
+        "label": "PROOF",
+        "elementor": "Jedna sekcja z gridem 4 kafelków. Na desktopie: 1 większy badge + 3 karty statystyk.",
+        "widgets": [
+          "Container 4-col",
+          "Heading / Counter",
+          "Text Editor"
+        ],
+        "metrics": [
+          "Desktop: 4 kolumny, mobile: 1 kolumna",
+          "Karty: radius ok. 20px",
+          "Gap siatki: ok. 16px"
+        ],
+        "styles": [
+          "Pierwsza karta ma złoty tint i badge Booking",
+          "Wartość 9.4/10 ma mocniejszy rozmiar i złoty kolor",
+          "Tło sekcji płynnie wychodzi z hero"
+        ],
+        "comment": "To jest sekcja zaufania. W Elementorze warto spiąć ją jako jeden kontener z wewnętrznym gridem, a nie cztery luźne widgety."
+      },
+      "intro": {
+        "label": "INTRO",
+        "elementor": "Container 2-col: copy po lewej, obraz po prawej.",
+        "widgets": [
+          "Eyebrow + Heading",
+          "Text Editor",
+          "Callout box",
+          "Pills",
+          "Image + caption"
+        ],
+        "metrics": [
+          "Desktop: 2 kolumny 50/50",
+          "Gap między kolumnami: ok. 32-48px",
+          "Ramka rodzinnego akapitu z lewym akcentem"
+        ],
+        "styles": [
+          "Callout w jasnym tle z burgundowo-złotym akcentem",
+          "Pills na kremowym tle",
+          "Zdjęcie z dużym radius"
+        ],
+        "comment": "Rodzinny akapit warto w Elementorze zrobić jako osobny box w środku kolumny, nie jako zwykły akapit tekstowy."
+      },
+      "offer": {
+        "label": "OFFER",
+        "elementor": "Grid 4 kart usług.",
+        "widgets": [
+          "Container 4-col",
+          "Heading",
+          "Text Editor"
+        ],
+        "metrics": [
+          "Desktop: 4 kolumny, tablet: 2, mobile: 1",
+          "Wysokość kart wyrównana",
+          "Numer karty nad tytułem"
+        ],
+        "styles": [
+          "Białe karty z cieniem i cienką obwódką",
+          "Numery usług w złocie",
+          "Tło sekcji bardzo jasne"
+        ]
+      },
+      "rooms": {
+        "label": "ROOMS",
+        "elementor": "Container 2-col: copy + image grid 2x2.",
+        "widgets": [
+          "Heading + lead",
+          "Icon List / checklist",
+          "Button",
+          "Image grid"
+        ],
+        "metrics": [
+          "Desktop: copy i galeria w 2 kolumnach",
+          "Główne zdjęcie wysokie, 3 pomocnicze niższe",
+          "Button w kolorze burgundowym"
+        ],
+        "styles": [
+          "Feature list w zaokrąglonych pillach",
+          "Galeria z równymi odstępami 16px",
+          "Zdjęcia z tym samym radius"
+        ],
+        "comment": "Jeśli w Elementorze grid zdjęć będzie niewygodny, zrób go jako nested containers 2/1 + 1/1, zamiast standard gallery widget."
+      },
+      "events": {
+        "label": "EVENTS",
+        "elementor": "2 kolumny: duże zdjęcie + copy z tagami.",
+        "widgets": [
+          "Large image",
+          "Heading",
+          "Tag list",
+          "Button"
+        ],
+        "metrics": [
+          "Desktop: obraz ok. 52%, copy ok. 48%",
+          "Tagi w wrapie",
+          "Sekcja ma dużo powietrza pionowego"
+        ],
+        "styles": [
+          "CTA w burgundzie",
+          "Tagi jasne, z cienką ramką",
+          "Zdjęcie pełnej wysokości sekcji"
+        ]
+      },
+      "conference": {
+        "label": "CONFERENCE",
+        "elementor": "2 kolumny: copy po lewej, media panel po prawej.",
+        "widgets": [
+          "Heading",
+          "List",
+          "Button",
+          "Image",
+          "Callout card"
+        ],
+        "metrics": [
+          "Desktop: 2 kolumny 50/50",
+          "Compact list jedna pod drugą",
+          "Panel po prawej z boxem pod zdjęciem"
+        ],
+        "styles": [
+          "Button burgundowy",
+          "Callout box na jasnym tle",
+          "Tło sekcji z miękkim przejściem"
+        ],
+        "comment": "Ten prawy panel najlepiej złożyć jako image widget + osobny inner container pod spodem, nie jako jedno tło."
+      },
+      "nature": {
+        "label": "NATURE",
+        "elementor": "Wstęp 2-col + mozaika zdjęć + grid 6 kart + notatka końcowa.",
+        "widgets": [
+          "Heading + lead",
+          "Image mosaic",
+          "Cards / containers",
+          "Info box"
+        ],
+        "metrics": [
+          "Mozaika: 1 duże + 2 mniejsze zdjęcia",
+          "Karty benefitów: desktop 6 sztuk w rzędzie",
+          "Notatka końcowa osobno pod gridem"
+        ],
+        "styles": [
+          "Tła kart jasne z delikatnym cieniem",
+          "Akcent złoty przy notatce",
+          "Sekcja ma spokojny, kremowy ton"
+        ]
+      },
+      "gallery": {
+        "label": "GALLERY",
+        "elementor": "Grid 3x3 z różną wysokością kafelków + przycisk pod spodem.",
+        "widgets": [
+          "Image grid",
+          "Captions",
+          "Button"
+        ],
+        "metrics": [
+          "Desktop: 3 kolumny",
+          "Wybrane kafelki szersze / wyższe",
+          "CTA wycentrowane pod galerią"
+        ],
+        "styles": [
+          "Button burgundowy lub burgundowy outline",
+          "Captions w ciemnym gradiencie na zdjęciu",
+          "Zdjęcia z tym samym radius"
+        ],
+        "comment": "Jeśli masonry w Elementorze będzie zbyt toporne, utrzymaj po prostu 3 kolumny o różnych wysokościach obrazów."
+      },
+      "reviews": {
+        "label": "REVIEWS",
+        "elementor": "Box z oceną + grid 2x2 kart opinii.",
+        "widgets": [
+          "Score box",
+          "Text cards"
+        ],
+        "metrics": [
+          "Summary box max-width: ok. 34rem",
+          "Grid opinii: 2 kolumny desktop, 1 mobile",
+          "Karty z równym paddingiem"
+        ],
+        "styles": [
+          "Score box: krem + złota ramka",
+          "9.4/10 w złocie i większym rozmiarze",
+          "Opinie na białych kartach"
+        ]
+      },
+      "cta": {
+        "label": "CTA",
+        "elementor": "Band full width z copy po lewej i 2 przyciskami po prawej.",
+        "widgets": [
+          "Heading",
+          "Text Editor",
+          "Buttons"
+        ],
+        "metrics": [
+          "2 kolumny desktop, stack mobile",
+          "Silny kontrast tła do jasnego tekstu",
+          "Równe odstępy między CTA"
+        ],
+        "styles": [
+          "Tło zdjęciowe + ciemny gradient",
+          "Jeden button jasny, drugi akcentowy",
+          "Tekst cały na biało"
+        ]
+      },
+      "location": {
+        "label": "LOCATION",
+        "elementor": "2 kolumny: mapa i dojazd oraz karty atrakcji.",
+        "widgets": [
+          "Embed / HTML map",
+          "Text Editor",
+          "Cards grid"
+        ],
+        "metrics": [
+          "Mapa o stałej wysokości ok. 400px",
+          "Karty atrakcji w 1 kolumnie po prawej",
+          "Gap kolumn: ok. 32-40px"
+        ],
+        "styles": [
+          "Mapa z dużym radius",
+          "Karty białe z cieniem",
+          "Dystanse w złocie"
+        ]
+      },
+      "contact": {
+        "label": "CONTACT",
+        "elementor": "2 kolumny: dane kontaktowe + formularz.",
+        "widgets": [
+          "Heading",
+          "Contact details",
+          "Form"
+        ],
+        "metrics": [
+          "Desktop: 40/60 lub 45/55",
+          "Form box z dużym radius i paddingiem",
+          "Submit button w burgundzie"
+        ],
+        "styles": [
+          "Formularz na jasnej karcie",
+          "Focus inputów ze złotym akcentem",
+          "Sekcja na kremowym tle"
+        ],
+        "comment": "W Elementorze sam układ formularza odwzoruj osobno od stylu. Najpierw kolumny i odstępy, potem radiusy i kolory."
+      },
+      "footer": {
+        "label": "FOOTER",
+        "elementor": "Stopka 2-col z marką i linkami.",
+        "widgets": [
+          "Logo / Image",
+          "Text Editor",
+          "Nav links"
+        ],
+        "metrics": [
+          "Desktop: 2 kolumny",
+          "Dół stopki z oddzieloną notą",
+          "Linki w prostym gridzie"
+        ],
+        "styles": [
+          "Tło ciemne granatowo-zielone",
+          "Tekst jasny",
+          "Logo w uproszczonym, czytelnym wariancie"
+        ]
+      },
+      "galleryHero": {
+        "label": "GALLERY HERO",
+        "elementor": "Hero podstrony: 1 kolumna copy na tle zdjęcia z overlayem.",
+        "widgets": [
+          "Heading",
+          "Text Editor",
+          "Buttons"
+        ],
+        "metrics": [
+          "Padding-top podobny do strony głównej",
+          "Max width copy: ok. 42rem",
+          "Przyciski w jednym rzędzie na desktop"
+        ],
+        "styles": [
+          "Ciemne tło i białe tytuły",
+          "Overlay pod czytelność",
+          "Akcenty zgodne z brandem"
+        ]
+      },
+      "fullGallery": {
+        "label": "FULL GALLERY",
+        "elementor": "Sekcja z filtrami i gridem zdjęć.",
+        "widgets": [
+          "Buttons / tabs",
+          "Image grid",
+          "Captions"
+        ],
+        "metrics": [
+          "Filtry w wrapie",
+          "Grid 3 kolumny desktop, 2 tablet, 1 mobile",
+          "Kafelki o stałej wysokości obrazów"
+        ],
+        "styles": [
+          "Tło #1a1a1a",
+          "Tytuły białe",
+          "Filtry z aktywnym złoto-burgundowym stanem"
+        ],
+        "comment": "Jeśli nie chcesz kodować filtrów w Elementorze, to na WP można to później podmienić na osobny widget galerii lub lekkie JS."
+      }
+    }
   }
 }

@@ -19,10 +19,12 @@
     </div>
   </div>
 
-  <header class="site-header" id="site-header">
+  <header class="site-header" id="site-header" data-section-label="HEADER" data-guide-key="header">
     <div class="shell site-header__inner">
       <a class="brand" href="#top" data-aria-label-content="site.brand.ariaLabel">
-        <span class="brand__name" data-content="site.brand.name"></span>
+        <span class="brand__badge">
+          <img class="brand__logo" data-image-src="site.brand.logo.src" data-image-alt="site.brand.logo.alt" loading="eager">
+        </span>
         <span class="brand__place" data-content="site.brand.place"></span>
       </a>
 
@@ -57,14 +59,16 @@
 
   <main id="main-content">
     <!-- ELEMENTOR NOTE: Jedna Section / Container z tłem, overlayem, Inner Container dla treści i subtelnym paskiem wyróżników pod hero. -->
-    <section class="hero" id="top" data-aria-label-content="hero.ariaLabel" data-section-label="HERO">
+    <section class="hero" id="top" data-aria-label-content="hero.ariaLabel" data-section-label="HERO" data-guide-key="hero">
       <div class="hero__media" aria-hidden="true" data-hero-media></div>
       <div class="hero__veil" aria-hidden="true"></div>
       <div class="hero__mist" aria-hidden="true"></div>
       <div class="shell hero__layout">
-        <div class="hero__content reveal">
+        <div class="hero__content reveal" data-elementor-label="COPY / HERO CONTENT">
           <div class="hero__brand-lockup">
-            <img class="hero__logo" data-image-src="hero.logo.src" data-image-alt="hero.logo.alt" loading="eager">
+            <span class="hero__logo-badge">
+              <img class="hero__logo" data-image-src="hero.logo.src" data-image-alt="hero.logo.alt" loading="eager">
+            </span>
             <p class="eyebrow hero__eyebrow" data-content="hero.eyebrow"></p>
           </div>
           <h1 class="hero__title" data-content="hero.title"></h1>
@@ -83,7 +87,7 @@
           </div>
         </div>
 
-        <aside class="hero-showcase reveal" data-aria-label-content="hero.showcaseAriaLabel">
+        <aside class="hero-showcase reveal" data-aria-label-content="hero.showcaseAriaLabel" data-elementor-label="SHOWCASE / IMAGE STACK">
           <div class="hero-showcase__frame">
             <img
               class="hero-showcase__image"
@@ -102,10 +106,10 @@
       </div>
     </section>
 
-    <section class="section section--proof" data-section-label="PROOF">
+    <section class="section section--proof" data-section-label="PROOF" data-guide-key="proof">
       <div class="shell">
         <div class="proof-grid">
-          <article class="proof-card proof-card--highlight reveal">
+          <article class="proof-card proof-card--highlight reveal" data-elementor-label="STAT CARD / BADGE">
             <p class="proof-card__badge">
               <span class="proof-card__brand" data-content="proof.badgeLabel"></span>
               <span class="proof-card__stars" data-content="proof.stars"></span>
@@ -114,17 +118,17 @@
             <h3 data-content="proof.items.0.label"></h3>
             <p data-content="proof.items.0.text"></p>
           </article>
-          <article class="proof-card reveal">
+          <article class="proof-card reveal" data-elementor-label="STAT CARD">
             <p class="proof-card__value" data-content="proof.items.1.value"></p>
             <h3 data-content="proof.items.1.label"></h3>
             <p data-content="proof.items.1.text"></p>
           </article>
-          <article class="proof-card reveal">
+          <article class="proof-card reveal" data-elementor-label="STAT CARD">
             <p class="proof-card__value" data-content="proof.items.2.value"></p>
             <h3 data-content="proof.items.2.label"></h3>
             <p data-content="proof.items.2.text"></p>
           </article>
-          <article class="proof-card reveal">
+          <article class="proof-card reveal" data-elementor-label="STAT CARD">
             <p class="proof-card__value" data-content="proof.items.3.value"></p>
             <h3 data-content="proof.items.3.label"></h3>
             <p data-content="proof.items.3.text"></p>
@@ -135,9 +139,9 @@
     </section>
 
     <!-- ELEMENTOR NOTE: Jedna Section / Container z dwoma Inner Containerami: tekst po lewej, obraz po prawej. -->
-    <section class="section section--intro" id="o-obiekcie" data-section-label="INTRO">
+    <section class="section section--intro" id="o-obiekcie" data-section-label="INTRO" data-guide-key="intro">
       <div class="shell section-grid section-grid--intro">
-        <div class="section-copy reveal">
+        <div class="section-copy reveal" data-elementor-label="COPY / 2 COL LEFT">
           <p class="eyebrow eyebrow--dark" data-content="intro.eyebrow"></p>
           <h2 data-content="intro.title"></h2>
           <p class="section-copy__lead" data-content="intro.lead"></p>
@@ -149,7 +153,7 @@
           </div>
         </div>
 
-        <figure class="featured-photo reveal">
+        <figure class="featured-photo reveal" data-elementor-label="IMAGE / 2 COL RIGHT">
           <img data-image-src="intro.image.src" data-image-alt="intro.image.alt" loading="lazy">
           <figcaption data-content="intro.image.caption"></figcaption>
         </figure>
@@ -157,7 +161,7 @@
     </section>
 
     <!-- ELEMENTOR NOTE: Jedna Section / Container i siatka czterech Inner Containerów lub Icon Boxów bez dodatkowej logiki. -->
-    <section class="section section--offer" id="oferta" data-section-label="OFFER">
+    <section class="section section--offer" id="oferta" data-section-label="OFFER" data-guide-key="offer">
       <div class="shell">
         <div class="section-heading reveal">
           <p class="eyebrow eyebrow--dark" data-content="offer.eyebrow"></p>
@@ -165,22 +169,22 @@
         </div>
 
         <div class="offer-grid">
-          <article class="offer-card reveal">
+          <article class="offer-card reveal" data-elementor-label="SERVICE CARD">
             <span class="offer-card__number" data-content="offer.cards.0.number"></span>
             <h3 data-content="offer.cards.0.title"></h3>
             <p data-content="offer.cards.0.text"></p>
           </article>
-          <article class="offer-card reveal">
+          <article class="offer-card reveal" data-elementor-label="SERVICE CARD">
             <span class="offer-card__number" data-content="offer.cards.1.number"></span>
             <h3 data-content="offer.cards.1.title"></h3>
             <p data-content="offer.cards.1.text"></p>
           </article>
-          <article class="offer-card reveal">
+          <article class="offer-card reveal" data-elementor-label="SERVICE CARD">
             <span class="offer-card__number" data-content="offer.cards.2.number"></span>
             <h3 data-content="offer.cards.2.title"></h3>
             <p data-content="offer.cards.2.text"></p>
           </article>
-          <article class="offer-card reveal">
+          <article class="offer-card reveal" data-elementor-label="SERVICE CARD">
             <span class="offer-card__number" data-content="offer.cards.3.number"></span>
             <h3 data-content="offer.cards.3.title"></h3>
             <p data-content="offer.cards.3.text"></p>
@@ -190,9 +194,9 @@
     </section>
 
     <!-- ELEMENTOR NOTE: Jedna Section / Container z dwoma kolumnami: tekst i lista po lewej, dwa lub trzy widgety Image po prawej. -->
-    <section class="section section--rooms" id="noclegi" data-section-label="ROOMS">
+    <section class="section section--rooms" id="noclegi" data-section-label="ROOMS" data-guide-key="rooms">
       <div class="shell section-grid section-grid--rooms">
-        <div class="section-copy reveal">
+        <div class="section-copy reveal" data-elementor-label="COPY / ROOMS">
           <p class="eyebrow eyebrow--dark" data-content="rooms.eyebrow"></p>
           <h2 data-content="rooms.title"></h2>
           <p class="section-copy__lead" data-content="rooms.lead"></p>
@@ -208,7 +212,7 @@
           <a class="button button--primary" data-content="rooms.cta.label" data-link="booking.url"></a>
         </div>
 
-        <div class="room-gallery reveal" data-aria-label-content="rooms.galleryAriaLabel">
+        <div class="room-gallery reveal" data-aria-label-content="rooms.galleryAriaLabel" data-elementor-label="IMAGE GRID / 2x2">
           <figure class="room-gallery__primary">
             <img data-image-src="rooms.gallery.0.src" data-image-alt="rooms.gallery.0.alt" loading="lazy">
           </figure>
@@ -226,13 +230,13 @@
     </section>
 
     <!-- ELEMENTOR NOTE: Section / Container z dwoma Inner Containerami: jedno duże zdjęcie i blok tekstowy z listą oraz przyciskiem. -->
-    <section class="section section--events" id="przyjecia" data-section-label="EVENTS">
+    <section class="section section--events" id="przyjecia" data-section-label="EVENTS" data-guide-key="events">
       <div class="shell section-grid section-grid--events">
-        <figure class="immersive-photo reveal">
+        <figure class="immersive-photo reveal" data-elementor-label="LARGE IMAGE">
           <img data-image-src="events.image.src" data-image-alt="events.image.alt" loading="lazy">
         </figure>
 
-        <div class="section-copy reveal">
+        <div class="section-copy reveal" data-elementor-label="COPY / TAGS + CTA">
           <p class="eyebrow eyebrow--dark" data-content="events.eyebrow"></p>
           <h2 data-content="events.title"></h2>
           <p class="section-copy__lead" data-content="events.lead"></p>
@@ -250,9 +254,9 @@
     </section>
 
     <!-- ELEMENTOR NOTE: Section / Container z dwoma Inner Containerami: tekst i prosty panel z obrazem oraz tekstem pomocniczym. -->
-    <section class="section section--conference" id="konferencje" data-section-label="CONFERENCE">
+    <section class="section section--conference" id="konferencje" data-section-label="CONFERENCE" data-guide-key="conference">
       <div class="shell section-grid section-grid--conference">
-        <div class="section-copy reveal">
+        <div class="section-copy reveal" data-elementor-label="COPY / LIST + CTA">
           <p class="eyebrow eyebrow--dark" data-content="conference.eyebrow"></p>
           <h2 data-content="conference.title"></h2>
           <p class="section-copy__lead" data-content="conference.lead"></p>
@@ -266,7 +270,7 @@
           <a class="button button--secondary" data-content="conference.cta.label" data-link="conference.cta.href"></a>
         </div>
 
-        <div class="conference-panel reveal">
+        <div class="conference-panel reveal" data-elementor-label="MEDIA PANEL">
           <figure class="conference-panel__photo">
             <img data-image-src="conference.image.src" data-image-alt="conference.image.alt" loading="lazy">
           </figure>
@@ -279,16 +283,16 @@
     </section>
 
     <!-- ELEMENTOR NOTE: Sekcja z jednym Containerem na wstęp, drugim na mozaikę zdjęć i osobnym gridem kart, łatwa do odtworzenia widgetami Image i Heading. -->
-    <section class="section section--nature" id="okolica" data-section-label="NATURE">
+    <section class="section section--nature" id="okolica" data-section-label="NATURE" data-guide-key="nature">
       <div class="shell">
         <div class="section-grid section-grid--nature">
-          <div class="section-copy reveal">
+          <div class="section-copy reveal" data-elementor-label="COPY / INTRO">
             <p class="eyebrow eyebrow--dark" data-content="nature.eyebrow"></p>
             <h2 data-content="nature.title"></h2>
             <p class="section-copy__lead" data-content="nature.lead"></p>
           </div>
 
-          <div class="nature-mosaic reveal" data-aria-label-content="nature.mosaicAriaLabel">
+          <div class="nature-mosaic reveal" data-aria-label-content="nature.mosaicAriaLabel" data-elementor-label="IMAGE MOSAIC">
             <figure class="nature-mosaic__large">
               <img data-image-src="nature.mosaic.0.src" data-image-alt="nature.mosaic.0.alt" loading="lazy">
             </figure>
@@ -302,12 +306,12 @@
         </div>
 
         <div class="nature-cards">
-          <article class="nature-card reveal"><h3 data-content="nature.cards.0"></h3></article>
-          <article class="nature-card reveal"><h3 data-content="nature.cards.1"></h3></article>
-          <article class="nature-card reveal"><h3 data-content="nature.cards.2"></h3></article>
-          <article class="nature-card reveal"><h3 data-content="nature.cards.3"></h3></article>
-          <article class="nature-card reveal"><h3 data-content="nature.cards.4"></h3></article>
-          <article class="nature-card reveal"><h3 data-content="nature.cards.5"></h3></article>
+          <article class="nature-card reveal" data-elementor-label="BENEFIT CARD"><h3 data-content="nature.cards.0"></h3></article>
+          <article class="nature-card reveal" data-elementor-label="BENEFIT CARD"><h3 data-content="nature.cards.1"></h3></article>
+          <article class="nature-card reveal" data-elementor-label="BENEFIT CARD"><h3 data-content="nature.cards.2"></h3></article>
+          <article class="nature-card reveal" data-elementor-label="BENEFIT CARD"><h3 data-content="nature.cards.3"></h3></article>
+          <article class="nature-card reveal" data-elementor-label="BENEFIT CARD"><h3 data-content="nature.cards.4"></h3></article>
+          <article class="nature-card reveal" data-elementor-label="BENEFIT CARD"><h3 data-content="nature.cards.5"></h3></article>
         </div>
 
         <aside class="destination-note reveal">
@@ -318,7 +322,7 @@
     </section>
 
     <!-- ELEMENTOR NOTE: Galerię można odtworzyć jako Gallery lub jako grid Containerów z widgetami Image i podpisami. -->
-    <section class="section section--gallery" id="galeria" data-section-label="GALLERY">
+    <section class="section section--gallery" id="galeria" data-section-label="GALLERY" data-guide-key="gallery">
       <div class="shell">
         <div class="section-heading reveal">
           <p class="eyebrow eyebrow--dark" data-content="gallery.eyebrow"></p>
@@ -326,39 +330,39 @@
         </div>
 
         <div class="gallery-grid">
-          <figure class="gallery-item gallery-item--wide reveal">
+          <figure class="gallery-item gallery-item--wide reveal" data-elementor-label="GALLERY TILE">
             <img data-image-src="gallery.items.0.src" data-image-alt="gallery.items.0.alt" loading="lazy">
             <figcaption data-content="gallery.items.0.caption"></figcaption>
           </figure>
-          <figure class="gallery-item reveal">
+          <figure class="gallery-item reveal" data-elementor-label="GALLERY TILE">
             <img data-image-src="gallery.items.1.src" data-image-alt="gallery.items.1.alt" loading="lazy">
             <figcaption data-content="gallery.items.1.caption"></figcaption>
           </figure>
-          <figure class="gallery-item reveal">
+          <figure class="gallery-item reveal" data-elementor-label="GALLERY TILE">
             <img data-image-src="gallery.items.2.src" data-image-alt="gallery.items.2.alt" loading="lazy">
             <figcaption data-content="gallery.items.2.caption"></figcaption>
           </figure>
-          <figure class="gallery-item reveal">
+          <figure class="gallery-item reveal" data-elementor-label="GALLERY TILE">
             <img data-image-src="gallery.items.3.src" data-image-alt="gallery.items.3.alt" loading="lazy">
             <figcaption data-content="gallery.items.3.caption"></figcaption>
           </figure>
-          <figure class="gallery-item reveal">
+          <figure class="gallery-item reveal" data-elementor-label="GALLERY TILE">
             <img data-image-src="gallery.items.4.src" data-image-alt="gallery.items.4.alt" loading="lazy">
             <figcaption data-content="gallery.items.4.caption"></figcaption>
           </figure>
-          <figure class="gallery-item gallery-item--tall reveal">
+          <figure class="gallery-item gallery-item--tall reveal" data-elementor-label="GALLERY TILE">
             <img data-image-src="gallery.items.5.src" data-image-alt="gallery.items.5.alt" loading="lazy">
             <figcaption data-content="gallery.items.5.caption"></figcaption>
           </figure>
-          <figure class="gallery-item reveal">
+          <figure class="gallery-item reveal" data-elementor-label="GALLERY TILE">
             <img data-image-src="gallery.items.6.src" data-image-alt="gallery.items.6.alt" loading="lazy">
             <figcaption data-content="gallery.items.6.caption"></figcaption>
           </figure>
-          <figure class="gallery-item reveal">
+          <figure class="gallery-item reveal" data-elementor-label="GALLERY TILE">
             <img data-image-src="gallery.items.7.src" data-image-alt="gallery.items.7.alt" loading="lazy">
             <figcaption data-content="gallery.items.7.caption"></figcaption>
           </figure>
-          <figure class="gallery-item reveal">
+          <figure class="gallery-item reveal" data-elementor-label="GALLERY TILE">
             <img data-image-src="gallery.items.8.src" data-image-alt="gallery.items.8.alt" loading="lazy">
             <figcaption data-content="gallery.items.8.caption"></figcaption>
           </figure>
@@ -371,14 +375,14 @@
     </section>
 
     <!-- ELEMENTOR NOTE: Cztery proste kontenery tekstowe; docelowo można je podmienić na prawdziwe cytaty lub widget opinii. -->
-    <section class="section section--reviews" data-section-label="REVIEWS">
+    <section class="section section--reviews" data-section-label="REVIEWS" data-guide-key="reviews">
       <div class="shell">
         <div class="section-heading reveal">
           <p class="eyebrow eyebrow--dark" data-content="reviews.eyebrow"></p>
           <h2 data-content="reviews.title"></h2>
         </div>
 
-        <aside class="reviews-summary reveal">
+        <aside class="reviews-summary reveal" data-elementor-label="SCORE BOX">
           <div class="reviews-summary__top">
             <span class="reviews-summary__stars" data-content="reviews.summary.stars"></span>
             <span class="reviews-summary__score" data-content="reviews.summary.score"></span>
@@ -392,16 +396,16 @@
         </aside>
 
         <div class="reviews-grid">
-          <article class="review-card reveal">
+          <article class="review-card reveal" data-elementor-label="REVIEW CARD">
             <p data-content="reviews.items.0"></p>
           </article>
-          <article class="review-card reveal">
+          <article class="review-card reveal" data-elementor-label="REVIEW CARD">
             <p data-content="reviews.items.1"></p>
           </article>
-          <article class="review-card reveal">
+          <article class="review-card reveal" data-elementor-label="REVIEW CARD">
             <p data-content="reviews.items.2"></p>
           </article>
-          <article class="review-card reveal">
+          <article class="review-card reveal" data-elementor-label="REVIEW CARD">
             <p data-content="reviews.items.3"></p>
           </article>
         </div>
@@ -411,7 +415,7 @@
     </section>
 
     <!-- ELEMENTOR NOTE: Osobna Section / Container z tłem, Heading, Text Editor i dwoma Button widgetami. -->
-    <section class="section cta-band" data-section-label="CTA">
+    <section class="section cta-band" data-section-label="CTA" data-guide-key="cta">
       <div class="shell cta-band__inner reveal">
         <div>
           <p class="eyebrow" data-content="cta.eyebrow"></p>
@@ -426,9 +430,9 @@
       </div>
     </section>
 
-    <section class="section section--location" id="lokalizacja" data-section-label="LOCATION">
+    <section class="section section--location" id="lokalizacja" data-section-label="LOCATION" data-guide-key="location">
       <div class="shell section-grid section-grid--location">
-        <div class="location-access reveal">
+        <div class="location-access reveal" data-elementor-label="MAP + ACCESS">
           <p class="eyebrow eyebrow--dark" data-content="location.eyebrow"></p>
           <h2 data-content="location.accessTitle"></h2>
           <div class="location-map-wrap">
@@ -448,7 +452,7 @@
           </div>
         </div>
 
-        <div class="location-attractions reveal">
+        <div class="location-attractions reveal" data-elementor-label="ATTRACTIONS GRID">
           <h2 data-content="location.attractionsTitle"></h2>
           <div class="location-cards" data-aria-label-content="location.attractionsAriaLabel">
             <article class="location-card">
@@ -477,9 +481,9 @@
     </section>
 
     <!-- ELEMENTOR NOTE: Sekcja kontaktu do odtworzenia jako dwa Containery; formularz można później zrobić widgetem Form lub zewnętrzną wtyczką. -->
-    <section class="section section--contact" id="kontakt" data-section-label="CONTACT">
+    <section class="section section--contact" id="kontakt" data-section-label="CONTACT" data-guide-key="contact">
       <div class="shell contact-layout">
-        <div class="contact-copy reveal">
+        <div class="contact-copy reveal" data-elementor-label="CONTACT COPY">
           <p class="eyebrow eyebrow--dark" data-content="contact.eyebrow"></p>
           <h2 data-content="contact.title"></h2>
           <p class="section-copy__lead" data-content="contact.lead"></p>
@@ -500,7 +504,7 @@
           </dl>
         </div>
 
-        <form class="contact-form reveal" id="contact-form" novalidate>
+        <form class="contact-form reveal" id="contact-form" novalidate data-elementor-label="FORM CARD">
           <div class="form-row">
             <label for="name" data-content="contact.form.nameLabel"></label>
             <input id="name" name="name" type="text" autocomplete="name" required>
@@ -538,11 +542,13 @@
     </section>
   </main>
 
-  <footer class="site-footer" data-section-label="FOOTER">
+  <footer class="site-footer" data-section-label="FOOTER" data-guide-key="footer">
     <div class="shell site-footer__grid">
       <div>
         <a class="brand brand--footer" href="#top">
-          <span class="brand__name" data-content="site.brand.name"></span>
+          <span class="brand__badge">
+            <img class="brand__logo" data-image-src="site.brand.logo.src" data-image-alt="site.brand.logo.alt" loading="lazy">
+          </span>
           <span class="brand__place" data-content="site.brand.place"></span>
         </a>
         <p class="site-footer__copy" data-content="footer.copy"></p>
@@ -564,7 +570,13 @@
   </footer>
 
   <div class="elementor-grid-overlay" aria-hidden="true"></div>
-  <button class="elementor-grid-toggle" type="button" data-grid-toggle aria-pressed="false">🔲 Pokaż siatkę Elementor</button>
+  <div class="elementor-tools" aria-label="Narzędzia diagnostyczne">
+    <button class="elementor-tools__button elementor-tools__button--primary" type="button" data-guide-toggle="sections" aria-pressed="false">🔲 Siatka</button>
+    <button class="elementor-tools__button" type="button" data-guide-toggle="layout" aria-pressed="false">Układ</button>
+    <button class="elementor-tools__button" type="button" data-guide-toggle="metrics" aria-pressed="false">Metryki</button>
+    <button class="elementor-tools__button" type="button" data-guide-toggle="comments" aria-pressed="false">Komentarze</button>
+    <button class="elementor-tools__button" type="button" data-guide-toggle="styles" aria-pressed="false">Style</button>
+  </div>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lightbox__close" type="button" aria-label="Zamknij podgląd zdjęcia">×</button>

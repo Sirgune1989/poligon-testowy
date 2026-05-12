@@ -14,9 +14,16 @@ const lightboxClose = document.querySelector(".lightbox__close");
 const fullGalleryGrid = document.querySelector("[data-full-gallery-grid]");
 const fullGalleryEmpty = document.querySelector("[data-full-gallery-empty]");
 const galleryFilterButtons = document.querySelectorAll("[data-gallery-filter]");
-const gridToggle = document.querySelector("[data-grid-toggle]");
+const guideToggleButtons = document.querySelectorAll("[data-guide-toggle]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const defaultDocumentTitle = document.title;
+const guideModeClassMap = {
+  sections: "guide-mode-sections",
+  layout: "guide-mode-layout",
+  metrics: "guide-mode-metrics",
+  comments: "guide-mode-comments",
+  styles: "guide-mode-styles",
+};
 
 const pageState = {
   content: null,
@@ -25,6 +32,13 @@ const pageState = {
   heroShowcaseIntervalId: null,
   heroShowcaseIndex: 0,
   fullGalleryCategory: "all",
+  guideModes: {
+    sections: false,
+    layout: false,
+    metrics: false,
+    comments: false,
+    styles: false,
+  },
   lightboxSelector:
     ".section--gallery img, .section--rooms img, .section-grid--intro img, .section-grid--events img, .section-grid--conference img, .section-grid--nature img, .gallery-page-hero img, .full-gallery-item img",
 };
@@ -135,6 +149,7 @@ function setupHeroMedia(content) {
     image.className = "hero__image";
     image.src = slide.src;
     image.alt = typeof slide.alt === "string" ? slide.alt : "";
+    image.style.objectPosition = typeof slide.position === "string" ? slide.position : "center center";
     image.loading = index === 0 ? "eager" : "lazy";
     image.decoding = "async";
 
@@ -294,6 +309,7 @@ function renderFullGallery() {
   items.forEach((item) => {
     const figure = document.createElement("figure");
     figure.className = "full-gallery-item reveal is-visible";
+    figure.setAttribute("data-elementor-label", "GALLERY TILE");
 
     const image = document.createElement("img");
     image.src = item.src;
@@ -324,6 +340,211 @@ function setupGalleryFilters() {
       pageState.fullGalleryCategory = button.dataset.galleryFilter || "all";
       syncGalleryFilterButtons();
       renderFullGallery();
+    });
+  });
+}
+
+function bindGuideControlLabels(content) {
+  const controls = content.elementorGuide?.controls;
+  if (!controls) {
+    return;
+  }
+
+  guideToggleButtons.forEach((button) => {
+    const mode = button.dataset.guideToggle;
+    if (mode && typeof controls[mode] === "string") {
+      button.textContent = controls[mode];
+    }
+  });
+}
+
+function createGuideList(items, variant = "") {
+  if (!Array.isArray(items) || !items.length) {
+    return null;
+  }
+
+  const list = document.createElement("ul");
+  list.className = `guide-card__list${variant ? ` ${variant}` : ""}`;
+
+  items.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+
+  return list;
+}
+
+function createGuideCard(title, eyebrow, description, listItems, extraNode, modifier) {
+  const card = document.createElement("section");
+  card.className = `guide-card ${modifier}`;
+
+  if (eyebrow) {
+    const eyebrowElement = document.createElement("p");
+    eyebrowElement.className = "guide-card__eyebrow";
+    eyebrowElement.textContent = eyebrow;
+    card.appendChild(eyebrowElement);
+  }
+
+  const heading = document.createElement("h3");
+  heading.textContent = title;
+  card.appendChild(heading);
+
+  if (description) {
+    const descriptionElement = document.createElement("p");
+    descriptionElement.textContent = description;
+    card.appendChild(descriptionElement);
+  }
+
+  const list = createGuideList(listItems);
+  if (list) {
+    card.appendChild(list);
+  }
+
+  if (extraNode) {
+    card.appendChild(extraNode);
+  }
+
+  return card;
+}
+
+function createStyleTokenRow() {
+  const tokens = [
+    { label: "Burgund #4B1E2A", color: "#4b1e2a" },
+    { label: "Złoto #C9A84C", color: "#c9a84c" },
+    { label: "Zieleń #2C4A2E", color: "#2c4a2e" },
+  ];
+
+  const list = document.createElement("ul");
+  list.className = "guide-card__list";
+
+  tokens.forEach((token) => {
+    const li = document.createElement("li");
+    li.className = "guide-card__token";
+
+    const swatch = document.createElement("span");
+    swatch.className = "guide-card__swatch";
+    swatch.style.backgroundColor = token.color;
+
+    const label = document.createElement("span");
+    label.textContent = token.label;
+
+    li.append(swatch, label);
+    list.appendChild(li);
+  });
+
+  return list;
+}
+
+function renderSectionGuides(content) {
+  const guideSections = content.elementorGuide?.sections || {};
+  const controls = content.elementorGuide?.controls || {};
+
+  document.querySelectorAll("[data-guide-key]").forEach((section) => {
+    section.querySelectorAll(".guide-stack").forEach((guide) => guide.remove());
+
+    const guideData = guideSections[section.dataset.guideKey];
+    if (!guideData) {
+      return;
+    }
+
+    const stack = document.createElement("div");
+    stack.className = "guide-stack";
+
+    const layoutCard = createGuideCard(
+      guideData.label || "SEKCJA",
+      "Elementor layout",
+      guideData.elementor || "",
+      guideData.widgets || [],
+      null,
+      "guide-card--layout"
+    );
+
+    const metricsCard = createGuideCard(
+      "Metryki do odtworzenia",
+      "Spacing i proporcje",
+      "",
+      guideData.metrics || [],
+      null,
+      "guide-card--metrics"
+    );
+
+    const stylesCard = createGuideCard(
+      "Style i tokeny",
+      "Kolor / typografia",
+      "",
+      guideData.styles || [],
+      createStyleTokenRow(),
+      "guide-card--styles"
+    );
+
+    stack.append(layoutCard, metricsCard, stylesCard);
+
+    if (typeof guideData.comment === "string" && guideData.comment) {
+      const commentWrap = document.createElement("div");
+      commentWrap.className = "guide-comment";
+
+      const commentButton = document.createElement("button");
+      commentButton.type = "button";
+      commentButton.className = "guide-comment__toggle";
+      commentButton.textContent = controls.commentButton || "Pokaż tip";
+      commentButton.dataset.guideCommentButton = "true";
+      commentButton.dataset.guideCommentOpen = controls.commentClose || "Ukryj tip";
+      commentButton.dataset.guideCommentClosed = controls.commentButton || "Pokaż tip";
+
+      const commentCard = document.createElement("div");
+      commentCard.className = "guide-comment__card";
+      commentCard.textContent = guideData.comment;
+
+      commentWrap.append(commentButton, commentCard);
+      stack.appendChild(commentWrap);
+    }
+
+    section.appendChild(stack);
+  });
+}
+
+function applyGuideModes() {
+  Object.entries(guideModeClassMap).forEach(([mode, className]) => {
+    document.body.classList.toggle(className, pageState.guideModes[mode]);
+  });
+
+  guideToggleButtons.forEach((button) => {
+    const mode = button.dataset.guideToggle;
+    const isActive = Boolean(pageState.guideModes[mode]);
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", isActive ? "true" : "false");
+  });
+}
+
+function setupGuideCommentToggles() {
+  document.querySelectorAll("[data-guide-comment-button]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const wrap = button.closest(".guide-comment");
+      if (!wrap) {
+        return;
+      }
+
+      const isOpen = wrap.classList.toggle("is-open");
+      button.textContent = isOpen ? button.dataset.guideCommentOpen : button.dataset.guideCommentClosed;
+    });
+  });
+}
+
+function setupGuideToggles() {
+  if (!guideToggleButtons.length) {
+    return;
+  }
+
+  guideToggleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const mode = button.dataset.guideToggle;
+      if (!mode || !(mode in pageState.guideModes)) {
+        return;
+      }
+
+      pageState.guideModes[mode] = !pageState.guideModes[mode];
+      applyGuideModes();
     });
   });
 }
@@ -473,21 +694,6 @@ function setupLightbox() {
   });
 }
 
-function setupElementorOverlay() {
-  if (!gridToggle) {
-    return;
-  }
-
-  const inactiveLabel = "🔲 Pokaż siatkę Elementor";
-  const activeLabel = "✖ Ukryj siatkę";
-
-  gridToggle.addEventListener("click", () => {
-    const isActive = document.body.classList.toggle("elementor-grid-active");
-    gridToggle.textContent = isActive ? activeLabel : inactiveLabel;
-    gridToggle.setAttribute("aria-pressed", isActive ? "true" : "false");
-  });
-}
-
 function initReveal() {
   const revealItems = document.querySelectorAll(".reveal:not(.is-visible)");
 
@@ -528,6 +734,10 @@ function bindContent(content) {
   setupHeroShowcase(content);
   renderFullGallery();
   syncGalleryFilterButtons();
+  bindGuideControlLabels(content);
+  renderSectionGuides(content);
+  setupGuideCommentToggles();
+  applyGuideModes();
   setupMenuLabels();
 }
 
@@ -548,7 +758,7 @@ async function initPage() {
   setupForm();
   setupLightbox();
   setupGalleryFilters();
-  setupElementorOverlay();
+  setupGuideToggles();
   initReveal();
   syncHeaderState();
   window.addEventListener("scroll", syncHeaderState, { passive: true });
