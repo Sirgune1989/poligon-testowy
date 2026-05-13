@@ -31,6 +31,7 @@ const pageState = {
   heroIntervalId: null,
   heroShowcaseIntervalId: null,
   heroShowcaseIndex: 0,
+  lastScrollY: 0,
   fullGalleryCategory: "all",
   guideModes: {
     sections: false,
@@ -565,7 +566,21 @@ function syncHeaderState() {
     return;
   }
 
-  header.classList.toggle("is-scrolled", window.scrollY > 32);
+  const currentScrollY = window.scrollY || window.pageYOffset || 0;
+  const nearTop = currentScrollY < 24;
+  const scrollingUp = currentScrollY < pageState.lastScrollY - 4;
+  const scrollingDown = currentScrollY > pageState.lastScrollY + 4;
+  const menuIsOpen = document.body.classList.contains("menu-open");
+
+  header.classList.toggle("is-scrolled", currentScrollY > 32);
+
+  if (menuIsOpen || nearTop || scrollingUp) {
+    header.classList.remove("is-hidden");
+  } else if (scrollingDown && currentScrollY > 120) {
+    header.classList.add("is-hidden");
+  }
+
+  pageState.lastScrollY = currentScrollY;
 }
 
 function closeMenu() {
@@ -594,6 +609,7 @@ function openMenu() {
   menuToggle.setAttribute("aria-expanded", "true");
   siteNav.classList.add("is-open");
   document.body.classList.add("menu-open");
+  header?.classList.remove("is-hidden");
 }
 
 function setupMenu() {
@@ -760,6 +776,7 @@ async function initPage() {
   setupGalleryFilters();
   setupGuideToggles();
   initReveal();
+  pageState.lastScrollY = window.scrollY || window.pageYOffset || 0;
   syncHeaderState();
   window.addEventListener("scroll", syncHeaderState, { passive: true });
 

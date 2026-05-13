@@ -317,7 +317,10 @@ p {
   inset: var(--top-bar-height) 0 auto;
   z-index: 1000;
   padding: 1rem 0;
+  background: linear-gradient(180deg, rgba(16, 24, 32, 0.34), rgba(16, 24, 32, 0.12));
+  backdrop-filter: blur(10px);
   transition:
+    transform var(--transition),
     background-color var(--transition),
     box-shadow var(--transition),
     backdrop-filter var(--transition),
@@ -326,9 +329,13 @@ p {
 
 .site-header.is-scrolled {
   padding: 0.7rem 0;
-  background: rgba(246, 242, 234, 0.86);
+  background: rgba(246, 242, 234, 0.92);
   backdrop-filter: blur(18px);
   box-shadow: 0 8px 28px rgba(24, 43, 57, 0.08);
+}
+
+.site-header.is-hidden {
+  transform: translateY(calc(-100% - 0.4rem));
 }
 
 .site-header__inner {
@@ -530,23 +537,35 @@ p {
 }
 
 .hero__logo-badge {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.9rem 1.1rem 0.85rem;
   border-radius: 1.75rem;
+  isolation: isolate;
+}
+
+.hero__logo-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
   background:
-    linear-gradient(180deg, rgba(255, 252, 245, 0.94), rgba(242, 234, 220, 0.82));
-  border: 1px solid rgba(201, 168, 76, 0.34);
+    radial-gradient(circle at 50% 34%, rgba(255, 252, 245, 0.98) 0%, rgba(248, 241, 228, 0.9) 52%, rgba(248, 241, 228, 0.52) 76%, rgba(248, 241, 228, 0) 100%);
+  border: 1px solid rgba(201, 168, 76, 0.22);
   box-shadow:
-    0 22px 44px rgba(8, 14, 20, 0.22),
+    0 22px 44px rgba(8, 14, 20, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.68);
-  backdrop-filter: blur(12px);
+  filter: blur(8px);
+  transform: scale(1.08);
+  z-index: -1;
 }
 
 .hero__logo {
   width: min(100%, 18rem);
   max-width: 18rem;
+  position: relative;
   filter: drop-shadow(0 8px 16px rgba(44, 16, 24, 0.12));
 }
 
